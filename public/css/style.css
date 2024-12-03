@@ -109,29 +109,20 @@ button:active {
 
 /* Forms */
 form {
-    background-color: #ffffff; /* White background for the form */
+    background-color: #ffffff; 
     padding: 30px;
-    border-radius: 8px; /* Rounded corners for a soft look */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow around the form */
-    width: 80%; /* Use percentage to make the form take up 80% of the page width */
-    max-width: 900px; /* Ensure the form doesn't get too wide on large screens */
-    margin: 20px auto; /* Center the form */
-}
-
-form h2 {
-    color: #74b49b;
-    font-size: 1.8em;
-    margin-bottom: 20px;
-    text-align: center;
-    font-family: 'Open Sans', sans-serif;
+    border-radius: 8px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+    width: 80%; 
+    max-width: 900px; 
+    margin: 20px auto; 
 }
 
 /* Labels aligned to the left */
 label {
-    width: 30%; /* Adjust label width as needed */
-    text-align: right; /* Align label text to the right */
-    margin-right: 10px; /* Space between label and input */
+    width: 30%; 
     font-size: 1em;
+    font-weight: bold;
     color: #333;
     font-family: 'Open Sans', sans-serif;
 }
@@ -139,24 +130,15 @@ label {
 /* Inputs take up remaining space */
 input[type="text"],
 input[type="email"],
-input[type="password"],
+input[type="date"],
 textarea {
-    flex: 1; /* Ensure inputs grow to fill remaining space in the row */
-    padding: 12px;
+    width: 100%;
+    padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 1em;
-    box-sizing: border-box; /* Include padding/borders in total width */
-}
-
-
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="password"]:focus,
-textarea:focus {
-    border-color: #74b49b;
-    outline: none;
-    box-shadow: 0 0 5px rgba(116, 180, 155, 0.5);
+    box-sizing: border-box; 
+    margin-bottom: 5px; /* Space below the input */
 }
 
 textarea {
@@ -165,8 +147,8 @@ textarea {
 }
 
 button[type="submit"] {
-    background-color: #74b49b;
-    color: white;
+    background-color: #F4E1A1;
+    color: black;
     padding: 15px 30px;
     border: none;
     border-radius: 5px;
@@ -178,7 +160,7 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-    background-color: #5e8c74;
+    background-color: #EACB75;
     transform: translateY(-3px);
 }
 
@@ -288,8 +270,8 @@ table {
 }
 
 th, td {
-    padding: 15px;
-    text-align: left;
+    padding: 5px;
+    text-align: center;
     font-size: 1em;
     border-bottom: 1px solid #ddd;
     border-right: 1px solid #ddd;
@@ -348,25 +330,46 @@ table td, table th {
 
 table td:hover {
     background-color: #8ec0a8;
-    color: #fff;
+    color: #fff; 
+}
+
+table.form td:hover {
+    background-color: transparent; 
+    color: inherit; 
+}
+
+table.form {
+    width: 100%; 
+    border-collapse: collapse;
+}
+
+table.form td:first-child {
+    white-space: nowrap;
+    width: auto; 
+    padding-right: 10px;
+    vertical-align: middle; 
+}
+
+table.form td:last-child {
+    width: 100%;
 }
 
 /* Container for the clickable divs */
 .clickable-container {
     display: flex;
-    justify-content: space-around; /* Even spacing between items */
-    align-items: flex-start; /* Align items to the top */
+    justify-content: space-around; 
+    align-items: flex-start;
     padding: 20px;
-    gap: 20px; /* Additional spacing between divs */
+    gap: 20px; 
 }
 
 /* Individual clickable divs */
 .clickable-div {
-    flex: 1; /* Allow divs to grow evenly */
-    max-width: 30%; /* Ensure they don't get too wide */
+    flex: 1; 
+    max-width: 30%;
     height: auto;
     padding: 20px;
-    background-color: #74b49b; /* Background color */
+    background-color: #74b49b; 
     color: #fff;
     text-align: center;
     border-radius: 10px;
@@ -400,7 +403,6 @@ table td:hover {
     line-height: 1.5;
 }
 
-/* Ensure responsive layout for smaller screens */
 @media (max-width: 768px) {
     .clickable-container {
         flex-direction: column;
@@ -408,7 +410,7 @@ table td:hover {
     }
 
     .clickable-div {
-        max-width: 100%; /* Full width on smaller screens */
+        max-width: 100%;
         margin-bottom: 20px;
     }
 }
