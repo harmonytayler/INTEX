@@ -462,8 +462,8 @@ table.form td:last-child {
 
 .collapsible-header {
     width: 100%;
-    background-color: #f1f1f1;
-    color: #333;
+    background-color: #F4E1A1;
+    color: black;
     text-align: left;
     font-size: 18px;
     font-weight: bold;
@@ -475,7 +475,7 @@ table.form td:last-child {
 }
 
 .collapsible-header:hover {
-    background-color: #ddd;
+    background-color: #EACB75;
 }
 
 .collapsible-content {
@@ -490,7 +490,7 @@ table.form td:last-child {
 }
 
 .collapsible-header.active {
-    background-color: #aaa; 
+    background-color: #EACB75; 
 }
 
 
@@ -504,15 +504,18 @@ table.form td:last-child {
     max-height: 1000px; 
 }
 
-
+.collapsible-content p {
+    text-align: left;
+    font-family:Arial, Helvetica, sans-serif;
+    text-indent: 2em;
+}
 
 .wrapped-image {
     float: left; 
     margin-right: 15px; 
-    width: 150px; 
+    width: 360px; 
     height: auto; 
 }
-
 
 .collapsible-content::after {
     content: "";
