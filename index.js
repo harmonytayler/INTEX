@@ -21,6 +21,7 @@ app.use(express.urlencoded({extended: true}));
 
 //Make it possible to use CSS stylesheet in "public" folder
 app.use(express.static("public"));
+//app.use(express.static(path.join(__dirname, 'public')));
 
 // Link to the database
 const knex = require("knex")({
@@ -40,6 +41,10 @@ app.get("/", (req, res) => {
 
 app.get("/login", (req, res) => {
     res.render("login");
+});
+
+app.get("/about", (req, res) => {
+    res.render("about");
 });
 
 app.get("/request", (req, res) => {
