@@ -82,7 +82,7 @@ const knex = require("knex")({
 
     // Route to submit volunteer form
     app.post("/volunteer", (req, res) => {
-        knex("volunteer").insert({
+        knex("team_members").insert({
             first_name: req.body.first_name.toUpperCase(),
             last_name: req.body.last_name.toUpperCase(),
             phone: req.body.phone,
@@ -90,8 +90,11 @@ const knex = require("knex")({
             referral_source: req.body.referral_source.toUpperCase(),
             address: req.body.address.toUpperCase(),
             sewing_level: req.body.sewing_level,
-            monthly_hours_available: req.body.monthly_hours_available,
+            monthly_hours: req.body.monthly_hours_available,
             city: req.body.city.toUpperCase(),
+            travel: req.body.travel,
+            take_charge: req.body.take_charge ? "T" : "N",
+            status: "Pending",
         }).then (() => {
             res.redirect("/volunteer");
         }).catch(error => {
@@ -176,7 +179,22 @@ app.get('/landing2', isAdmin, (req, res) => {
 
     // Route to submit edits
     app.post("/editUser", (req, res) => {
-        //Insert information for updating user
+        knex("team_members").insert({
+            first_name: req.body.first_name.toUpperCase(),
+            last_name: req.body.last_name.toUpperCase(),
+            phone: req.body.phone,
+            email: req.body.email.toUpperCase(),
+            referral_source: req.body.referral_source.toUpperCase(),
+            address: req.body.address.toUpperCase(),
+            sewing_level: req.body.sewing_level,
+            monthly_hours_available: req.body.monthly_hours_available,
+            city: req.body.city.toUpperCase(),
+        }).then (() => {
+            res.redirect("/volunteer");
+        }).catch(error => {
+            console.error('Error querying database:', error);
+            res.status(500).send('Internal Server Error');
+        });
     });
 
     // Route to add user
