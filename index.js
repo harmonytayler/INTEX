@@ -83,17 +83,16 @@ const knex = require("knex")({
     // Route to submit volunteer form
     app.post("/volunteer", (req, res) => {
         knex("team_members").insert({
-            first_name: req.body.first_name.toUpperCase(),
-            last_name: req.body.last_name.toUpperCase(),
+            first_name: req.body.first_name,
+            last_name: req.body.last_name,
             phone: req.body.phone,
-            email: req.body.email.toUpperCase(),
-            referral_source: req.body.referral_source.toUpperCase(),
-            address: req.body.address.toUpperCase(),
+            email: req.body.email,
+            referral_source: req.body.referral_source,
             sewing_level: req.body.sewing_level,
-            monthly_hours: req.body.monthly_hours_available,
-            city: req.body.city.toUpperCase(),
+            monthly_hours: parseInt(req.body.monthly_hours),
+            city: req.body.city,
             travel: req.body.travel,
-            take_charge: req.body.take_charge ? "T" : "N",
+            take_charge: req.body.take_charge ? "Y" : "N",
             status: "Pending",
         }).then (() => {
             res.redirect("/volunteer");
