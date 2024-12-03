@@ -175,8 +175,8 @@ app.get('/landing2', isAdmin, (req, res) => {
 
     // Route to edit users
     app.get("/editUser/:volunteer_id", isAdmin, (req, res) => {
-        knex.select().from("team_members").where("volunteer_id", req.params.volunteer_id).then(memberCurrent => {
-            res.render("editUser", {memberCurrent})
+        knex.select().from("team_members").where("volunteer_id", req.params.volunteer_id).then(members => {
+            res.render("editUser", {members})
     }).catch(error => {
             console.error('Error querying database:', error);
             res.status(500).send('Internal Server Error');
@@ -233,14 +233,14 @@ app.get('/landing2', isAdmin, (req, res) => {
     });
 
     // delete users
-        app.post("/deleteUser/:volunteer_id", (req, res) => {
-            knex("team_members").where("volunteer_id", req.params.volunteer_id).del().then(() => {
-                res.redirect("/users");
-            }).catch(err => {
-                console.log(err);
-                res.status(500).json({err});
-            });
+    app.post("/deleteUser/:volunteer_id", (req, res) => {
+        knex("team_members").where("volunteer_id", req.params.volunteer_id).del().then(() => {
+            res.redirect("/users");
+        }).catch(err => {
+            console.log(err);
+            res.status(500).json({err});
         });
+    });
 
     // Route to view user
     app.get("/viewUser", isAdmin, (req, res) => {
