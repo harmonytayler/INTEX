@@ -111,29 +111,28 @@ const knex = require("knex")({
     // Route to submit request form
     app.post("/request", (req, res) => {
         knex("events").insert({
-            description: req.body.description.toUpperCase(),
-            anticipated_participants: req.body.anticipated_participants,
-            under_ten: req.body.under_ten,
+            description: req.body.description,
+            anticipated_participants: parseInt(req.body.anticipated_participants),
+            under_ten: parseInt(req.body.under_ten),
             possible_date: req.body.possible_date,
-            type: req.body.type,
-            address: req.body.address.toUpperCase(),
+            type: req.body.event_type,
+            address: req.body.address,
             start_time: req.body.start_time,
             duration: req.body.duration,
-            contact_name: req.body.name.toUpperCase(),
+            contact_name: req.body.contact_name,
             contact_phone: req.body.contact_phone,
-            contact_email: req.body.toUpperCase(),
-            machines: req.body.machines,
-            sewers: req.body.sewers,
-            story: req.body.story ? "Y" : "N",
-            // actual_date: req.body.
-            // actual_participants: req.body.
-            // pockets: req.body.
-            // collars: req.body.
-            // envelopes: req.body.
-            // vests: req.body.
-            // members_needed: req.body.
+            contact_email: req.body.contact_email,
+            machines: parseInt(req.body.machines),
+            sewers: parseInt(req.body.sewers),
+            story: req.body.story ? "Yes" : "No",
             status: "Pending",
-            notes: req.body.notes.toUpperCase(),
+            // actual_date: 
+            // actual_participants: 
+            // pockets: 
+            // collars: 
+            // envelopes: 
+            // vests:
+            // members_needed:
         }).then (() => {
             res.redirect("/request");
         }).catch(error => {
