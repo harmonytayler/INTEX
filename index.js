@@ -494,8 +494,8 @@ app.get('/landing2', isAdmin, (req, res) => {
     app.post("/addPast", (req, res) => {
         // Extract form values from req.body
         const description = req.body.description || ''; // Default to empty string if not provided
-        const anticipated_participants = parseInt(req.body.anticipated_participants, 10); // Default to empty string if not provided
-        const under_ten = parseInt(req.body.under_ten, 10); // Convert to integer
+        const anticipated_participants = parseInt(req.body.anticipated_participants, 10) || 0; // Default to empty string if not provided
+        const under_ten = parseInt(req.body.under_ten, 10) || 0; // Convert to integer
         const possible_date = req.body.possible_date || new Date().toISOString().split('T')[0];
         const type = req.body.type || 'Sewing'; // Default to 'U' for Unknown
         const address = req.body.address || '';
@@ -504,16 +504,16 @@ app.get('/landing2', isAdmin, (req, res) => {
         const contact_name = req.body.contact_name || '';
         const contact_phone = req.body.contact_phone || '';
         const contact_email = req.body.contact_email || '';
-        const machines = parseInt(req.body.machines, 10);
-        const sewers = parseInt(req.body.sewers, 10);
+        const machines = parseInt(req.body.machines, 10) || 0;
+        const sewers = parseInt(req.body.sewers, 10) || 0;
         const story = req.body.story || '';
         const actual_date = req.body.actual_date || new Date().toISOString().split('T')[0];
-        const actual_participants = parseInt(req.body.actual_participants, 10);
-        const pockets = parseInt(req.body.pockets, 10);
-        const collars = parseInt(req.body.collars, 10);
-        const envelopes = parseInt(req.body.envelopes, 10);
-        const vests = parseInt(req.body.vests, 10);
-        const members_needed = parseInt(req.body.members_needed, 10);
+        const actual_participants = parseInt(req.body.actual_participants, 10) || 0;
+        const pockets = parseInt(req.body.pockets, 10) || 0;
+        const collars = parseInt(req.body.collars, 10) || 0;
+        const envelopes = parseInt(req.body.envelopes, 10) || 0;
+        const vests = parseInt(req.body.vests, 10) || 0;
+        const members_needed = parseInt(req.body.members_needed, 10) || 0;
         const status = "Completed"
         const notes = req.body.notes || '';
         
@@ -545,14 +545,13 @@ app.get('/landing2', isAdmin, (req, res) => {
                 notes: notes
             })
             .then(() => {
-                res.redirect('/'); // Redirect to the pastEvents list page after adding
+                res.redirect('/pastEvents'); // Redirect to the pastEvents list page after adding
             })
             .catch(error => {
                 console.error('Error adding character:', error);
                 res.status(500).send('Internal Server Error');
             });
     });
-
     app.get('/viewPast/:event_id', isAdmin, (req, res) => {
         let event_id = req.params.event_id;
         knex('events')
