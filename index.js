@@ -397,10 +397,22 @@ app.get('/landing2', isAdmin, (req, res) => {
         //Insert information for adding past event
     });
 
-    // Route to view past events
-    app.get("/viewPast", isAdmin, (req, res) => {
-        res.render("viewPast");
-    });
+    app.get('/viewPast/:event_id', (req, res) => {
+        let event_id = req.params.event_id;
+        knex('events')
+          .where('event_id', event_id)
+          .first()
+          .then(pastEvents => {
+            if (!pastEvents) {
+              return res.status(404).send('Not found');
+            }
+            res.render('viewPast', { pastEvents });
+              })
+            .catch(error => {
+            console.error('Error fetching data:', error);
+            res.status(500).send('Internal Server Error');
+            });
+      });
 
     // Route from view past events to display past events
 
