@@ -1,1 +1,77 @@
-<!-- View all the details of a single re  uested event when you click on it -->
+<!-- View all the details of a single requested event when you click on it -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Display Past Event</title>
+        <link rel="stylesheet" href="/css/style.css">
+    </head>
+    <body>
+        <!-- Title -->
+        <h1><b>Event Details:</b></h1>
+        <br><br>
+        <!-- It's not an array, so you can just display from the one object -->
+        <label><b>Event ID</b></label>
+        <p><%= eventRequst.event_id %></p>
+        <br>
+        <label><b>Description</b></label>
+        <p><%= eventRequst.description %></p>
+        <br>
+        <label><b>Anticipated Paricipant</b></label>
+        <p><%= eventRequst.anticipated_participants %></p>
+        <br>
+        <label><b>Under Ten</b></label>
+        <p><%= eventRequst.under_ten %></p>
+        <br>
+        <label><b>Possible Date</b></label>
+        <p><%= eventRequst.possible_date %></p>
+        <br>
+        <label><b>Type</b></label>
+        <p><%= eventRequst.type %></p>
+        <br>
+        <label><b>Address</b></label>
+        <p><%= eventRequst.address %></p>
+        <br>
+        <label><b>Start Time</b></label>
+        <p><%= eventRequst.start_time %></p>
+        <br>
+        <label><b>Duration</b></label>
+        <p><%= eventRequst.duration %></p>
+        <br>
+        <label><b>Contact Name</b></label>
+        <p><%= eventRequst.contact_name %></p>
+        <br>
+        <label><b>Contact Phone</b></label>
+        <p><%= eventRequst.contact_phone %></p>
+        <br>
+        <label><b>Contact Email</b></label>
+        <p><%= eventRequst.contact_email %></p>
+        <br>
+        <label><b>Machines</b></label>
+        <p><%= eventRequst.machines %></p>
+        <br>
+        <label><b>Sewers</b></label>
+        <p><%= eventRequst.sewers %></p>
+        <br>
+        <label><b>Story</b></label>
+        <p><%= eventRequst.story %></p>
+        <br>
+        <label><b>Members Needed</b></label>
+        <p><%= eventRequst.members_needed %></p>
+        <br>
+        <label><b>Status</b></label>
+        <p><%= eventRequst.status %></p>
+        <br>
+        <label><b>Notes</b></label>
+        <p><%= eventRequst.notes %></p>
+        <br>
+        
+        <!-- Button to return to home page -->
+        <form action="/eventRequests" method="GET">
+            <button type="submit">Return</button>
+        </form>
+    </body>
+</html>
