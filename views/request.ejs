@@ -16,7 +16,40 @@
             <a href="/donate"><button class="link">Donate</button></a>
             <a href="/request"><button class="link">Request an Event</button></a>
             <a href="/volunteer"><button class="link">Volunteer</button></a>
+            <a href="/about"><button class="link">About</button></a>
         </div>
     </nav>
+    <section>
+        <form action="/request" method="post">
+            <table class="form">
+                <caption>Request an Event</caption>
+                <tr>
+                    <td><label for="name">Name</label></td>
+                    <td><input type="text" id="name" name="name" placeholder="Enter your first and last name" required></td>
+                </tr>
+                <tr>
+                    <td><label for="email">Email</label></td>
+                    <td><input type="email" id="email" name="email" placeholder="Enter your email address" required></td>
+                </tr>
+                <tr>
+                    <td><label for="phone">Phone</label></td>
+                    <td><input type="text" id="phone" name="phone" placeholder="Enter your phone number" required></td>
+                </tr>
+                <tr>
+                    <td><label for="address">Event Location</label></td>
+                    <td><input type="text" id="address" name="address" placeholder="Enter the address of the event location" required></td>
+                </tr>
+                <tr>
+                    <td><label for="date">Event Date</label></td>
+                    <td><input type="date" id="date" name="date" placeholder="Enter the preferred date of the event" required></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: center;">
+                        <button type="submit">Submit</button>
+                    </td>
+                </tr>
+            </table>
+        </form>        
+    </section>
 </body>
 </html>
