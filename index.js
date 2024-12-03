@@ -31,6 +31,110 @@ const knex = require("knex")({
     }
 });
 
+app.get("/", (req, res) => {
+    res.render("/");
+});
+
+app.get("/login", (req, res) => {
+    res.render("/login");
+});
+
+app.get("/request", (req, res) => {
+    res.render("/request");
+});
+
+app.post("/request", (req, res) => {
+    //post information for updating the pending events table
+});
+
+app.get("/volunteer", (req, res) => {
+    res.render("/volunteer");
+});
+
+app.post("/volunteer", (req, res) => {
+    //post information for updating the volunteer table
+});
+
+app.get("/donate", (req, res) => {
+    res.render("/donate");
+});
+
+app.get("/addPast", (req, res) => {
+    res.render("/addPast");
+});
+
+app.post("/addPast", (req, res) => {
+    //post information for updating events table (status:completed)
+});
+
+app.get("/addRequest", (req, res) => {
+    res.render("/addRequest");
+});
+
+app.post("/addRequest", (req, res) => {
+    //post information for updating events table (status:pending)
+});
+
+app.get("/addScheduled", (req, res) => {
+    res.render("/addScheduled");
+});
+
+app.post("/addScheduled", (req, res) => {
+    //post information for updating events table (status:scheduled)
+});
+
+app.post("/editPast", (req, res) => {
+    //post information for updating events table (status:completed)
+});
+
+app.get("/editRequest", (req, res) => {
+    res.render("/editRequest");
+});
+
+app.post("/editRequest", (req, res) => {
+    //post information for updating events table (status:pending)
+});
+
+app.get("/editScheduled", (req, res) => {
+    res.render("/editScheduled");
+});
+
+app.post("/editScheduled", (req, res) => {
+    //post information for updating events table (status:scheduled)
+});
+
+app.get("/editUser", (req, res) => {
+    res.render("/editUser");
+});
+
+app.post("/editUser", (req, res) => {
+    //post information for updating users table
+});
+
+app.get("/addVolunteer", (req, res) => {
+    res.render("/addPast");
+});
+
+app.post("/addVolunteer", (req, res) => {
+    //post information for updating volunteer table
+});
+
+app.get("/editUser", (req, res) => {
+    res.render("/editUser");
+});
+
+app.post("/editUser", (req, res) => {
+    //insert information for updating user table
+});
+
+app.get("/editVolunteer", (req, res) => {
+    res.render("/editUser");
+});
+
+app.post("/editVolunteer", (req, res) => {
+    //insert information for updating volunteer
+});
+
 // Pre-login pages
 
     //Route to go to landing page 1
