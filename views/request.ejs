@@ -20,37 +20,70 @@
         </div>
     </nav>
     <section>
-        <form action="/request" method="post">
+        <form action="/request" method="POST">
             <table class="form">
                 <caption>Request an Event</caption>
                 <tr>
-                    <td><label for="name">Name</label></td>
-                    <td><input type="text" id="name" name="name" placeholder="Enter your first and last name" required></td>
+                    <td><label for="contact_name">Name</label></td>
+                    <td><input type="text" id="contact_name" name="contact_name" placeholder="Enter your first and last name" required></td>
                 </tr>
                 <tr>
-                    <td><label for="email">Email</label></td>
-                    <td><input type="email" id="email" name="email" placeholder="Enter your email address" required></td>
+                    <td><label for="contact_email">Email</label></td>
+                    <td><input type="email" id="contact_email" name="contact_email" placeholder="Enter your email address" required></td>
                 </tr>
                 <tr>
-                    <td><label for="phone">Phone</label></td>
-                    <td><input type="text" id="phone" name="phone" placeholder="Enter your phone number" required></td>
+                    <td><label for="contact_phone">Phone</label></td>
+                    <td><input type="text" id="contact_phone" name="contact_phone" placeholder="Enter your phone number" required></td>
                 </tr>
                 <tr>
                     <td><label for="address">Event Location</label></td>
                     <td><input type="text" id="address" name="address" placeholder="Enter the address of the event location" required></td>
                 </tr>
                 <tr>
-                    <td><label for="date">Event Date</label></td>
-                    <td><input type="date" id="date" name="date" placeholder="Enter the preferred date of the event" required></td>
+                    <td><label for="possible_date">Event Date</label></td>
+                    <td><input type="date" id="possible_date" name="possible_date" required></td>
                 </tr>
                 <tr>
-                    <td><label for="eventType">Activity Type</label></td>
-                    <td>
-                        <div class="radio-group">
-                                <input type="radio" name="eventType" value="Non-Sewing">Non Sewing
-                                <input type="radio" name="eventType" value="Sewing">Sewing
-                                <input type="radio" name="eventType" value="Both">Both
-                        </div>
+                    <td><label for="start_time">Start Time</label></td>
+                    <td><input type="time" id="start_time" name="start_time" required></td>
+                </tr>
+                <tr>
+                    <td><label for="duration">Event Duration</label></td>
+                    <td><input type="text" id="duration" name="duration" placeholder="Enter the preferred event duration" required></td>
+                </tr>
+                <tr>
+                    <td><label for="anticipated_participants">Total Participants</label></td>
+                    <td><input type="number" id="anticipated_participants" name="anticipated_participants" placeholder="Enter the number of total anticipated participants" required></td>
+                </tr>
+                <tr>
+                    <td><label for="under_ten">Participants Under 10</label></td>
+                    <td><input type="number" id="under_ten" name="under_ten" placeholder="Enter the number of anticipated participants under age 10" required></td>
+                </tr>
+                <tr>
+                    <td><label for="event_type">Activity Type</label></td>
+                    <td style="text-align: left;">
+                        <input type="radio" name="event_type" value="Non-Sewing">Non-Sewing<br>
+                        <input type="radio" name="event_type" value="Sewing">Sewing<br>
+                        <input type="radio" name="event_type" value="Both">Both
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="machines">Sewing Machines</label></td>
+                    <td><input type="number" id="machines" name="machines" placeholder="How many sewing machines can your group bring?"></td>
+                </tr>
+                <tr>
+                    <td><label for="sewers">Sewing Participants</label></td>
+                    <td><input type="number" id="sewers" name="machines" placeholder="How many people in your group can sew?"></td>
+                </tr>
+                <tr>
+                    <td><label for="description">Event Description</label></td>
+                    <td><input type="text" id="description" name="description" placeholder="Describe the occasion for the event (e.g. church activity, family gathering, etc.)"></td>
+                </tr>
+                <tr>
+                    <td><label for="story">Would you like to hear Jen's story?</label></td>
+                    <td style="text-align: left;">
+                        <input type="radio" id="story" name="story" value="yes">Yes<br>
+                        <input type="radio" id="story" name="story" value="no">No
                     </td>
                 </tr>
                 <tr>
