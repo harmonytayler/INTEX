@@ -261,6 +261,7 @@ app.get('/landing2', isAdmin, (req, res) => {
 
     // Route from view eventRequests to display eventRequests
 
+
 // Scheduled Events
 
     // Route from landing page 2 to scheduled Events
@@ -294,77 +295,6 @@ app.get('/landing2', isAdmin, (req, res) => {
         )
          //Shows all data from the events table in order by date
         .where('status','Approved')
-        .orderBy('actual_date', 'desc')
-        .then(scheduledEvents => {
-            // Render the scheduledEvents and pass the data
-            res.render('scheduledEvents', { scheduledEvents });
-        })
-        .catch(error => {
-            console.error('Error querying database:', error);
-            res.status(500).send('Internal Server Error');
-        });
-    });
-
-    //Route to edit eventRequests
-    app.get("/editRequest", isAdmin, (req, res) => {
-        res.render("editRequest");
-    });
-
-    // Route to submit edits
-    app.post("/editRequest", (req, res) => {
-        //Insert information for updating request
-    });
-
-    // Route to add eventRequests
-    app.get("/addRequest", isAdmin, (req, res) => {
-        res.render("addRequest");
-    });
-
-    // Route to submit added eventRequests
-    app.post("/addRequest", (req, res) => {
-        //Insert information for adding request
-    });
-
-    // Route to view eventRequests
-    app.get("/viewRequest", isAdmin, (req, res) => {
-        res.render("viewRequest");
-    });
-
-    // Route from view eventRequests to display eventRequests
-
-// Scheduled Events
-
-    // Route from landing page 2 to scheduled Events
-    app.get("/scheduledEvents", (req, res) => {
-        knex('events')
-        .select(
-            'events.event_id',
-            'events.description',
-            'events.anticipated_participants',
-            'events.under_ten',
-            'events.possible_date',
-            'events.type',
-            'events.address',
-            'events.start_time',
-            'events.duration',
-            'events.contact_name',
-            'events.contact_phone',
-            'events.contact_email',
-            'events.machines',
-            'events.sewers',
-            'events.story',
-            'events.actual_date',
-            'events.actual_participants',
-            'events.pockets',
-            'events.collars',
-            'events.envelopes',
-            'events.vests',
-            'events.members_needed',
-            'events.status',
-            'events.notes'
-        )
-         //Shows all data from the events table in order by date
-        .where('status','approved')
         .orderBy('actual_date', 'desc')
         .then(scheduledEvents => {
             // Render the scheduledEvents and pass the data
