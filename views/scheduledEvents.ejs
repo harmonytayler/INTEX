@@ -26,7 +26,7 @@
                 <% scheduledEvents.forEach(row => { %>
                     <tr>
                         <!-- Add data to the table -->
-                        <input type="hidden" value="row.id">
+                        <input type="hidden" value="row.event_id">
                         <td><%= row.event_id %></td>
                         <td><%= row.actual_date %></td>
                         <td><%= row.description %></td>
@@ -34,10 +34,10 @@
                         <td><%= row.address %></td>
                         <td>
                         <!-- Each record has an edit and view button -->
-                        <form action="/editScheduled/<%= row.id %>" method="GET" style="display:inline;">
+                        <form action="/editScheduled/<%= row.event_id %>" method="GET" style="display:inline;">
                             <button type="submit">Edit</button>
                         </form>
-                        <form action="/viewSheduled/<%= row.id %>" method="POST" style="display:inline;">
+                        <form action="/viewSheduled/<%= row.event_id %>" method="GET" style="display:inline;">
                             <button type="submit">View</button>
                         </form>
                         </td>
