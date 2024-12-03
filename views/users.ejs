@@ -51,6 +51,11 @@
                         </form>
                     </td>
                     <td style="text-align: center;">
+                        <form action="/viewUser/<%= members[iCount].volunteer_id %>" method="GET">
+                            <button type="submit">View</button>
+                        </form>
+                    </td>
+                    <td style="text-align: center;">
                         <form action="/deleteUser/<%= members[iCount].volunteer_id %>" method="POST">
                             <button type="submit">Delete</button>
                         </form>
