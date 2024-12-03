@@ -323,7 +323,53 @@ app.get('/landing2', isAdmin, (req, res) => {
 
     // Route to submit added eventRequests
     app.post("/addRequest", (req, res) => {
-        //Insert information for adding request
+        // Extract form values from req.body
+        const description = req.body.description || ''; // Default to empty string if not provided
+        const anticipated_participants = parseInt(req.body.anticipated_participants, 10) || 0; // Default to empty string if not provided
+        const under_ten = parseInt(req.body.under_ten, 10) || 0; // Convert to integer
+        const possible_date = req.body.possible_date || new Date().toISOString().split('T')[0];
+        const type = req.body.type || 'Sewing'; // Default to 'U' for Unknown
+        const address = req.body.address || '';
+        const start_time = req.body.start_time ;
+        const duration = req.body.duration || '';
+        const contact_name = req.body.contact_name || '';
+        const contact_phone = req.body.contact_phone || '';
+        const contact_email = req.body.contact_email || '';
+        const machines = parseInt(req.body.machines, 10) || 0;
+        const sewers = parseInt(req.body.sewers, 10) || 0;
+        const story = req.body.story || '';
+        const members_needed = parseInt(req.body.members_needed, 10) || 0;
+        const status = "Pending"
+        const notes = req.body.notes || '';
+        
+        // Insert the new event into the database
+        knex('events')
+            .insert({
+                description: description, // Ensure description is uppercase
+                anticipated_participants: anticipated_participants,
+                under_ten: under_ten,
+                possible_date: possible_date,
+                type: type,
+                address: address,
+                start_time: start_time, 
+                duration: duration, 
+                contact_name: contact_name,
+                contact_phone: contact_phone,
+                contact_email: contact_email,
+                machines: machines,
+                sewers: sewers,
+                story: story,
+                members_needed: members_needed,
+                status: status,
+                notes: notes
+            })
+            .then(() => {
+                res.redirect('/eventRequests'); // Redirect to the eventRequests list page after adding
+            })
+            .catch(error => {
+                console.error('Error adding event request:', error);
+                res.status(500).send('Internal Server Error');
+            });
     });
 
     // Route to view eventRequests
@@ -408,7 +454,53 @@ app.get('/landing2', isAdmin, (req, res) => {
 
     // Route to submit added scheduled events
     app.post("/addScheduled", (req, res) => {
-        //Insert information for adding scheduled event
+        // Extract form values from req.body
+        const description = req.body.description || ''; // Default to empty string if not provided
+        const anticipated_participants = parseInt(req.body.anticipated_participants, 10) || 0; // Default to empty string if not provided
+        const under_ten = parseInt(req.body.under_ten, 10) || 0; // Convert to integer
+        const possible_date = req.body.possible_date || new Date().toISOString().split('T')[0];
+        const type = req.body.type || 'Sewing'; // Default to 'U' for Unknown
+        const address = req.body.address || '';
+        const start_time = req.body.start_time ;
+        const duration = req.body.duration || '';
+        const contact_name = req.body.contact_name || '';
+        const contact_phone = req.body.contact_phone || '';
+        const contact_email = req.body.contact_email || '';
+        const machines = parseInt(req.body.machines, 10) || 0;
+        const sewers = parseInt(req.body.sewers, 10) || 0;
+        const story = req.body.story || '';
+        const members_needed = parseInt(req.body.members_needed, 10) || 0;
+        const status = "Approved"
+        const notes = req.body.notes || '';
+        
+        // Insert the new event into the database
+        knex('events')
+            .insert({
+                description: description, // Ensure description is uppercase
+                anticipated_participants: anticipated_participants,
+                under_ten: under_ten,
+                possible_date: possible_date,
+                type: type,
+                address: address,
+                start_time: start_time, 
+                duration: duration, 
+                contact_name: contact_name,
+                contact_phone: contact_phone,
+                contact_email: contact_email,
+                machines: machines,
+                sewers: sewers,
+                story: story,
+                members_needed: members_needed,
+                status: status,
+                notes: notes
+            })
+            .then(() => {
+                res.redirect('/scheduledEvents'); // Redirect to the scheduledEvents list page after adding
+            })
+            .catch(error => {
+                console.error('Error adding event:', error);
+                res.status(500).send('Internal Server Error');
+            });
     });
 
     // Route to view scheduled events
@@ -548,10 +640,11 @@ app.get('/landing2', isAdmin, (req, res) => {
                 res.redirect('/pastEvents'); // Redirect to the pastEvents list page after adding
             })
             .catch(error => {
-                console.error('Error adding character:', error);
+                console.error('Error adding event:', error);
                 res.status(500).send('Internal Server Error');
             });
     });
+
     app.get('/viewPast/:event_id', isAdmin, (req, res) => {
         let event_id = req.params.event_id;
         knex('events')
