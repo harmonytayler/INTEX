@@ -1,1 +1,78 @@
-<!-- Form to edit users -->
+<!-- Form to add a past event -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add User</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1 style="text-align: center;">Edit User</h1>
+    
+    <form action="/editUser/<%= members.volunteer_id %>" method="POST">
+
+        <input type="hidden" id="volunteer_id" name="volunteer_id" value="<%= members[0].volunteer_id %>">
+
+        <label for="first_name">First Name</label>
+        <input type="text" id="first_name" name="first_name" required value="<%= members[0].first_name %>">
+        <br><br>
+
+        <label for="last_name">Last Name</label>
+        <input type="text" id="last_name" name="last_name" required value="<%= members[0].last_name %>">
+        <br><br>
+
+        <label for="phone">Phone Number</label>
+        <input type="text" id="phone" name="phone" required value="<%= members[0].phone %>">
+        <br><br>
+
+        <label for="email">Email</label>
+        <input type="text" id="email" name="email" required value="<%= members[0].email %>">
+        <br><br>
+
+        <label for="referral_source">Referral Source</label>
+        <input type="text" id="referral_source" name="referral_source" required value="<%= members[0].referral_source %>">
+        <br><br>
+
+        <label>Sewing Level</label>
+        <label>
+            <input type="radio" name="sewer" value="Beginner" <%= members[0].sewing_level == "Beginner" ? "checked" : "" %>> Beginner
+        </label>
+        <label>
+            <input type="radio" name="sewer" value="Intermediate" <%= members[0].sewing_level == "Intermediate" ? "checked" : "" %>> Intermediate
+        </label>
+        <label>
+            <input type="radio" name="sewer" value="Experienced" <%= members[0].sewing_level == "Experienced" ? "checked" : "" %>> Experienced
+        </label>
+        <br><br>
+
+        <label for="monthly_hours">Monthly Hours</label>
+        <input type="float" id="monthly_hours" name="monthly_hours" required value="<%= members[0].monthly_hours %>">
+        <br><br>
+
+        <label for="city">City</label>
+        <input type="text" id="city" name="city" required value="<%= members[0].city %>">
+        <br><br>
+
+        <label for="travel">Travel</label>
+        <input type="text" id="travel" name="travel" required value="<%= members[0].travel %>">
+        <br><br>
+
+        <label for="take_charge">Leader? (Y/N):</label>
+        <input type="checkbox" id="take_charge" name="take_charge" <%= members[0].take_charge == "Y" ? "checked" : "" %>
+        <br><br>
+
+        <label>Status</label>
+        <label>
+            <input type="radio" name="status" value="Active" <%= members[0].status == "Active" ? "checked" : "" %>> Active
+        </label>
+        <label>
+            <input type="radio" name="status" value="Pending" <%= members[0].status == "Pending" ? "checked" : "" %>> Pending
+        </label>
+        <label>
+            <input type="radio" name="status" value="Denied" <%= members[0].status == "Denied" ? "checked" : "" %>> Denied
+        </label>
+        <br><br>
+        <button type="submit">Submit Edits</button>
+    </form>
+</body>
+</html>
