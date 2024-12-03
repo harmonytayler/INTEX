@@ -193,7 +193,7 @@ app.get('/landing2', isAdmin, (req, res) => {
 // Event Requests
 
     // Route from landing page 2 to eventRequests
-    app.get("/eventRequests", (req, res) => {
+    app.get("/eventRequests", isAdmin, (req, res) => {
         knex('events')
         .select(
             'events.event_id',
@@ -235,7 +235,7 @@ app.get('/landing2', isAdmin, (req, res) => {
     });
 
     //Route to edit eventRequests
-    app.get("/editRequest", (req, res) => {
+    app.get("/editRequest", isAdmin, (req, res) => {
         res.render("editRequest");
     });
 
@@ -245,7 +245,7 @@ app.get('/landing2', isAdmin, (req, res) => {
     });
 
     // Route to add eventRequests
-    app.get("/addRequest", (req, res) => {
+    app.get("/addRequest", isAdmin, (req, res) => {
         res.render("addRequest");
     });
 
@@ -255,7 +255,7 @@ app.get('/landing2', isAdmin, (req, res) => {
     });
 
     // Route to view eventRequests
-    app.get("/viewRequest", (req, res) => {
+    app.get("/viewRequest", isAdmin, (req, res) => {
         res.render("viewRequest");
     });
 
@@ -265,7 +265,7 @@ app.get('/landing2', isAdmin, (req, res) => {
 // Scheduled Events
 
     // Route from landing page 2 to scheduled Events
-    app.get("/scheduledEvents", (req, res) => {
+    app.get("/scheduledEvents", isAdmin, (req, res) => {
         knex('events')
         .select(
             'events.event_id',
@@ -336,7 +336,7 @@ app.get('/landing2', isAdmin, (req, res) => {
 // Past Events
     
     // Route from landing page 2 to past events
-    app.get("/pastEvents", (req, res) => {
+    app.get("/pastEvents", isAdmin, (req, res) => {
         knex('events')
         .select(
             'events.event_id',
