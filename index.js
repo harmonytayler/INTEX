@@ -222,7 +222,7 @@ app.get('/landing2', isAdmin, (req, res) => {
             'events.notes'
         )
          //Shows all data from the events table in order by date
-        .where('status','pending')
+        .where('status','Pending')
         .orderBy('actual_date', 'desc')
         .then(eventRequests => {
             // Render the eventRequests and pass the data
@@ -293,7 +293,7 @@ app.get('/landing2', isAdmin, (req, res) => {
             'events.notes'
         )
          //Shows all data from the events table in order by date
-        .where('status','approved')
+        .where('status','Approved')
         .orderBy('actual_date', 'desc')
         .then(scheduledEvents => {
             // Render the scheduledEvents and pass the data
@@ -435,7 +435,7 @@ app.get('/landing2', isAdmin, (req, res) => {
             'events.notes'
         )
          //Shows all data from the events table in order by date
-        .where('status','completed')
+        .where('status','Completed')
         .orderBy('actual_date', 'desc')
         .then(pastEvents => {
             // Render the pastEvents and pass the data
