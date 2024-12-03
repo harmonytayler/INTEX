@@ -333,13 +333,76 @@ app.get('/landing2', isAdmin, (req, res) => {
     });
 
     //Route to edit eventRequests
-    app.get("/editRequest", isAdmin, (req, res) => {
-        res.render("editRequest");
+    app.get('/editRequest/:event_id', isAdmin, (req, res) => {
+        let event_id = req.params.event_id;
+        // Query the events by ID first
+        knex('events')
+          .where('event_id', event_id)
+          .first()
+          .then(eventRequests => {
+            if (!eventRequests) {
+              return res.status(404).send('Event not found');
+            }
+            res.render('editRequest', { eventRequests });
+            })
+        .catch(error => {
+            console.error('Error fetching events:', error);
+            res.status(500).send('Internal Server Error');
+        });
     });
 
     // Route to submit edits
-    app.post("/editRequest", (req, res) => {
-        //Insert information for updating request
+    app.post('/editRequest/:event_id', (req, res) => {
+        const event_id = req.params.event_id;
+    
+        // Access each value directly from req.body
+        const description = req.body.description; 
+        const anticipated_participants = parseInt(req.body.anticipated_participants);
+        const under_ten = parseInt(req.body.under_ten);
+        const possible_date = req.body.possible_date;
+        const type = req.body.type; 
+        const address = req.body.address;
+        const start_time = req.body.start_time;
+        const duration = req.body.duration;
+        const contact_name = req.body.contact_name;
+        const contact_phone = req.body.contact_phone;
+        const contact_email = req.body.contact_email;
+        const machines = parseInt(req.body.machines);
+        const sewers = parseInt(req.body.sewers);
+        const story = req.body.story;
+        const members_needed = parseInt(req.body.members_needed);
+        const status = req.body.status;
+        const notes = req.body.notes;
+    
+        // Update the events in the database
+        knex('events')
+          .where('event_id', event_id)
+          .update({
+            description: description, 
+                anticipated_participants: anticipated_participants,
+                under_ten: under_ten,
+                possible_date: possible_date,
+                type: type,
+                address: address,
+                start_time: start_time, 
+                duration: duration, 
+                contact_name: contact_name,
+                contact_phone: contact_phone,
+                contact_email: contact_email,
+                machines: machines,
+                sewers: sewers,
+                story: story,
+                members_needed: members_needed,
+                status: status,
+                notes: notes
+          })
+          .then(() => {
+            res.redirect('/eventRequests'); // Redirect to the list of events after saving
+          })
+          .catch(error => {
+            console.error('Error updating event:', error);
+            res.status(500).send('Internal Server Error');
+        });
     });
 
     // Route to add eventRequests
@@ -464,13 +527,76 @@ app.get('/landing2', isAdmin, (req, res) => {
     });
     
     //Route to edit scheduled Events
-    app.get("/editScheduled", isAdmin, (req, res) => {
-        res.render("editScheduled");
+    app.get('/editScheduled/:event_id', isAdmin, (req, res) => {
+        let event_id = req.params.event_id;
+        // Query the events by ID first
+        knex('events')
+          .where('event_id', event_id)
+          .first()
+          .then(scheduledEvents => {
+            if (!scheduledEvents) {
+              return res.status(404).send('Event not found');
+            }
+            res.render('editScheduled', { scheduledEvents });
+            })
+        .catch(error => {
+            console.error('Error fetching events:', error);
+            res.status(500).send('Internal Server Error');
+        });
     });
 
     // Route to submit edits
-    app.post("/editScheduled", (req, res) => {
-        //Insert information for updating scheduled event
+    app.post('/editScheduled/:event_id', (req, res) => {
+        const event_id = req.params.event_id;
+    
+        // Access each value directly from req.body
+        const description = req.body.description; // Default to empty string if not provided
+        const anticipated_participants = parseInt(req.body.anticipated_participants);
+        const under_ten = parseInt(req.body.under_ten);
+        const possible_date = req.body.possible_date;
+        const type = req.body.type; // Default to 'U' for Unknown
+        const address = req.body.address;
+        const start_time = req.body.start_time;
+        const duration = req.body.duration;
+        const contact_name = req.body.contact_name;
+        const contact_phone = req.body.contact_phone;
+        const contact_email = req.body.contact_email;
+        const machines = parseInt(req.body.machines);
+        const sewers = parseInt(req.body.sewers);
+        const story = req.body.story;
+        const members_needed = parseInt(req.body.members_needed);
+        const status = req.body.status;
+        const notes = req.body.notes;
+    
+        // Update the events in the database
+        knex('events')
+          .where('event_id', event_id)
+          .update({
+            description: description, 
+                anticipated_participants: anticipated_participants,
+                under_ten: under_ten,
+                possible_date: possible_date,
+                type: type,
+                address: address,
+                start_time: start_time, 
+                duration: duration, 
+                contact_name: contact_name,
+                contact_phone: contact_phone,
+                contact_email: contact_email,
+                machines: machines,
+                sewers: sewers,
+                story: story,
+                members_needed: members_needed,
+                status: status,
+                notes: notes
+          })
+          .then(() => {
+            res.redirect('/scheduledEvents'); // Redirect to the list of events after saving
+          })
+          .catch(error => {
+            console.error('Error updating event:', error);
+            res.status(500).send('Internal Server Error');
+        });
     });
 
     // Route to add schedules events
@@ -594,13 +720,88 @@ app.get('/landing2', isAdmin, (req, res) => {
     });
 
     //Route to edit past events
-    app.get("/editPast", isAdmin, (req, res) => {
-        res.render("editPast");
+    app.get('/editPast/:event_id', isAdmin, (req, res) => {
+        let event_id = req.params.event_id;
+        // Query the events by ID first
+        knex('events')
+          .where('event_id', event_id)
+          .first()
+          .then(pastEvents => {
+            if (!pastEvents) {
+              return res.status(404).send('Event not found');
+            }
+            res.render('editPast', { pastEvents });
+            })
+        .catch(error => {
+            console.error('Error fetching events:', error);
+            res.status(500).send('Internal Server Error');
+        });
     });
 
     // Route to submit edits
-    app.post("/editPast", (req, res) => {
-        //Insert information for updating past event
+    app.post('/editPast/:event_id', (req, res) => {
+        const event_id = req.params.event_id;
+    
+        // Access each value directly from req.body
+        const description = req.body.description; // Default to empty string if not provided
+        const anticipated_participants = parseInt(req.body.anticipated_participants);
+        const under_ten = parseInt(req.body.under_ten);
+        const possible_date = req.body.possible_date;
+        const type = req.body.type; // Default to 'U' for Unknown
+        const address = req.body.address;
+        const start_time = req.body.start_time;
+        const duration = req.body.duration;
+        const contact_name = req.body.contact_name;
+        const contact_phone = req.body.contact_phone;
+        const contact_email = req.body.contact_email;
+        const machines = parseInt(req.body.machines);
+        const sewers = parseInt(req.body.sewers);
+        const story = req.body.story;
+        const actual_date = req.body.actual_date;
+        const actual_participants = parseInt(req.body.actual_participants);
+        const pockets = parseInt(req.body.pockets);
+        const collars = parseInt(req.body.collars);
+        const envelopes = parseInt(req.body.envelopes);
+        const vests = parseInt(req.body.vests);
+        const members_needed = parseInt(req.body.members_needed);
+        const status = req.body.status;
+        const notes = req.body.notes;
+    
+        // Update the events in the database
+        knex('events')
+          .where('event_id', event_id)
+          .update({
+            description: description, 
+                anticipated_participants: anticipated_participants,
+                under_ten: under_ten,
+                possible_date: possible_date,
+                type: type,
+                address: address,
+                start_time: start_time, 
+                duration: duration, 
+                contact_name: contact_name,
+                contact_phone: contact_phone,
+                contact_email: contact_email,
+                machines: machines,
+                sewers: sewers,
+                story: story,
+                actual_date: actual_date,
+                actual_participants : actual_participants,
+                pockets: pockets,
+                collars: collars,
+                envelopes: envelopes,
+                vests: vests,
+                members_needed: members_needed,
+                status: status,
+                notes: notes
+          })
+          .then(() => {
+            res.redirect('/pastEvents'); // Redirect to the list of past events after saving
+          })
+          .catch(error => {
+            console.error('Error updating event:', error);
+            res.status(500).send('Internal Server Error');
+        });
     });
 
     // Route to add past events
