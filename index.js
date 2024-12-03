@@ -82,7 +82,22 @@ const knex = require("knex")({
 
     // Route to submit volunteer form
     app.post("/volunteer", (req, res) => {
-        //post information for updating the volunteer table
+        knex("volunteer").insert({
+            first_name: req.body.first_name.toUpperCase(),
+            last_name: req.body.last_name.toUpperCase(),
+            phone: req.body.phone,
+            email: req.body.email.toUpperCase(),
+            referral_source: req.body.referral_source.toUpperCase(),
+            address: req.body.address.toUpperCase(),
+            sewing_level: req.body.sewing_level,
+            monthly_hours_available: req.body.monthly_hours_available,
+            city: req.body.city.toUpperCase(),
+        }).then (() => {
+            res.redirect("/volunteer");
+        }).catch(error => {
+            console.error('Error querying database:', error);
+            res.status(500).send('Internal Server Error');
+        });
     });
 
     // Route from landing page 1 to request form
