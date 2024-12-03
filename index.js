@@ -233,6 +233,16 @@ app.get('/landing2', isAdmin, (req, res) => {
         });
     });
 
+    // delete users
+        app.post("/deleteUser/:volunteer_id", (req, res) => {
+            knex("team_members").where("volunteer_id", req.params.volunteer_id).del().then(() => {
+                res.redirect("/users");
+            }).catch(err => {
+                console.log(err);
+                res.status(500).json({err});
+            });
+        });
+
     // Route to view user
     app.get("/viewUser", isAdmin, (req, res) => {
         res.render("viewUser");
