@@ -156,6 +156,24 @@ textarea {
     margin-bottom: 5px; /* Space below the input */
 }
 
+select {
+    width: 100%;
+    padding: 10px; 
+    border: 1px solid #ddd; 
+    border-radius: 5px; 
+    font-size: 1em; 
+    box-sizing: border-box; 
+    background-color: #fff; 
+    color: #333; 
+}
+
+select:focus {
+    border-color: #74b49b; /* Match the focus border color of other inputs */
+    box-shadow: 0 0 5px rgba(116, 180, 155, 0.5); /* Add a subtle shadow on focus */
+    outline: none; /* Remove default focus outline */
+}
+
+
 textarea {
     height: 150px;
     resize: vertical;
