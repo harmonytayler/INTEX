@@ -443,3 +443,26 @@ table.form td:last-child {
         margin-bottom: 20px;
     }
 }
+
+.founder-content {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 20px; 
+}
+
+.founder-image {
+    flex: 1 1 300px; 
+    max-width: 300px; 
+}
+
+.founder-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.founder-story {
+    flex: 2 1 600px; 
+    text-align: justify;
+}
