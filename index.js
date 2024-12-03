@@ -23,6 +23,25 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.static("public"));
 //app.use(express.static(path.join(__dirname, 'public')));
 
+const session = require('express-session');
+
+app.use(express.urlencoded({ extended: true }));
+app.use(session({
+    secret: 'password', // Replace with a strong, secure key
+    resave: false,
+    saveUninitialized: false,
+    cookie: { secure: false } // Use true if using HTTPS
+}));
+
+const ADMIN_PASSWORD = 'password';
+
+function isAdmin(req, res, next) {
+    if (req.session.isAdmin) {
+        return next(); // Allow access
+    }
+    res.redirect('/login'); // Redirect to login page
+}
+
 // Link to the database
 const knex = require("knex")({
     client: "pg",
@@ -76,27 +95,38 @@ const knex = require("knex")({
         //post information for updating the pending events table
     });
 
-    // Route from landing page 1 to login page
-    app.get("/login", (req, res) => {
-        res.render("login");
-    });
+// Login
 
-//Login
+app.get('/login', (req, res) => {
+    if (req.session.isAdmin) {
+        // Redirect to admin dashboard if already logged in
+        return res.redirect('/landing2');
+    }
+    res.render('login'); // Show login page
+});
 
-    // Route to submit login and redirect to landing page 2
-    app.get("/login", (req, res) => {
-    res.render("login");
+app.post('/login', (req, res) => {
+    const { password } = req.body;
+    if (password === ADMIN_PASSWORD) {
+        req.session.isAdmin = true; // Mark user as logged in
+        return res.redirect('/landing2');
+    }
+    res.render('login', { error: 'Invalid password' }); // Show error
+});
+
+app.get('/landing2', isAdmin, (req, res) => {
+    res.render('landing2');
 });
 
 // Users
 
     //Route from landing page 2 to display users
-    app.get("/users", (req, res) => {
+    app.get("/users", isAdmin, (req, res) => {
         res.render("users");
     });
 
     // Route to edit users
-    app.get("/editUser", (req, res) => {
+    app.get("/editUser", isAdmin, (req, res) => {
         res.render("editUser");
     });
 
@@ -106,7 +136,7 @@ const knex = require("knex")({
     });
 
     // Route to add user
-    app.get("/addUser", (req, res) => {
+    app.get("/addUser", isAdmin, (req, res) => {
         res.render("addUser");
     });
 
@@ -116,7 +146,7 @@ const knex = require("knex")({
     });
 
     // Route to view user
-    app.get("/viewUser", (req, res) => {
+    app.get("/viewUser", isAdmin, (req, res) => {
         res.render("viewUser");
     });
 
@@ -127,12 +157,12 @@ const knex = require("knex")({
 // Volunteers
 
     // Route from landing page 2 to display volunteers
-    app.get("/showVolunteers", (req, res) => {
+    app.get("/showVolunteers", isAdmin, (req, res) => {
         res.render("showVolunteers");
     });
 
     // Route to edit volunteers
-    app.get("/editVolunteer", (req, res) => {
+    app.get("/editVolunteer", isAdmin, (req, res) => {
         res.render("editVolunteer");
     });
 
@@ -142,17 +172,17 @@ const knex = require("knex")({
     });
 
     // Route to add volunteers
-    app.get("/addVolunteer", (req, res) => {
+    app.get("/addVolunteer", isAdmin, (req, res) => {
         res.render("addVolunteer");
     });
 
     // Route to submit added volunteers
-    app.get("/addVolunteer", (req, res) => {
+    app.post("/addVolunteer", (req, res) => {
         //Insert information for adding volunteer
     });
 
     // Route to view volunteers
-    app.get("/viewVolunteer", (req, res) => {
+    app.get("/viewVolunteer", isAdmin, (req, res) => {
         res.render("viewVolunteer");
     });
 
@@ -163,12 +193,12 @@ const knex = require("knex")({
 // Event Requests
 
     // Route from landing page 2 to eventRequests
-    app.get("/eventRequests", (req, res) => {
+    app.get("/eventRequests", isAdmin, (req, res) => {
         res.render("eventRequests");
     });
 
     //Route to edit eventRequests
-    app.get("/editRequest", (req, res) => {
+    app.get("/editRequest", isAdmin, (req, res) => {
         res.render("editRequest");
     });
 
@@ -178,7 +208,7 @@ const knex = require("knex")({
     });
 
     // Route to add eventRequests
-    app.get("/addRequest", (req, res) => {
+    app.get("/addRequest", isAdmin, (req, res) => {
         res.render("addRequest");
     });
 
@@ -188,7 +218,7 @@ const knex = require("knex")({
     });
 
     // Route to view eventRequests
-    app.get("/viewRequest", (req, res) => {
+    app.get("/viewRequest", isAdmin, (req, res) => {
         res.render("viewRequest");
     });
 
@@ -197,12 +227,12 @@ const knex = require("knex")({
 // Scheduled Events
 
     // Route from landing page 2 to scheduled Events
-    app.get("/scheduledEvents", (req, res) => {
+    app.get("/scheduledEvents", isAdmin, (req, res) => {
         res.render("scheduledEvents");
     });
     
     //Route to edit scheduled Events
-    app.get("/editScheduled", (req, res) => {
+    app.get("/editScheduled", isAdmin, (req, res) => {
         res.render("editScheduled");
     });
 
@@ -212,7 +242,7 @@ const knex = require("knex")({
     });
 
     // Route to add schedules events
-    app.get("/addScheduled", (req, res) => {
+    app.get("/addScheduled", isAdmin, (req, res) => {
         res.render("addScheduled");
     });
 
@@ -222,7 +252,7 @@ const knex = require("knex")({
     });
 
     // Route to view scheduled events
-    app.get("/viewScheduled", (req, res) => {
+    app.get("/viewScheduled", isAdmin, (req, res) => {
         res.render("viewScheduled");
     });
 
@@ -231,12 +261,12 @@ const knex = require("knex")({
 // Past Events
     
     // Route from landing page 2 to past events
-    app.get("/pastEvents", (req, res) => {
+    app.get("/pastEvents", isAdmin, (req, res) => {
         res.render("pastEvents");
     });
 
     //Route to edit past events
-    app.get("/editPast", (req, res) => {
+    app.get("/editPast", isAdmin, (req, res) => {
         res.render("editPast");
     });
 
@@ -246,7 +276,7 @@ const knex = require("knex")({
     });
 
     // Route to add past events
-    app.get("/addPast", (req, res) => {
+    app.get("/addPast", isAdmin, (req, res) => {
         res.render("addPast");
     });
 
@@ -256,7 +286,7 @@ const knex = require("knex")({
     });
 
     // Route to view past events
-    app.get("/viewPast", (req, res) => {
+    app.get("/viewPast", isAdmin, (req, res) => {
         res.render("viewPast");
     });
 
