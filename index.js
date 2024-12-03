@@ -19,6 +19,9 @@ app.set("views", path.join(__dirname, "views"));
 // Make it possible to pull info from url
 app.use(express.urlencoded({extended: true}));
 
+//Make it possible to use CSS stylesheet in "public" folder
+app.use(express.static("public"));
+
 // Link to the database
 const knex = require("knex")({
     client: "pg",
@@ -32,15 +35,15 @@ const knex = require("knex")({
 });
 
 app.get("/", (req, res) => {
-    res.render("/");
+    res.render("landing1");
 });
 
 app.get("/login", (req, res) => {
-    res.render("/login");
+    res.render("login");
 });
 
 app.get("/request", (req, res) => {
-    res.render("/request");
+    res.render("request");
 });
 
 app.post("/request", (req, res) => {
@@ -48,7 +51,7 @@ app.post("/request", (req, res) => {
 });
 
 app.get("/volunteer", (req, res) => {
-    res.render("/volunteer");
+    res.render("volunteer");
 });
 
 app.post("/volunteer", (req, res) => {
@@ -56,11 +59,11 @@ app.post("/volunteer", (req, res) => {
 });
 
 app.get("/donate", (req, res) => {
-    res.render("/donate");
+    res.render("donate");
 });
 
 app.get("/addPast", (req, res) => {
-    res.render("/addPast");
+    res.render("addPast");
 });
 
 app.post("/addPast", (req, res) => {
@@ -68,7 +71,7 @@ app.post("/addPast", (req, res) => {
 });
 
 app.get("/addRequest", (req, res) => {
-    res.render("/addRequest");
+    res.render("addRequest");
 });
 
 app.post("/addRequest", (req, res) => {
@@ -76,7 +79,7 @@ app.post("/addRequest", (req, res) => {
 });
 
 app.get("/addScheduled", (req, res) => {
-    res.render("/addScheduled");
+    res.render("addScheduled");
 });
 
 app.post("/addScheduled", (req, res) => {
@@ -88,7 +91,7 @@ app.post("/editPast", (req, res) => {
 });
 
 app.get("/editRequest", (req, res) => {
-    res.render("/editRequest");
+    res.render("editRequest");
 });
 
 app.post("/editRequest", (req, res) => {
@@ -96,7 +99,7 @@ app.post("/editRequest", (req, res) => {
 });
 
 app.get("/editScheduled", (req, res) => {
-    res.render("/editScheduled");
+    res.render("editScheduled");
 });
 
 app.post("/editScheduled", (req, res) => {
@@ -104,7 +107,7 @@ app.post("/editScheduled", (req, res) => {
 });
 
 app.get("/editUser", (req, res) => {
-    res.render("/editUser");
+    res.render("editUser");
 });
 
 app.post("/editUser", (req, res) => {
@@ -112,7 +115,7 @@ app.post("/editUser", (req, res) => {
 });
 
 app.get("/addVolunteer", (req, res) => {
-    res.render("/addPast");
+    res.render("addPast");
 });
 
 app.post("/addVolunteer", (req, res) => {
@@ -120,7 +123,7 @@ app.post("/addVolunteer", (req, res) => {
 });
 
 app.get("/editUser", (req, res) => {
-    res.render("/editUser");
+    res.render("editUser");
 });
 
 app.post("/editUser", (req, res) => {
@@ -128,7 +131,7 @@ app.post("/editUser", (req, res) => {
 });
 
 app.get("/editVolunteer", (req, res) => {
-    res.render("/editUser");
+    res.render("editUser");
 });
 
 app.post("/editVolunteer", (req, res) => {
@@ -242,3 +245,5 @@ app.post("/editVolunteer", (req, res) => {
     // Route to view past events
 
     // Route from view past events to display past events
+
+app.listen(port, () => console.log("Listening"));
