@@ -1,1 +1,95 @@
 <!-- View all the details of a single past event when you click on it -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Display Past Event</title>
+        <link rel="stylesheet" href="/css/style.css">
+    </head>
+    <body>
+        <!-- Title -->
+        <h1><b>Event Details:</b></h1>
+        <br><br>
+        <!-- It's not an array, so you can just display from the one object -->
+        <label><b>Event ID</b></label>
+        <p><%= pastEvents.event_id %></p>
+        <br>
+        <label><b>Description</b></label>
+        <p><%= pastEvents.description %></p>
+        <br>
+        <label><b>Anticipated Paricipant</b></label>
+        <p><%= pastEvents.anticipated_participants %></p>
+        <br>
+        <label><b>Under Ten</b></label>
+        <p><%= pastEvents.under_ten %></p>
+        <br>
+        <label><b>Possible Date</b></label>
+        <p><%= pastEvents.possible_date %></p>
+        <br>
+        <label><b>Type</b></label>
+        <p><%= pastEvents.type %></p>
+        <br>
+        <label><b>Address</b></label>
+        <p><%= pastEvents.address %></p>
+        <br>
+        <label><b>Start Time</b></label>
+        <p><%= pastEvents.start_time %></p>
+        <br>
+        <label><b>Duration</b></label>
+        <p><%= pastEvents.duration %></p>
+        <br>
+        <label><b>Contact Name</b></label>
+        <p><%= pastEvents.contact_name %></p>
+        <br>
+        <label><b>Contact Phone</b></label>
+        <p><%= pastEvents.contact_phone %></p>
+        <br>
+        <label><b>Contact Email</b></label>
+        <p><%= pastEvents.contact_email %></p>
+        <br>
+        <label><b>Machines</b></label>
+        <p><%= pastEvents.machines %></p>
+        <br>
+        <label><b>Sewers</b></label>
+        <p><%= pastEvents.sewers %></p>
+        <br>
+        <label><b>Story</b></label>
+        <p><%= pastEvents.story %></p>
+        <br>
+        <label><b>Actual Date</b></label>
+        <p><%= pastEvents.actual_date %></p>
+        <br>
+        <label><b>Actual Paricipation</b></label>
+        <p><%= pastEvents.actual_participants %></p>
+        <br>
+        <label><b>Pockets</b></label>
+        <p><%= pastEvents.pockets %></p>
+        <br>
+        <label><b>Collars</b></label>
+        <p><%= pastEvents.collars %></p>
+        <br>
+        <label><b>Envelopes</b></label>
+        <p><%= pastEvents.envelopes %></p>
+        <br>
+        <label><b>Vests</b></label>
+        <p><%= pastEvents.vests %></p>
+        <br>
+        <label><b>Members Needed</b></label>
+        <p><%= pastEvents.members_needed %></p>
+        <br>
+        <label><b>Status</b></label>
+        <p><%= pastEvents.status %></p>
+        <br>
+        <label><b>Notes</b></label>
+        <p><%= pastEvents.notes %></p>
+        <br>
+        
+        <!-- Button to return to home page -->
+        <form action="/pastEvents" method="GET">
+            <button type="submit">Return</button>
+        </form>
+    </body>
+</html>
