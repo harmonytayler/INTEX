@@ -1,1 +1,76 @@
-<!-- Form to add a user -->
+<!-- Form to add a past event -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add User</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1 style="text-align: center;">Add User</h1>
+    
+    <form action="/addUser" method="POST">
+
+        <label for="first_name">First Name</label>
+        <input type="text" id="first_name" name="first_name" required>
+        <br><br>
+
+        <label for="last_name">Last Name</label>
+        <input type="text" id="last_name" name="last_name" required>
+        <br><br>
+
+        <label for="phone">Phone Number</label>
+        <input type="text" id="phone" name="phone" required>
+        <br><br>
+
+        <label for="email">Email</label>
+        <input type="text" id="email" name="email" required>
+        <br><br>
+
+        <label for="referral_source">Referral Source</label>
+        <input type="text" id="referral_source" name="referral_source" required>
+        <br><br>
+
+        <label>Sewing Level</label>
+        <label>
+            <input type="radio" name="sewer" value="Beginner" checked> Beginner
+        </label>
+        <label>
+            <input type="radio" name="sewer" value="Intermediate"> Intermediate
+        </label>
+        <label>
+            <input type="radio" name="sewer" value="Experienced"> Experienced
+        </label>
+        <br><br>
+
+        <label for="monthly_hours">Monthly Hours</label>
+        <input type="float" id="monthly_hours" name="monthly_hours">
+        <br><br>
+
+        <label for="city">City</label>
+        <input type="text" id="city" name="city" required>
+        <br><br>
+
+        <label for="travel">Travel</label>
+        <input type="text" id="travel" name="travel" required>
+        <br><br>
+
+        <label for="take_charge">Leader? (Y/N):</label>
+        <input type="checkbox" id="take_charge" name="take_charge">
+        <br><br>
+
+        <label>Status</label>
+        <label>
+            <input type="radio" name="status" value="Active" checked> Active
+        </label>
+        <label>
+            <input type="radio" name="status" value="Pending"> Pending
+        </label>
+        <label>
+            <input type="radio" name="status" value="Denied"> Denied
+        </label>
+        <br><br>
+        <button type="submit">Add</button>
+    </form>
+</body>
+</html>
