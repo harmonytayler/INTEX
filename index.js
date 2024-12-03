@@ -193,8 +193,116 @@ app.get('/landing2', isAdmin, (req, res) => {
 // Event Requests
 
     // Route from landing page 2 to eventRequests
-    app.get("/eventRequests", isAdmin, (req, res) => {
-        res.render("eventRequests");
+    app.get("/eventRequests", (req, res) => {
+        knex('events')
+        .select(
+            'events.event_id',
+            'events.description',
+            'events.anticipated_participants',
+            'events.under_ten',
+            'events.possible_date',
+            'events.type',
+            'events.address',
+            'events.start_time',
+            'events.duration',
+            'events.contact_name',
+            'events.contact_phone',
+            'events.contact_email',
+            'events.machines',
+            'events.sewers',
+            'events.story',
+            'events.actual_date',
+            'events.actual_participants',
+            'events.pockets',
+            'events.collars',
+            'events.envelopes',
+            'events.vests',
+            'events.members_needed',
+            'events.status',
+            'events.notes'
+        )
+         //Shows all data from the events table in order by date
+        .where('status','pending')
+        .orderBy('actual_date', 'desc')
+        .then(eventRequests => {
+            // Render the eventRequests and pass the data
+            res.render('eventRequests', { eventRequests });
+        })
+        .catch(error => {
+            console.error('Error querying database:', error);
+            res.status(500).send('Internal Server Error');
+        });
+    });
+
+    //Route to edit eventRequests
+    app.get("/editRequest", (req, res) => {
+        res.render("editRequest");
+    });
+
+    // Route to submit edits
+    app.post("/editRequest", (req, res) => {
+        //Insert information for updating request
+    });
+
+    // Route to add eventRequests
+    app.get("/addRequest", (req, res) => {
+        res.render("addRequest");
+    });
+
+    // Route to submit added eventRequests
+    app.post("/addRequest", (req, res) => {
+        //Insert information for adding request
+    });
+
+    // Route to view eventRequests
+    app.get("/viewRequest", (req, res) => {
+        res.render("viewRequest");
+    });
+
+    // Route from view eventRequests to display eventRequests
+
+// Scheduled Events
+
+    // Route from landing page 2 to scheduled Events
+    app.get("/scheduledEvents", (req, res) => {
+        knex('events')
+        .select(
+            'events.event_id',
+            'events.description',
+            'events.anticipated_participants',
+            'events.under_ten',
+            'events.possible_date',
+            'events.type',
+            'events.address',
+            'events.start_time',
+            'events.duration',
+            'events.contact_name',
+            'events.contact_phone',
+            'events.contact_email',
+            'events.machines',
+            'events.sewers',
+            'events.story',
+            'events.actual_date',
+            'events.actual_participants',
+            'events.pockets',
+            'events.collars',
+            'events.envelopes',
+            'events.vests',
+            'events.members_needed',
+            'events.status',
+            'events.notes'
+        )
+         //Shows all data from the events table in order by date
+        .where('status','approved')
+        .orderBy('actual_date', 'desc')
+        .then(scheduledEvents => {
+            // Render the scheduledEvents and pass the data
+            res.render('scheduledEvents', { scheduledEvents });
+        })
+        .catch(error => {
+            console.error('Error querying database:', error);
+            res.status(500).send('Internal Server Error');
+        });
     });
 
     //Route to edit eventRequests
@@ -227,8 +335,45 @@ app.get('/landing2', isAdmin, (req, res) => {
 // Scheduled Events
 
     // Route from landing page 2 to scheduled Events
-    app.get("/scheduledEvents", isAdmin, (req, res) => {
-        res.render("scheduledEvents");
+    app.get("/scheduledEvents", (req, res) => {
+        knex('events')
+        .select(
+            'events.event_id',
+            'events.description',
+            'events.anticipated_participants',
+            'events.under_ten',
+            'events.possible_date',
+            'events.type',
+            'events.address',
+            'events.start_time',
+            'events.duration',
+            'events.contact_name',
+            'events.contact_phone',
+            'events.contact_email',
+            'events.machines',
+            'events.sewers',
+            'events.story',
+            'events.actual_date',
+            'events.actual_participants',
+            'events.pockets',
+            'events.collars',
+            'events.envelopes',
+            'events.vests',
+            'events.members_needed',
+            'events.status',
+            'events.notes'
+        )
+         //Shows all data from the events table in order by date
+        .where('status','approved')
+        .orderBy('actual_date', 'desc')
+        .then(scheduledEvents => {
+            // Render the scheduledEvents and pass the data
+            res.render('scheduledEvents', { scheduledEvents });
+        })
+        .catch(error => {
+            console.error('Error querying database:', error);
+            res.status(500).send('Internal Server Error');
+        });
     });
     
     //Route to edit scheduled Events
@@ -261,8 +406,45 @@ app.get('/landing2', isAdmin, (req, res) => {
 // Past Events
     
     // Route from landing page 2 to past events
-    app.get("/pastEvents", isAdmin, (req, res) => {
-        res.render("pastEvents");
+    app.get("/pastEvents", (req, res) => {
+        knex('events')
+        .select(
+            'events.event_id',
+            'events.description',
+            'events.anticipated_participants',
+            'events.under_ten',
+            'events.possible_date',
+            'events.type',
+            'events.address',
+            'events.start_time',
+            'events.duration',
+            'events.contact_name',
+            'events.contact_phone',
+            'events.contact_email',
+            'events.machines',
+            'events.sewers',
+            'events.story',
+            'events.actual_date',
+            'events.actual_participants',
+            'events.pockets',
+            'events.collars',
+            'events.envelopes',
+            'events.vests',
+            'events.members_needed',
+            'events.status',
+            'events.notes'
+        )
+         //Shows all data from the events table in order by date
+        .where('status','completed')
+        .orderBy('actual_date', 'desc')
+        .then(pastEvents => {
+            // Render the pastEvents and pass the data
+            res.render('pastEvents', { pastEvents });
+        })
+        .catch(error => {
+            console.error('Error querying database:', error);
+            res.status(500).send('Internal Server Error');
+        });
     });
 
     //Route to edit past events
