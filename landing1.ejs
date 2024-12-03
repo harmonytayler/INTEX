@@ -1,0 +1,41 @@
+<!-- First landing page, reach without logging in. Buttons to reach donate, request events, volunteer, and log in -->
+<!-- WE NEED TO PUT MORE ACTUAL CONTENT ON THIS PAGE, I MOSTLY JUST THREW SOME STUFF IN SO I COULD FIGURE OUT THE STYLING -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Home Page</title>
+</head>
+<body>
+    <nav>
+        <div class="org-name">Turtle Shelter Project</div>
+        <div class="nav-links">
+            <a href="/"><button class="link">Home</button></a>
+            <a href="/donate"><button class="link">Donate</button></a>
+            <a href="/request"><button class="link">Request an Event</button></a>
+            <a href="/volunteer"><button class="link">Volunteer</button></a>
+        </div>
+    </nav>
+    <header>
+        <p>Saving lives of people experiencing homelessness</p>
+        <h1>STARTS WITH YOU</h1>
+        <a href="/about"><button class="link">Learn More</button></a>
+    </header>
+    <section>
+        <p>should put some basic info here</p>
+    </section>
+    <div class="gallery">
+        <% for (let i = 1; i <= 6; i++) { %> 
+            <div class="image-item">
+                <img src="/images/galleryImages/image<%= i %>.jpg" alt="Gallery Image <%= i %>">
+            </div>
+        <% } %>
+    </div>
+    <footer>
+        <p>Created by Anna Young, Harmony Tayler, Josh Locke, and Madison Hein</p>
+    </footer>
+</body>
+</html>
