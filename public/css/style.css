@@ -452,3 +452,82 @@ table.form td:last-child {
     flex: 2 1 600px; 
     text-align: justify;
 }
+
+.collapsible-section {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.collapsible-header {
+    width: 100%;
+    background-color: #f1f1f1;
+    color: #333;
+    text-align: left;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease;
+}
+
+.collapsible-header:hover {
+    background-color: #ddd;
+}
+
+.collapsible-content {
+    display: none; 
+    padding: 15px;
+    background-color: #fff;
+}
+
+
+.collapsible-content.show {
+    display: block;
+}
+
+.collapsible-header.active {
+    background-color: #aaa; 
+}
+
+
+.collapsible-content {
+    transition: max-height 0.2s ease-out;
+    max-height: 0;
+    overflow: hidden;
+}
+
+.collapsible-content.show {
+    max-height: 1000px; 
+}
+
+
+
+.wrapped-image {
+    float: left; 
+    margin-right: 15px; 
+    width: 150px; 
+    height: auto; 
+}
+
+
+.collapsible-content::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.founder-image {
+    float: left;        
+    margin-right: 20px;  
+    margin-bottom: 15px;   
+    width: 700px;        
+    height: auto;          
+}
+
+.founder-story {
+    overflow: hidden;   
+}
