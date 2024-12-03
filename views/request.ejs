@@ -19,7 +19,7 @@
             <a href="/about"><button class="link">About</button></a>
         </div>
     </nav>
-    <section>
+
         <form action="/request" method="POST">
             <table class="form">
                 <caption>Request an Event</caption>
@@ -29,7 +29,7 @@
                 </tr>
                 <tr>
                     <td><label for="contact_email">Email</label></td>
-                    <td><input type="email" id="contact_email" name="contact_email" placeholder="Enter your email address" required></td>
+                    <td><input type="text" id="contact_email" name="contact_email" placeholder="Enter your email address" required></td>
                 </tr>
                 <tr>
                     <td><label for="contact_phone">Phone</label></td>
@@ -73,7 +73,7 @@
                 </tr>
                 <tr>
                     <td><label for="sewers">Sewing Participants</label></td>
-                    <td><input type="number" id="sewers" name="machines" placeholder="How many people in your group can sew?"></td>
+                    <td><input type="number" id="sewers" name="sewers" placeholder="How many people in your group can sew?"></td>
                 </tr>
                 <tr>
                     <td><label for="description">Event Description</label></td>
@@ -93,6 +93,15 @@
                 </tr>
             </table>
         </form>        
-    </section>
+        <footer>
+            <div class="footer-left">
+                <a href="/login">Admin Portal</a>
+                <a href="/about">About</a>
+                <a href="/volunteer">Volunteer</a>
+            </div>
+            <div class="footer-right">
+                <p>© 2024 Turtle Shelter Project. All rights reserved.</p>
+            </div>
+        </footer>
 </body>
 </html>
