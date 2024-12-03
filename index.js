@@ -178,8 +178,8 @@ app.get('/landing2', isAdmin, (req, res) => {
     });
 
     // Route to submit edits
-    app.post("/editUser", (req, res) => {
-        knex("team_members").insert({
+    app.post("/editUser/:id", (req, res) => {
+        knex("team_members")where("id", parseInt(req.params.id).update({
             first_name: req.body.first_name.toUpperCase(),
             last_name: req.body.last_name.toUpperCase(),
             phone: req.body.phone,
@@ -187,10 +187,13 @@ app.get('/landing2', isAdmin, (req, res) => {
             referral_source: req.body.referral_source.toUpperCase(),
             address: req.body.address.toUpperCase(),
             sewing_level: req.body.sewing_level,
-            monthly_hours_available: req.body.monthly_hours_available,
+            monthly_hours: req.body.monthly_hours_available,
             city: req.body.city.toUpperCase(),
+            travel: req.body.travel,
+            take_charge: req.body.take_charge ? "T" : "N",
+            status: req.body.status,
         }).then (() => {
-            res.redirect("/volunteer");
+            res.redirect("/editUser");
         }).catch(error => {
             console.error('Error querying database:', error);
             res.status(500).send('Internal Server Error');
