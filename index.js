@@ -255,9 +255,22 @@ app.get('/landing2', isAdmin, (req, res) => {
     });
 
     // Route to view eventRequests
-    app.get("/viewRequest", isAdmin, (req, res) => {
-        res.render("viewRequest");
-    });
+    app.get('/viewRequest/:event_id', isAdmin, (req, res) => {
+        let event_id = req.params.event_id;
+        knex('events')
+          .where('event_id', event_id)
+          .first()
+          .then(eventRequests => {
+            if (!eventRequests) {
+              return res.status(404).send('Not found');
+            }
+            res.render('viewRequest', { eventRequests });
+              })
+            .catch(error => {
+            console.error('Error fetching data:', error);
+            res.status(500).send('Internal Server Error');
+            });
+      });
 
     // Route from view eventRequests to display eventRequests
 
@@ -327,9 +340,22 @@ app.get('/landing2', isAdmin, (req, res) => {
     });
 
     // Route to view scheduled events
-    app.get("/viewScheduled", isAdmin, (req, res) => {
-        res.render("viewScheduled");
-    });
+     app.get('/viewScheduled/:event_id', isAdmin, (req, res) => {
+        let event_id = req.params.event_id;
+        knex('events')
+          .where('event_id', event_id)
+          .first()
+          .then(scheduledEvents => {
+            if (!scheduledEvents) {
+              return res.status(404).send('Not found');
+            }
+            res.render('viewScheduled', { scheduledEvents });
+              })
+            .catch(error => {
+            console.error('Error fetching data:', error);
+            res.status(500).send('Internal Server Error');
+            });
+      });
 
     // Route from view scheduled events to display scheduled events
 
@@ -397,7 +423,7 @@ app.get('/landing2', isAdmin, (req, res) => {
         //Insert information for adding past event
     });
 
-    app.get('/viewPast/:event_id', (req, res) => {
+    app.get('/viewPast/:event_id', isAdmin, (req, res) => {
         let event_id = req.params.event_id;
         knex('events')
           .where('event_id', event_id)
