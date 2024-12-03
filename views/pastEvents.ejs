@@ -1,1 +1,62 @@
 <!-- Display past events (filter events by completed) -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Past Events</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1 style="text-align: center;">Past Events</h1>
+    <table>
+        <thead>
+            <tr>
+                <!-- Headers for table to display event info -->
+                <th>Event ID</th>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Contact Name</th>
+                <th>Address</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Loop through everything in the pastEvents array -->
+            <% if (pastEvents.length > 0) { %>
+                <% pastEvents.forEach(row => { %>
+                    <tr>
+                        <!-- Add data to the table -->
+                        <input type="hidden" value="row.id">
+                        <td><%= row.event_id %></td>
+                        <td><%= row.actual_date %></td>
+                        <td><%= row.description %></td>
+                        <td><%= row.contact_name %></td>
+                        <td><%= row.address %></td>
+                        <td>
+                        <!-- Each record has an edit and view button -->
+                        <form action="/editPast/<%= row.id %>" method="GET" style="display:inline;">
+                            <button type="submit">Edit</button>
+                        </form>
+                        <form action="/viewPast/<%= row.id %>" method="POST" style="display:inline;">
+                            <button type="submit">View</button>
+                        </form>
+                        </td>
+                    </tr>
+                <% }) %>
+            <% } else { %>
+                <tr>
+                <td colspan="7">No data available</td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+
+    <!-- At the bottom of the page display a button labled Add (which allows you to add a past event) 
+    and a button labeled Home which takes you back to the main landing page -->
+    <form action="/addPast" method="GET" style="display: flex; justify-content: center; margin: 20px 0;">
+        <button type="submit">Add Past Event</button>
+    </form>
+    <form action="/landing2" method="GET" style="display: flex; justify-content: center; margin: 20px 0;">
+        <button type="submit">Admin Portal</button>
+    </form>
+</body>
+</html>
