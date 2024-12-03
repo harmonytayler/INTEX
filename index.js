@@ -212,8 +212,25 @@ app.get('/landing2', isAdmin, (req, res) => {
     });
 
     // Route to submit added user
-    app.post("/addUser", (req, res) => {
-        //Insert information for adding user
+        app.post("/addUser", (req, res) => {
+        knex("team_members").insert({
+            first_name: req.body.first_name.toUpperCase(),
+            last_name: req.body.last_name.toUpperCase(),
+            phone: req.body.phone,
+            email: req.body.email.toUpperCase(),
+            referral_source: req.body.referral_source.toUpperCase(),
+            sewing_level: req.body.sewer,
+            monthly_hours: req.body.monthly_hours,
+            city: req.body.city.toUpperCase(),
+            travel: req.body.travel,
+            take_charge: req.body.take_charge ? "T" : "N",
+            status: req.body.status,
+        }).then(() => {
+            res.redirect("/users");
+        }).catch(error => {
+            console.error('Error querying database:', error);
+            res.status(500).send('Internal Server Error');
+        });
     });
 
     // Route to view user
