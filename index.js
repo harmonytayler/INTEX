@@ -92,7 +92,36 @@ const knex = require("knex")({
 
     // Route to submit request form
     app.post("/request", (req, res) => {
-        //post information for updating the pending events table
+        knex("events").insert({
+            description: req.body.description.toUpperCase(),
+            anticipated_participants: req.body.anticipated_participants,
+            under_ten: req.body.under_ten,
+            possible_date: req.body.possible_date,
+            type: req.body.type,
+            address: req.body.address.toUpperCase(),
+            start_time: req.body.start_time,
+            duration: req.body.duration,
+            contact_name: req.body.name.toUpperCase(),
+            contact_phone: req.body.contact_phone,
+            contact_email: req.body.toUpperCase(),
+            machines: req.body.machines,
+            sewers: req.body.sewers,
+            story: req.body.story ? "Y" : "N",
+            // actual_date: req.body.
+            // actual_participants: req.body.
+            // pockets: req.body.
+            // collars: req.body.
+            // envelopes: req.body.
+            // vests: req.body.
+            // members_needed: req.body.
+            status: "Pending",
+            notes: req.body.notes.toUpperCase(),
+        }).then (() => {
+            res.redirect("/request");
+        }).catch(error => {
+            console.error('Error querying database:', error);
+            res.status(500).send('Internal Server Error');
+        });
     });
 
 // Login
