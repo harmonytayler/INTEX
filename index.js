@@ -173,13 +173,13 @@ app.get('/landing2', isAdmin, (req, res) => {
     });
 
     // Route to edit users
-    app.get("/editUser", isAdmin, (req, res) => {
+    app.get("/editUser/:id", isAdmin, (req, res) => {
         res.render("editUser");
     });
 
     // Route to submit edits
-    app.post("/editUser/:id", (req, res) => {
-        knex("team_members")where("id", parseInt(req.params.id).update({
+    app.post("/editUser", (req, res) => {
+        knex("team_members").where("id", parseInt(req.params.id).update({
             first_name: req.body.first_name.toUpperCase(),
             last_name: req.body.last_name.toUpperCase(),
             phone: req.body.phone,
