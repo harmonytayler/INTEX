@@ -1,1 +1,62 @@
 <!-- Page displaying event requests -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Event Requests</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1 style="text-align: center;">Event Requests</h1>
+    <table>
+        <thead>
+            <tr>
+                <!-- Headers for table to display event info -->
+                <th>Event ID</th>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Contact Name</th>
+                <th>Address</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Loop through everything in the eventRequests array -->
+            <% if (eventRequests.length > 0) { %>
+                <% eventRequests.forEach(row => { %>
+                    <tr>
+                        <!-- Add data to the table -->
+                        <input type="hidden" value="row.id">
+                        <td><%= row.event_id %></td>
+                        <td><%= row.actual_date %></td>
+                        <td><%= row.description %></td>
+                        <td><%= row.contact_name %></td>
+                        <td><%= row.address %></td>
+                        <td>
+                        <!-- Each record has an edit and view button -->
+                        <form action="/editRequest/<%= row.id %>" method="GET" style="display:inline;">
+                            <button type="submit">Edit</button>
+                        </form>
+                        <form action="/viewRequest/<%= row.id %>" method="POST" style="display:inline;">
+                            <button type="submit">View</button>
+                        </form>
+                        </td>
+                    </tr>
+                <% }) %>
+            <% } else { %>
+                <tr>
+                <td colspan="7">No data available</td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+
+    <!-- At the bottom of the page display a button labled Add (which allows you to add a requested event) 
+    and a button labeled Home which takes you back to the main landing page -->
+    <form action="/addRequest" method="GET" style="display: flex; justify-content: center; margin: 20px 0;">
+        <button type="submit">Add Requested Event</button>
+    </form>
+    <form action="/landing2" method="GET" style="display: flex; justify-content: center; margin: 20px 0;">
+        <button type="submit">Admin Portal</button>
+    </form>
+</body>
+</html>
