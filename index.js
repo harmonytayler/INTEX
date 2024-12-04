@@ -71,10 +71,6 @@ const knex = require("knex")({
         res.render("donate");
     });
 
-    // Route from donate to landing page 1
-
-    // Route to submit donations
-
     // Route from landing page 1 to volunteer form
     app.get("/volunteer", (req, res) => {
         res.render("volunteer");
@@ -268,13 +264,66 @@ app.get('/landing2', isAdmin, (req, res) => {
     });
 
     // Route to edit volunteers
-    app.get("/editVolunteer", isAdmin, (req, res) => {
-        res.render("editVolunteer");
+    app.get('/editVolunteer/:volunteer_id', isAdmin, (req, res) => {
+        let volunteer_id = req.params.volunteer_id;
+        // Query the events by ID first
+        knex('team_members')
+          .where('volunteer_id', volunteer_id)
+          .first()
+          .then(showVolunteer => {
+            if (!showVolunteer) {
+              return res.status(404).send('Volunteer not found');
+            }
+            res.render('editVolunteer', { showVolunteer });
+            })
+        .catch(error => {
+            console.error('Error fetching events:', error);
+            res.status(500).send('Internal Server Error');
+        });
     });
 
     // Route to submit edits
-    app.post("/editVolunteer", (req, res) => {
-        //Insert information for updating volunteer
+    app.post('/editVolunteer/:volunteer_id', (req, res) => {
+        const volunteer_id = req.params.volunteer_id;
+    
+        // Access each value directly from req.body
+        const first_name = req.body.first_name; 
+        const last_name = req.body.last_name;
+        const phone = req.body.phone;
+        const email = req.body.email;
+        const referral_source = req.body.referral_source; 
+        const address = req.body.address;
+        const sewing_level = req.body.sewing_level;
+        const monthly_hours = req.body.monthly_hours;
+        const city = req.body.city;
+        const travel = req.body.travel;
+        const take_charge = req.body.take_charge;
+        const status = req.body.status;
+    
+        // Update the team members in the database
+        knex('team_members')
+          .where('volunteer_id', volunteer_id)
+          .update({
+            first_name:first_name,
+            last_name:last_name,
+            phone:phone,
+            email:email,
+            referral_source:referral_source,
+            address: address,
+            sewing_level: sewing_level,
+            monthly_hours: monthly_hours,
+            city: city,
+            travel: travel,
+            take_charge: take_charge ? "T" : "N",
+            status: status,
+          })
+          .then(() => {
+            res.redirect('/showVolunteers'); // Redirect to the list of events after saving
+          })
+          .catch(error => {
+            console.error('Error updating event:', error);
+            res.status(500).send('Internal Server Error');
+        });
     });
 
     // Route to add volunteers
@@ -284,7 +333,24 @@ app.get('/landing2', isAdmin, (req, res) => {
 
     // Route to submit added volunteers
     app.post("/addVolunteer", (req, res) => {
-        //Insert information for adding volunteer
+        knex("team_members").insert({
+            first_name: req.body.first_name.toUpperCase(),
+            last_name: req.body.last_name.toUpperCase(),
+            phone: req.body.phone,
+            email: req.body.email.toUpperCase(),
+            referral_source: req.body.referral_source.toUpperCase(),
+            sewing_level: req.body.sewer,
+            monthly_hours: req.body.monthly_hours,
+            city: req.body.city.toUpperCase(),
+            travel: req.body.travel,
+            take_charge: req.body.take_charge ? "T" : "N",
+            status: req.body.status,
+        }).then(() => {
+            res.redirect("/showVolunteers");
+        }).catch(error => {
+            console.error('Error querying database:', error);
+            res.status(500).send('Internal Server Error');
+        });
     });
 
     // Route to view volunteers
