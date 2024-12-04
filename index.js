@@ -647,7 +647,7 @@ app.get('/landing2', isAdmin, (req, res) => {
         )
          //Shows all data from the events table in order by date
         .where('status','Approved')
-        .orderBy('event_id')
+        .orderBy('possible_date', 'desc')
         .then(scheduledEvents => {
             // Render the scheduledEvents and pass the data
             res.render('scheduledEvents', { scheduledEvents });
@@ -854,7 +854,7 @@ app.get('/landing2', isAdmin, (req, res) => {
         )
          //Shows all data from the events table in order by date
         .where('status','Completed')
-        .orderBy('event_id')
+        .orderBy('possible_date', 'desc')
         .then(pastEvents => {
             // Render the pastEvents and pass the data
             res.render('pastEvents', { pastEvents });
