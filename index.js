@@ -120,14 +120,7 @@ const knex = require("knex")({
             machines: parseInt(req.body.machines),
             sewers: parseInt(req.body.sewers),
             story: req.body.story ? "Yes" : "No",
-            status: "Pending",
-            // actual_date: 
-            // actual_participants: 
-            // pockets: 
-            // collars: 
-            // envelopes: 
-            // vests:
-            // members_needed:
+            status: "Pending"
         }).then (() => {
             res.redirect("/request");
         }).catch(error => {
@@ -163,7 +156,10 @@ app.get('/landing2', isAdmin, (req, res) => {
 
     //Route from landing page 2 to display users
     app.get("/users", isAdmin, (req, res) => {
-        knex.select().from("team_members").where('status', 'Active').then(members => {
+        knex.select().from("team_members")
+        .orderBy('volunteer_id')
+        .where('status', 'Active')
+        .then(members => {
             res.render("users", {members});
         });
     });
@@ -181,16 +177,16 @@ app.get('/landing2', isAdmin, (req, res) => {
     // Route to submit edits
         app.post("/editUser", (req, res) => {
         knex("team_members").where("volunteer_id", parseFloat(req.body.volunteer_id)).update({
-            first_name: req.body.first_name.toUpperCase(),
-            last_name: req.body.last_name.toUpperCase(),
+            first_name: req.body.first_name,
+            last_name: req.body.last_name,
             phone: req.body.phone,
-            email: req.body.email.toUpperCase(),
-            referral_source: req.body.referral_source.toUpperCase(),
+            email: req.body.email,
+            referral_source: req.body.referral_source,
             sewing_level: req.body.sewer,
             monthly_hours: req.body.monthly_hours_available,
-            city: req.body.city.toUpperCase(),
+            city: req.body.city,
             travel: req.body.travel,
-            take_charge: req.body.take_charge ? "T" : "N",
+            take_charge: req.body.take_charge === "Y",
             status: req.body.status,
         }).then (() => {
             res.redirect("/users");
@@ -208,16 +204,16 @@ app.get('/landing2', isAdmin, (req, res) => {
     // Route to submit added user
         app.post("/addUser", (req, res) => {
         knex("team_members").insert({
-            first_name: req.body.first_name.toUpperCase(),
-            last_name: req.body.last_name.toUpperCase(),
+            first_name: req.body.first_name,
+            last_name: req.body.last_name,
             phone: req.body.phone,
-            email: req.body.email.toUpperCase(),
-            referral_source: req.body.referral_source.toUpperCase(),
+            email: req.body.email,
+            referral_source: req.body.referral_source,
             sewing_level: req.body.sewer,
             monthly_hours: req.body.monthly_hours,
-            city: req.body.city.toUpperCase(),
+            city: req.body.city,
             travel: req.body.travel,
-            take_charge: req.body.take_charge ? "T" : "N",
+            take_charge: req.body.take_charge === "Y",
             status: req.body.status,
         }).then(() => {
             res.redirect("/users");
@@ -253,6 +249,7 @@ app.get('/landing2', isAdmin, (req, res) => {
     app.get("/showVolunteers", isAdmin, (req, res) => {
         knex.select()
         .from("team_members")
+        .orderBy('volunteer_id')
         .where('status', 'Pending')
         .then(members => {
             res.render("showVolunteers", {members});
@@ -264,11 +261,11 @@ app.get('/landing2', isAdmin, (req, res) => {
         let volunteer_id = req.params.volunteer_id;
         // Query the events by ID first
         knex('team_members')
-          .where('volunteer_id', volunteer_id)
-          .first()
-          .then(showVolunteer => {
+            .where('volunteer_id', volunteer_id)
+            .first()
+            .then(showVolunteer => {
             if (!showVolunteer) {
-              return res.status(404).send('Volunteer not found');
+                return res.status(404).send('Volunteer not found');
             }
             res.render('editVolunteer', { showVolunteer });
             })
@@ -298,8 +295,8 @@ app.get('/landing2', isAdmin, (req, res) => {
     
         // Update the team members in the database
         knex('team_members')
-          .where('volunteer_id', volunteer_id)
-          .update({
+            .where('volunteer_id', volunteer_id)
+            .update({
             first_name:first_name,
             last_name:last_name,
             phone:phone,
@@ -310,13 +307,13 @@ app.get('/landing2', isAdmin, (req, res) => {
             monthly_hours: monthly_hours,
             city: city,
             travel: travel,
-            take_charge: take_charge ? "T" : "N",
+            take_charge: take_charge ? "Y" : "N",
             status: status,
-          })
-          .then(() => {
+        })
+        .then(() => {
             res.redirect('/showVolunteers'); // Redirect to the list of events after saving
-          })
-          .catch(error => {
+        })
+        .catch(error => {
             console.error('Error updating event:', error);
             res.status(500).send('Internal Server Error');
         });
@@ -330,16 +327,16 @@ app.get('/landing2', isAdmin, (req, res) => {
     // Route to submit added volunteers
     app.post("/addVolunteer", (req, res) => {
         knex("team_members").insert({
-            first_name: req.body.first_name.toUpperCase(),
-            last_name: req.body.last_name.toUpperCase(),
+            first_name: req.body.first_name,
+            last_name: req.body.last_name,
             phone: req.body.phone,
-            email: req.body.email.toUpperCase(),
-            referral_source: req.body.referral_source.toUpperCase(),
+            email: req.body.email,
+            referral_source: req.body.referral_source,
             sewing_level: req.body.sewer,
             monthly_hours: req.body.monthly_hours,
-            city: req.body.city.toUpperCase(),
+            city: req.body.city,
             travel: req.body.travel,
-            take_charge: req.body.take_charge ? "T" : "N",
+            take_charge: req.body.take_charge ? "Y" : "N",
             status: req.body.status,
         }).then(() => {
             res.redirect("/showVolunteers");
@@ -353,19 +350,19 @@ app.get('/landing2', isAdmin, (req, res) => {
     app.get("/viewVolunteer/:volunteer_id", isAdmin, (req, res) => {
         let volunteer_id = req.params.volunteer_id;
         knex('team_members')
-          .where('volunteer_id', volunteer_id)
-          .first()
-          .then(showVolunteers => {
+        .where('volunteer_id', volunteer_id)
+        .first()
+        .then(showVolunteers => {
             if (!showVolunteers) {
-              return res.status(404).send('Not found');
+            return res.status(404).send('Not found');
             }
             res.render('viewVolunteer', { showVolunteers });
-              })
+            })
             .catch(error => {
             console.error('Error fetching data:', error);
             res.status(500).send('Internal Server Error');
             });
-      });
+    });
     // Route to delete volunteers
     app.post("/deleteVolunteer/:volunteer_id", (req, res) => {
         knex("team_members").where("volunteer_id", req.params.volunteer_id).del().then(() => {
@@ -409,7 +406,7 @@ app.get('/landing2', isAdmin, (req, res) => {
         )
          //Shows all data from the events table in order by date
         .where('status','Pending')
-        .orderBy('actual_date', 'desc')
+        .orderBy('possible_date', 'desc')
         .then(eventRequests => {
             // Render the eventRequests and pass the data
             res.render('eventRequests', { eventRequests });
@@ -425,11 +422,11 @@ app.get('/landing2', isAdmin, (req, res) => {
         let event_id = req.params.event_id;
         // Query the events by ID first
         knex('events')
-          .where('event_id', event_id)
-          .first()
-          .then(eventRequests => {
+            .where('event_id', event_id)
+            .first()
+            .then(eventRequests => {
             if (!eventRequests) {
-              return res.status(404).send('Event not found');
+                return res.status(404).send('Event not found');
             }
             res.render('editRequest', { eventRequests });
             })
@@ -458,36 +455,36 @@ app.get('/landing2', isAdmin, (req, res) => {
         const machines = parseInt(req.body.machines);
         const sewers = parseInt(req.body.sewers);
         const story = req.body.story;
-        const members_needed = parseInt(req.body.members_needed);
+        const members_needed = parseInt(req.body.members_needed) || null;
         const status = req.body.status;
         const notes = req.body.notes;
     
         // Update the events in the database
         knex('events')
-          .where('event_id', event_id)
-          .update({
-            description: description, 
-                anticipated_participants: anticipated_participants,
-                under_ten: under_ten,
-                possible_date: possible_date,
-                type: type,
-                address: address,
-                start_time: start_time, 
-                duration: duration, 
-                contact_name: contact_name,
-                contact_phone: contact_phone,
-                contact_email: contact_email,
-                machines: machines,
-                sewers: sewers,
-                story: story,
-                members_needed: members_needed,
-                status: status,
-                notes: notes
-          })
-          .then(() => {
+            .where('event_id', event_id)
+            .update({
+                description: description, 
+                    anticipated_participants: anticipated_participants,
+                    under_ten: under_ten,
+                    possible_date: possible_date,
+                    type: type,
+                    address: address,
+                    start_time: start_time, 
+                    duration: duration, 
+                    contact_name: contact_name,
+                    contact_phone: contact_phone,
+                    contact_email: contact_email,
+                    machines: machines,
+                    sewers: sewers,
+                    story: story,
+                    members_needed: members_needed,
+                    status: status,
+                    notes: notes
+        })
+        .then(() => {
             res.redirect('/eventRequests'); // Redirect to the list of events after saving
-          })
-          .catch(error => {
+        })
+        .catch(error => {
             console.error('Error updating event:', error);
             res.status(500).send('Internal Server Error');
         });
@@ -515,7 +512,7 @@ app.get('/landing2', isAdmin, (req, res) => {
         const machines = parseInt(req.body.machines, 10) || 0;
         const sewers = parseInt(req.body.sewers, 10) || 0;
         const story = req.body.story || '';
-        const members_needed = parseInt(req.body.members_needed, 10) || 0;
+        const members_needed = parseInt(req.body.members_needed, 10) || null;
         const status = "Pending"
         const notes = req.body.notes || '';
         
@@ -553,21 +550,19 @@ app.get('/landing2', isAdmin, (req, res) => {
     app.get('/viewRequest/:event_id', isAdmin, (req, res) => {
         let event_id = req.params.event_id;
         knex('events')
-          .where('event_id', event_id)
-          .first()
-          .then(eventRequests => {
+            .where('event_id', event_id)
+            .first()
+            .then(eventRequests => {
             if (!eventRequests) {
-              return res.status(404).send('Not found');
+                return res.status(404).send('Not found');
             }
             res.render('viewRequest', { eventRequests });
-              })
+                })
             .catch(error => {
             console.error('Error fetching data:', error);
             res.status(500).send('Internal Server Error');
             });
-      });
-
-    // Route from view eventRequests to display eventRequests
+        });
 
 
 // Scheduled Events
@@ -603,7 +598,7 @@ app.get('/landing2', isAdmin, (req, res) => {
         )
          //Shows all data from the events table in order by date
         .where('status','Approved')
-        .orderBy('actual_date', 'desc')
+        .orderBy('event_id')
         .then(scheduledEvents => {
             // Render the scheduledEvents and pass the data
             res.render('scheduledEvents', { scheduledEvents });
@@ -619,11 +614,11 @@ app.get('/landing2', isAdmin, (req, res) => {
         let event_id = req.params.event_id;
         // Query the events by ID first
         knex('events')
-          .where('event_id', event_id)
-          .first()
-          .then(scheduledEvents => {
+            .where('event_id', event_id)
+            .first()
+            .then(scheduledEvents => {
             if (!scheduledEvents) {
-              return res.status(404).send('Event not found');
+                return res.status(404).send('Event not found');
             }
             res.render('editScheduled', { scheduledEvents });
             })
@@ -652,14 +647,14 @@ app.get('/landing2', isAdmin, (req, res) => {
         const machines = parseInt(req.body.machines);
         const sewers = parseInt(req.body.sewers);
         const story = req.body.story;
-        const members_needed = parseInt(req.body.members_needed);
+        const members_needed = parseInt(req.body.members_needed) || null;
         const status = req.body.status;
         const notes = req.body.notes;
     
         // Update the events in the database
         knex('events')
-          .where('event_id', event_id)
-          .update({
+            .where('event_id', event_id)
+            .update({
             description: description, 
                 anticipated_participants: anticipated_participants,
                 under_ten: under_ten,
@@ -708,7 +703,7 @@ app.get('/landing2', isAdmin, (req, res) => {
         const machines = parseInt(req.body.machines, 10) || 0;
         const sewers = parseInt(req.body.sewers, 10) || 0;
         const story = req.body.story || '';
-        const members_needed = parseInt(req.body.members_needed, 10) || 0;
+        const members_needed = parseInt(req.body.members_needed, 10) || null;
         const status = "Approved"
         const notes = req.body.notes || '';
         
@@ -743,22 +738,22 @@ app.get('/landing2', isAdmin, (req, res) => {
     });
 
     // Route to view scheduled events
-     app.get('/viewScheduled/:event_id', isAdmin, (req, res) => {
+    app.get('/viewScheduled/:event_id', isAdmin, (req, res) => {
         let event_id = req.params.event_id;
         knex('events')
-          .where('event_id', event_id)
-          .first()
-          .then(scheduledEvents => {
+            .where('event_id', event_id)
+            .first()
+            .then(scheduledEvents => {
             if (!scheduledEvents) {
-              return res.status(404).send('Not found');
+                return res.status(404).send('Not found');
             }
             res.render('viewScheduled', { scheduledEvents });
-              })
+                })
             .catch(error => {
             console.error('Error fetching data:', error);
             res.status(500).send('Internal Server Error');
             });
-      });
+        });
 
     // Route from view scheduled events to display scheduled events
 
@@ -795,7 +790,7 @@ app.get('/landing2', isAdmin, (req, res) => {
         )
          //Shows all data from the events table in order by date
         .where('status','Completed')
-        .orderBy('actual_date', 'desc')
+        .orderBy('event_id')
         .then(pastEvents => {
             // Render the pastEvents and pass the data
             res.render('pastEvents', { pastEvents });
@@ -811,11 +806,11 @@ app.get('/landing2', isAdmin, (req, res) => {
         let event_id = req.params.event_id;
         // Query the events by ID first
         knex('events')
-          .where('event_id', event_id)
-          .first()
-          .then(pastEvents => {
+            .where('event_id', event_id)
+            .first()
+            .then(pastEvents => {
             if (!pastEvents) {
-              return res.status(404).send('Event not found');
+                return res.status(404).send('Event not found');
             }
             res.render('editPast', { pastEvents });
             })
@@ -850,14 +845,14 @@ app.get('/landing2', isAdmin, (req, res) => {
         const collars = parseInt(req.body.collars);
         const envelopes = parseInt(req.body.envelopes);
         const vests = parseInt(req.body.vests);
-        const members_needed = parseInt(req.body.members_needed);
+        const members_needed = parseInt(req.body.members_needed) || null;
         const status = req.body.status;
         const notes = req.body.notes;
     
         // Update the events in the database
         knex('events')
-          .where('event_id', event_id)
-          .update({
+            .where('event_id', event_id)
+            .update({
             description: description, 
                 anticipated_participants: anticipated_participants,
                 under_ten: under_ten,
@@ -881,11 +876,11 @@ app.get('/landing2', isAdmin, (req, res) => {
                 members_needed: members_needed,
                 status: status,
                 notes: notes
-          })
-          .then(() => {
-            res.redirect('/pastEvents'); // Redirect to the list of past events after saving
-          })
-          .catch(error => {
+            })
+            .then(() => {
+                res.redirect('/pastEvents'); // Redirect to the list of past events after saving
+            })
+            .catch(error => {
             console.error('Error updating event:', error);
             res.status(500).send('Internal Server Error');
         });
@@ -919,7 +914,7 @@ app.get('/landing2', isAdmin, (req, res) => {
         const collars = parseInt(req.body.collars, 10) || 0;
         const envelopes = parseInt(req.body.envelopes, 10) || 0;
         const vests = parseInt(req.body.vests, 10) || 0;
-        const members_needed = parseInt(req.body.members_needed, 10) || 0;
+        const members_needed = parseInt(req.body.members_needed, 10) || null;
         const status = "Completed"
         const notes = req.body.notes || '';
         
@@ -962,19 +957,19 @@ app.get('/landing2', isAdmin, (req, res) => {
     app.get('/viewPast/:event_id', isAdmin, (req, res) => {
         let event_id = req.params.event_id;
         knex('events')
-          .where('event_id', event_id)
-          .first()
-          .then(pastEvents => {
-            if (!pastEvents) {
-              return res.status(404).send('Not found');
-            }
-            res.render('viewPast', { pastEvents });
-              })
-            .catch(error => {
-            console.error('Error fetching data:', error);
-            res.status(500).send('Internal Server Error');
-            });
-      });
+            .where('event_id', event_id)
+            .first()
+            .then(pastEvents => {
+                if (!pastEvents) {
+                return res.status(404).send('Not found');
+                }
+                res.render('viewPast', { pastEvents });
+                })
+                .catch(error => {
+                console.error('Error fetching data:', error);
+                res.status(500).send('Internal Server Error');
+                });
+        });
 
     // Route from view past events to display past events
 
