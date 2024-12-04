@@ -1,9 +1,9 @@
-<!-- Form to add a volunteer -->
+<!-- Form to add a past request -->
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Add Volunteer Request</title>
+    <title>Add Requested Event</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
@@ -15,35 +15,31 @@
         </div>
     </nav>
     
-    <form action="/addVolunteer" method="POST">
-        <table class="form">
-            <caption>Add Volunteer</caption>
+    <form action="/addRequest" method="POST">
+        <table>
+            <caption>Add Request</caption>
             <tr>
-                <td><label for="first_name">First Name</label></td>
-                <td><input type="text" id="first_name" name="first_name" required></td>
+                <td><label for="description">Description</label></td>
+                <td><input type="text" id="description" name="description" required></td>
             </tr>
             <tr>
-                <td><label for="last_name">Last Name</label></td>
-                <td><input type="text" id="last_name" name="last_name" required></td>
+                <td><label for="anticipated_participants">Anticipated Participants</label></td>
+                <td><input type="number" id="anticipated_participants" name="anticipated_participants"></td>
             </tr>
             <tr>
-                <td><label for="phone">Phone Number</label></td>
-                <td><input type="text" id="phone" name="phone" required></td>
+                <td><label for="under_ten">Under Ten</label></td>
+                <td><input type="number" id="under_ten" name="under_ten"></td>
             </tr>
             <tr>
-                <td><label for="email">Email</label></td>
-                <td><input type="text" id="email" name="email" required></td>
+                <td><label for="possible_date">Possible Date</label></td>
+                <td><input type="date" id="possible_date" name="possible_date" value="<%= new Date().toISOString().split('T')[0] %>"></td>
             </tr>
             <tr>
-                <td><label for="referral_source">Referral Source</label></td>
-                <td><input type="text" id="referral_source" name="referral_source" required></td>
-            </tr>
-            <tr>
-                <td><label>Sewing Level</label></td>
+                <td><label>Event Type</label></td>
                 <td style="text-align: left;">
-                    <input type="radio" name="sewer" value="Beginner" checked> Beginner<br>
-                    <input type="radio" name="sewer" value="Intermediate"> Intermediate<br>
-                    <input type="radio" name="sewer" value="Experienced"> Experienced
+                    <input type="radio" name="type" value="Sewing" checked> Sewing<br>
+                    <input type="radio" name="type" value="Non-sewing"> Non-sewing<br>
+                    <input type="radio" name="type" value="Both"> Both
                 </td>
             </tr>
             <tr>
@@ -63,35 +59,54 @@
                 <td><input type="text" id="zip" name="zip"></td>
             </tr>
             <tr>
-                <td><label for="monthly_hours">Monthly Hours</label></td>
-                <td><input type="float" id="monthly_hours" name="monthly_hours"></td>
+                <td><label for="start_time">Start Time</label></td>
+                <td><input type="time" id="start_time" name="start_time"></td>
             </tr>
             <tr>
-                <td><label for="travel">Travel</label></td>
-                <td><input type="text" id="travel" name="travel" required></td>
+                <td><label for="duration">Duration</label></td>
+                <td><input type="text" id="duration" name="duration"></td>
             </tr>
             <tr>
-                <td><label for="take_charge">Leader</label></td>
-                <td style="text-align: left;"><input type="radio" id="take_charge" name="take_charge" value="yes">Yes<br>
-                    <input type="radio" id="take_charge" name="take_charge" value="no">No</td>
+                <td><label for="contact_name">Contact Name</label></td>
+                <td><input type="text" id="contact_name" name="contact_name"></td>
             </tr>
             <tr>
-                <td><label>Status</label></td>
+                <td><label for="contact_phone">Contact Phone</label></td>
+                <td><input type="text" id="contact_phone" name="contact_phone"></td>
+            </tr>
+            <tr>
+                <td><label for="contact_email">Contact Email</label></td>
+                <td><input type="text" id="contact_email" name="contact_email"></td>
+            </tr>
+            <tr>
+                <td><label for="machines">Machines</label></td>
+                <td><input type="number" id="machines" name="machines"></td>
+            </tr>
+            <tr>
+                <td><label for="sewers">Sewers</label></td>
+                <td><input type="number" id="sewers" name="sewers"></td>
+            </tr>
+            <tr>
+                <td><label>Should Jen share her story?</label></td>
                 <td style="text-align: left;">
-                    <input type="radio" name="status" value="Active"> Active<br>
-                    <input type="radio" name="status" value="Pending" checked> Pending<br>
-                    <input type="radio" name="status" value="Denied"> Denied
+                    <input type="radio" name="story" value="Yes, long"> Yes, Long<br>
+                    <input type="radio" name="story" value="Yes, no"> Yes, Short<br>
+                    <input type="radio" name="story" value="No"> No
                 </td>
             </tr>
             <tr>
-                <td colspan="11" style="text-align: center; width: 100%;">
-                    <button class="table-button" type="submit">Add Volunteer</button>
-                </td>
+                <td><label for="members_needed">Members Needed</label></td>
+                <td><input type="number" id="members_needed" name="members_needed"></td>
+            </tr>
+            <tr>
+                <td><label for="notes">Notes</label></td>
+                <td><input type="text" id="notes" name="notes"></td>
             </tr>
         </table>
+        <button type="submit">Add</button>
     </form>
-    <form action="/showVolunteers" method="GET">
-        <button type="submit">Return</button>
+    <form action="/eventRequests" method="GET">
+        <button type="submit">Back</button>
     </form>
 
     <main></main>
