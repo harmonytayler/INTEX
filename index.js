@@ -247,10 +247,6 @@ app.get('/landing2', isAdmin, (req, res) => {
         });
     });
 
-    // Route from view user to display user
-
-    // Route to delete users
-
 // Volunteers
 
     // Route from landing page 2 to display volunteers
@@ -358,9 +354,15 @@ app.get('/landing2', isAdmin, (req, res) => {
         res.render("viewVolunteer");
     });
 
-    // Route from view volunteers to display volunteers
-
     // Route to delete volunteers
+    app.post("/deleteVolunteer/:volunteer_id", (req, res) => {
+        knex("team_members").where("volunteer_id", req.params.volunteer_id).del().then(() => {
+            res.redirect("/showVolunteers");
+        }).catch(err => {
+            console.log(err);
+            res.status(500).json({err});
+        });
+    });
 
 // Event Requests
 
