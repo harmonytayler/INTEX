@@ -26,6 +26,7 @@
                 <th>Street Address</th>
                 <th>Edit</th>
                 <th>View</th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody>
@@ -48,6 +49,11 @@
                         <td>
                             <form class="view-button-form" action="/viewPast/<%= row.event_id %>" method="GET" style="display:inline;">
                                 <button class="table-button" type="submit">View</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form class="view-button-form" action="/deletePast/<%= row.event_id %>" method="POST" style="display:inline;">
+                                <button class="table-button" type="submit">Delete</button>
                             </form>
                         </td>
                     </tr>
