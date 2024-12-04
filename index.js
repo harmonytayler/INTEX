@@ -86,7 +86,7 @@ const knex = require("knex")({
             referral_source: req.body.referral_source,
             sewing_level: req.body.sewing_level,
             monthly_hours: parseInt(req.body.monthly_hours),
-            city: req.body.city,
+            city: req.body.city.toUpperCase(),
             travel: req.body.travel,
             take_charge: req.body.take_charge ? "Y" : "N",
             status: "Pending",
@@ -111,7 +111,10 @@ const knex = require("knex")({
             under_ten: parseInt(req.body.under_ten),
             possible_date: req.body.possible_date,
             type: req.body.event_type,
-            address: req.body.address,
+            street_address: req.body.street_address,
+            city: req.body.city.toUpperCase(),
+            state: req.body.state,
+            zip: req.body.zip,
             start_time: req.body.start_time,
             duration: req.body.duration,
             contact_name: req.body.contact_name,
@@ -184,7 +187,7 @@ app.get('/landing2', isAdmin, (req, res) => {
             referral_source: req.body.referral_source,
             sewing_level: req.body.sewer,
             monthly_hours: req.body.monthly_hours_available,
-            city: req.body.city,
+            city: req.body.city.toUpperCase(),
             travel: req.body.travel,
             take_charge: req.body.take_charge === "Y",
             status: req.body.status,
@@ -211,7 +214,7 @@ app.get('/landing2', isAdmin, (req, res) => {
             referral_source: req.body.referral_source,
             sewing_level: req.body.sewer,
             monthly_hours: req.body.monthly_hours,
-            city: req.body.city,
+            city: req.body.city.toUpperCase(),
             travel: req.body.travel,
             take_charge: req.body.take_charge === "Y",
             status: req.body.status,
@@ -288,7 +291,7 @@ app.get('/landing2', isAdmin, (req, res) => {
         const address = req.body.address;
         const sewing_level = req.body.sewing_level;
         const monthly_hours = req.body.monthly_hours;
-        const city = req.body.city;
+        const city = req.body.city.toUpperCase();
         const travel = req.body.travel;
         const take_charge = req.body.take_charge;
         const status = req.body.status;
@@ -334,7 +337,7 @@ app.get('/landing2', isAdmin, (req, res) => {
             referral_source: req.body.referral_source,
             sewing_level: req.body.sewer,
             monthly_hours: req.body.monthly_hours,
-            city: req.body.city,
+            city: req.body.city.toUpperCase(),
             travel: req.body.travel,
             take_charge: req.body.take_charge ? "Y" : "N",
             status: req.body.status,
@@ -385,7 +388,10 @@ app.get('/landing2', isAdmin, (req, res) => {
             'events.under_ten',
             'events.possible_date',
             'events.type',
-            'events.address',
+            'events.street_address',
+            'events.city',
+            'events.state',
+            'events.zip',
             'events.start_time',
             'events.duration',
             'events.contact_name',
@@ -446,7 +452,10 @@ app.get('/landing2', isAdmin, (req, res) => {
         const under_ten = parseInt(req.body.under_ten);
         const possible_date = req.body.possible_date;
         const type = req.body.type; 
-        const address = req.body.address;
+        const street_address = req.body.street_address || '';
+        const city = req.body.city.toUpperCase() || '';
+        const state = req.body.state || '';
+        const zip = req.body.zip || '';
         const start_time = req.body.start_time;
         const duration = req.body.duration;
         const contact_name = req.body.contact_name;
@@ -468,7 +477,10 @@ app.get('/landing2', isAdmin, (req, res) => {
                     under_ten: under_ten,
                     possible_date: possible_date,
                     type: type,
-                    address: address,
+                    street_address: street_address,
+                    city: city,
+                    state: state,
+                    zip: zip,
                     start_time: start_time, 
                     duration: duration, 
                     contact_name: contact_name,
@@ -503,7 +515,10 @@ app.get('/landing2', isAdmin, (req, res) => {
         const under_ten = parseInt(req.body.under_ten, 10) || 0; // Convert to integer
         const possible_date = req.body.possible_date || new Date().toISOString().split('T')[0];
         const type = req.body.type || 'Sewing'; // Default to 'U' for Unknown
-        const address = req.body.address || '';
+        const street_address = req.body.street_address || '';
+        const city = req.body.city.toUpperCase() || '';
+        const state = req.body.state || '';
+        const zip = req.body.zip || '';
         const start_time = req.body.start_time ;
         const duration = req.body.duration || '';
         const contact_name = req.body.contact_name || '';
@@ -524,7 +539,10 @@ app.get('/landing2', isAdmin, (req, res) => {
                 under_ten: under_ten,
                 possible_date: possible_date,
                 type: type,
-                address: address,
+                street_address: street_address,
+                city: city,
+                state: state,
+                zip: zip,
                 start_time: start_time, 
                 duration: duration, 
                 contact_name: contact_name,
@@ -577,7 +595,10 @@ app.get('/landing2', isAdmin, (req, res) => {
             'events.under_ten',
             'events.possible_date',
             'events.type',
-            'events.address',
+            'events.street_address',
+            'events.city',
+            'events.state',
+            'events.zip',
             'events.start_time',
             'events.duration',
             'events.contact_name',
@@ -638,7 +659,10 @@ app.get('/landing2', isAdmin, (req, res) => {
         const under_ten = parseInt(req.body.under_ten);
         const possible_date = req.body.possible_date;
         const type = req.body.type; // Default to 'U' for Unknown
-        const address = req.body.address;
+        const street_address = req.body.street_address || '';
+        const city = req.body.city.toUpperCase() || '';
+        const state = req.body.state || '';
+        const zip = req.body.zip || '';
         const start_time = req.body.start_time;
         const duration = req.body.duration;
         const contact_name = req.body.contact_name;
@@ -660,7 +684,10 @@ app.get('/landing2', isAdmin, (req, res) => {
                 under_ten: under_ten,
                 possible_date: possible_date,
                 type: type,
-                address: address,
+                street_address: street_address,
+                city: city,
+                state: state,
+                zip: zip,
                 start_time: start_time, 
                 duration: duration, 
                 contact_name: contact_name,
@@ -694,7 +721,10 @@ app.get('/landing2', isAdmin, (req, res) => {
         const under_ten = parseInt(req.body.under_ten, 10) || 0; // Convert to integer
         const actual_date = req.body.actual_date || new Date().toISOString().split('T')[0];
         const type = req.body.type || 'Sewing'; 
-        const address = req.body.address || '';
+        const street_address = req.body.street_address || '';
+        const city = req.body.city.toUpperCase() || '';
+        const state = req.body.state || '';
+        const zip = req.body.zip || '';
         const start_time = req.body.start_time ;
         const duration = req.body.duration || '';
         const contact_name = req.body.contact_name || '';
@@ -715,7 +745,10 @@ app.get('/landing2', isAdmin, (req, res) => {
                 under_ten: under_ten,
                 actual_date: actual_date,
                 type: type,
-                address: address,
+                street_address: street_address,
+                city: city,
+                state: state,
+                zip: zip,
                 start_time: start_time, 
                 duration: duration, 
                 contact_name: contact_name,
@@ -769,7 +802,10 @@ app.get('/landing2', isAdmin, (req, res) => {
             'events.under_ten',
             'events.possible_date',
             'events.type',
-            'events.address',
+            'events.street_address',
+            'events.city',
+            'events.state',
+            'events.zip',
             'events.start_time',
             'events.duration',
             'events.contact_name',
@@ -830,7 +866,10 @@ app.get('/landing2', isAdmin, (req, res) => {
         const under_ten = parseInt(req.body.under_ten);
         const possible_date = req.body.possible_date;
         const type = req.body.type; // Default to 'U' for Unknown
-        const address = req.body.address;
+        const street_address = req.body.street_address || '';
+        const city = req.body.city.toUpperCase() || '';
+        const state = req.body.state || '';
+        const zip = req.body.zip || '';
         const start_time = req.body.start_time;
         const duration = req.body.duration;
         const contact_name = req.body.contact_name;
@@ -858,7 +897,10 @@ app.get('/landing2', isAdmin, (req, res) => {
                 under_ten: under_ten,
                 possible_date: possible_date,
                 type: type,
-                address: address,
+                street_address: street_address,
+                city: city,
+                state: state,
+                zip:zip,
                 start_time: start_time, 
                 duration: duration, 
                 contact_name: contact_name,
@@ -899,7 +941,10 @@ app.get('/landing2', isAdmin, (req, res) => {
         const under_ten = parseInt(req.body.under_ten, 10) || 0; // Convert to integer
         const possible_date = req.body.possible_date || new Date().toISOString().split('T')[0];
         const type = req.body.type || 'Sewing'; // Default to 'U' for Unknown
-        const address = req.body.address || '';
+        const street_address = req.body.street_address || '';
+        const city = req.body.city.toUpperCase() || '';
+        const state = req.body.state || '';
+        const zip = req.body.zip || '';
         const start_time = req.body.start_time ;
         const duration = req.body.duration || '';
         const contact_name = req.body.contact_name || '';
@@ -926,7 +971,10 @@ app.get('/landing2', isAdmin, (req, res) => {
                 under_ten: under_ten,
                 possible_date: possible_date,
                 type: type,
-                address: address,
+                street_address: street_address,
+                city: city,
+                state: state,
+                zip: zip,
                 start_time: start_time, 
                 duration: duration, 
                 contact_name: contact_name,
