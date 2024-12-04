@@ -113,13 +113,12 @@ button:active {
 
 /* Forms */
 form {
-    background-color: #ffffff; 
+    background-color: transparent; 
     padding: 30px;
     border-radius: 8px; 
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
     width: 80%; 
     max-width: 900px; 
-    margin: 20px auto; 
+    margin: 0px auto; 
 }
 
 .view-button-form {
@@ -155,7 +154,7 @@ input[type="password"],
 input[type="date"],
 input[type="time"],
 input[type="number"],
-input[type="checkbox"],
+input[type="float"],
 textarea {
     width: 100%;
     padding: 10px;
@@ -333,6 +332,20 @@ table {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     border-radius: 10px;
     overflow: hidden;
+}
+
+.summary {
+    margin: 20px auto;
+    width: 90%;
+}
+
+.view {
+    margin: 20px auto;
+    width: 60%;
+}
+
+.view td:last-child {
+    text-align:left;
 }
 
 th, td {
