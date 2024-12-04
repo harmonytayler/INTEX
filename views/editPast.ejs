@@ -46,7 +46,7 @@
                 <td style="text-align: left;">
                     <input type="radio" name="type" value="Sewing" <%= pastEvents.type === 'Sewing' ? 'checked' : '' %>> Sewing<br>
                     <input type="radio" name="type" value="Non-sewing"<%= pastEvents.type === 'Non-sewing' ? 'checked' : '' %>> Non-sewing<br>
-                    <input type="radio" name="type" value="Both" <%= pastEvents.type === 'Non-sewing' ? 'checked' : '' %>> Both
+                    <input type="radio" name="type" value="Both" <%= pastEvents.type === 'Both' ? 'checked' : '' %>> Both
                 </td>
             </tr>
             <tr>
@@ -113,8 +113,8 @@
                 <td style="text-align: left;">
                     <input type="radio" name="status" value="Pending" <%= pastEvents.status === 'Pending' ? 'checked' : '' %>> Pending<br>
                     <input type="radio" name="status" value="Approved" <%= pastEvents.status === 'Approved' ? 'checked' : '' %>> Approved<br>
-                    <input type="radio" name="status" value="Denied" <%= pastEvents.status === 'No' ? 'Denied' : '' %>> Denied<br>
-                    <input type="radio" name="status" value="Completed" <%= pastEvents.status === 'No' ? 'Completed' : '' %>> Completed
+                    <input type="radio" name="status" value="Denied" <%= pastEvents.status === 'Denied' ? 'checked' : '' %>> Denied<br>
+                    <input type="radio" name="status" value="Completed" <%= pastEvents.status === 'Completed' ? 'checked' : '' %>> Completed
                 </td>
             </tr>
             <tr>
