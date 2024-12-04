@@ -27,6 +27,7 @@
                 <th>Zip</th>
                 <th>Edit</th>
                 <th>View</th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody>
@@ -50,6 +51,11 @@
                         <td>
                             <form class="view-button-form" action="/viewRequest/<%= row.event_id %>" method="GET" style="display:inline;">
                                 <button class="table-button" type="submit">View</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form class="view-button-form" action="/deleteRequest/<%= row.event_id %>" method="POST" style="display:inline;">
+                                <button class="table-button" type="submit">Delete</button>
                             </form>
                         </td>
                     </tr>
