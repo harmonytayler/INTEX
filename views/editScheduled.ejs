@@ -23,15 +23,15 @@
             </tr>
             <tr>
                 <td><label for="anticipated_participants">Anticipated Participants</label></td>
-                <td><input type="number" id="anticipated_participants" name="anticipated_participants" value="<%= scheduledEvents.anticipated_participants %>"></td>
+                <td><input type="number" id="anticipated_participants" name="anticipated_participants" required value="<%= scheduledEvents.anticipated_participants %>"></td>
             </tr>
             <tr>
                 <td><label for="under_ten">Under Ten</label></td>
-                <td><input type="number" id="under_ten" name="under_ten" value="<%= scheduledEvents.under_ten %>"></td>
+                <td><input type="number" id="under_ten" name="under_ten" required value="<%= scheduledEvents.under_ten %>"></td>
             </tr>
             <tr>
                 <td><label for="actual_date">Scheduled Date</label></td>
-                <td><input type="date" id="actual_date" name="actual_date" value="<%= new Date().toISOString().split('T')[0] %>"></td>
+                <td><input type="date" id="actual_date" name="actual_date" required value="<%= new Date().toISOString().split('T')[0] %>"></td>
             </tr>
             <tr>
                 <td><label>Event Type</label></td>
@@ -43,34 +43,34 @@
             </tr>
             <tr>
                 <td><label for="street_address">Address</label></td>
-                <td><input type="text" id="street_address" name="street_address" value="<%= scheduledEvents.street_address %>"></td>
+                <td><input type="text" id="street_address" name="street_address" required value="<%= scheduledEvents.street_address %>"></td>
             </tr>
             <tr>
                 <td><label for="start_time">Start Time</label></td>
-                <td><input type="time" id="start_time" name="start_time" value="<%= scheduledEvents.start_time %>"></td>
+                <td><input type="time" id="start_time" name="start_time" required value="<%= scheduledEvents.start_time %>"></td>
             </tr><tr>
                 <td><label for="duration">Duration</label></td>
-                <td><input type="text" id="duration" name="duration" value="<%= scheduledEvents.duration %>"></td>
+                <td><input type="text" id="duration" name="duration" required value="<%= scheduledEvents.duration %>"></td>
             </tr>
             <tr>
                 <td><label for="contact_name">Contact Name</label></td>
-                <td><input type="text" id="contact_name" name="contact_name" value="<%= scheduledEvents.contact_name %>"></td>
+                <td><input type="text" id="contact_name" name="contact_name" required value="<%= scheduledEvents.contact_name %>"></td>
             </tr>
             <tr>
                 <td><label for="contact_phone">Contact Phone</label></td>
-                <td><input type="text" id="contact_phone" name="contact_phone" value="<%= scheduledEvents.contact_phone %>"></td>
+                <td><input type="text" id="contact_phone" name="contact_phone" required value="<%= scheduledEvents.contact_phone %>"></td>
             </tr>
             <tr>
                 <td><label for="contact_email">Contact Email</label></td>
-                <td><input type="text" id="contact_email" name="contact_email" value="<%= scheduledEvents.contact_email %>"></td>
+                <td><input type="text" id="contact_email" name="contact_email" required value="<%= scheduledEvents.contact_email %>"></td>
             </tr>
             <tr>
                 <td><label for="machines">Machines</label></td>
-                <td><input type="number" id="machines" name="machines" value="<%= scheduledEvents.machines %>"></td>
+                <td><input type="number" id="machines" name="machines" required value="<%= scheduledEvents.machines %>"></td>
             </tr>
             <tr>
                 <td><label for="sewers">Sewers</label></td>
-                <td><input type="number" id="sewers" name="sewers" value="<%= scheduledEvents.sewers %>"></td>
+                <td><input type="number" id="sewers" name="sewers" required value="<%= scheduledEvents.sewers %>"></td>
             </tr>
             <tr>
                 <td><label>Did Jen share her story?</label></td>
@@ -82,7 +82,7 @@
             </tr>
             <tr>
                 <td><label for="members_needed">Members Needed</label></td>
-                <td><input type="number" id="members_needed" name="members_needed" value="<%= scheduledEvents.members_needed %>"></td>
+                <td><input type="number" id="members_needed" name="members_needed" required value="<%= scheduledEvents.members_needed %>"></td>
             </tr>
             <tr>
                 <td><label>Status</label></td>
@@ -95,7 +95,7 @@
             </tr>
             <tr>
                 <td><label for="notes">Notes</label></td>
-                <td><input type="text" id="notes" name="notes" value="<%= scheduledEvents.notes %>"></td>
+                <td><input type="text" id="notes" name="notes" required value="<%= scheduledEvents.notes %>"></td>
             </tr>
             <tr>
                 <td colspan="11" style="text-align: center; width: 100%;">
