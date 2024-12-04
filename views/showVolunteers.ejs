@@ -52,12 +52,15 @@
                     </td>
                 </tr>
             <% } %>
+            <tr>
+                <td colspan="11" style="text-align: center; width: 100%;">
+                    <form class="view-button-form" action="/addVolunteer" method="GET">
+                        <button class="table-button" type="submit">Add Volunteer</button>
+                    </form>
+                </td>
+            </tr>
         </tbody>
     </table>
-
-    <form action="/addVolunteer" method="GET">
-        <button type="submit">Add Volunteer Request</button>
-    </form>
 
     <main></main>
     <footer>
