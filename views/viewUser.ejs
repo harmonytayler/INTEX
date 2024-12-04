@@ -1,1 +1,26 @@
-<!-- View all the details of a single user when you click on it -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View User</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1 style="text-align: center;">View User</h1>
+
+    <div>
+        <p><strong>Volunteer ID</strong> <%= members[0].volunteer_id %></p>
+        <p><strong>First Name:</strong> <%= members[0].first_name %></p>
+        <p><strong>Last Name:</strong> <%= members[0].last_name %></p>
+        <p><strong>Phone Number:</strong> <%= members[0].phone %></p>
+        <p><strong>Email:</strong> <%= members[0].email %></p>
+        <p><strong>Referral Source:</strong> <%= members[0].referral_source %></p>
+
+        <p><strong>Sewing Level:</strong> <%= members[0].sewing_level %></p>
+        <p><strong>Monthly Hours:</strong> <%= members[0].monthly_hours %></p>
+        <p><strong>City:</strong> <%= members[0].city %></p>
+        <p><strong>Travel:</strong> <%= members[0].travel %></p>
+        <p><strong>Leader:</strong> <%= members[0].take_charge == "Y" ? "Yes" : "No" %></p>
+        <p><strong>Status:</strong> <%= members[0].status %></p>
+    </div>
+</body>
+</html>
