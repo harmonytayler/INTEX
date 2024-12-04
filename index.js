@@ -350,10 +350,22 @@ app.get('/landing2', isAdmin, (req, res) => {
     });
 
     // Route to view volunteers
-    app.get("/viewVolunteer", isAdmin, (req, res) => {
-        res.render("viewVolunteer");
-    });
-
+    app.get("/viewVolunteer/:volunteer_id", isAdmin, (req, res) => {
+        let volunteer_id = req.params.volunteer_id;
+        knex('team_members')
+          .where('volunteer_id', volunteer_id)
+          .first()
+          .then(showVolunteers => {
+            if (!showVolunteers) {
+              return res.status(404).send('Not found');
+            }
+            res.render('viewVolunteer', { showVolunteers });
+              })
+            .catch(error => {
+            console.error('Error fetching data:', error);
+            res.status(500).send('Internal Server Error');
+            });
+      });
     // Route to delete volunteers
     app.post("/deleteVolunteer/:volunteer_id", (req, res) => {
         knex("team_members").where("volunteer_id", req.params.volunteer_id).del().then(() => {
