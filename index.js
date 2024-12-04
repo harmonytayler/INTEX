@@ -254,7 +254,12 @@ app.get('/landing2', isAdmin, (req, res) => {
 
     // Route from landing page 2 to display volunteers
     app.get("/showVolunteers", isAdmin, (req, res) => {
-        res.render("showVolunteers");
+        knex.select()
+        .from("team_members")
+        .where('status', 'Pending')
+        .then(members => {
+            res.render("showVolunteers", {members});
+        })
     });
 
     // Route to edit volunteers
