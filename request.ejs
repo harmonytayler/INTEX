@@ -1,0 +1,120 @@
+<!-- Form to request an event -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Request an Event</title>
+</head>
+<body>
+    <nav>
+        <div class="org-name">Turtle Shelter Project</div>
+        <div class="nav-links">
+            <a href="/"><button class="link">Home</button></a>
+            <a href="/donate"><button class="link">Donate</button></a>
+            <a href="/request"><button class="link">Request an Event</button></a>
+            <a href="/volunteer"><button class="link">Volunteer</button></a>
+            <a href="/about"><button class="link">About</button></a>
+        </div>
+    </nav>
+
+        <form action="/request" method="POST">
+            <table class="form">
+                <caption>Request an Event</caption>
+                <tr>
+                    <td><label for="contact_name">Name</label></td>
+                    <td><input type="text" id="contact_name" name="contact_name" placeholder="Enter your first and last name" required></td>
+                </tr>
+                <tr>
+                    <td><label for="contact_email">Email</label></td>
+                    <td><input type="text" id="contact_email" name="contact_email" placeholder="Enter your email address" required></td>
+                </tr>
+                <tr>
+                    <td><label for="contact_phone">Phone</label></td>
+                    <td><input type="text" id="contact_phone" name="contact_phone" placeholder="Enter your phone number" required></td>
+                </tr>
+                <tr>
+                    <td><label for="street_address">Event Street Address</label></td>
+                    <td><input type="text" id="street_address" name="street_address" placeholder="Enter the street address of the event location" required></td>
+                </tr>
+                <tr>
+                    <td><label for="city">Event City</label></td>
+                    <td><input type="text" id="city" name="city" placeholder="Enter the city of the event location" required></td>
+                </tr>
+                <tr>
+                    <td><label for="state">Event State</label></td>
+                    <td><select id="state" name="state"><option value="---">---</option><option value="AL">Alabama</option><option value="AK">Alaska</option><option value="AZ">Arizona</option><option value="AR">Arkansas</option><option value="CA">California</option><option value="CO">Colorado</option><option value="CT">Connecticut</option><option value="DE">Delaware</option><option value="DC">District of Columbia</option><option value="FL">Florida</option><option value="GA">Georgia</option><option value="HI">Hawaii</option><option value="ID">Idaho</option><option value="IL">Illinois</option><option value="IN">Indiana</option><option value="IA">Iowa</option><option value="KS">Kansas</option><option value="KY">Kentucky</option><option value="LA">Louisiana</option><option value="ME">Maine</option><option value="MD">Maryland</option><option value="MA">Massachusetts</option><option value="MI">Michigan</option><option value="MN">Minnesota</option><option value="MS">Mississippi</option><option value="MO">Missouri</option><option value="MT">Montana</option><option value="NE">Nebraska</option><option value="NV">Nevada</option><option value="NH">New Hampshire</option><option value="NJ">New Jersey</option><option value="NM">New Mexico</option><option value="NY">New York</option><option value="NC">North Carolina</option><option value="ND">North Dakota</option><option value="OH">Ohio</option><option value="OK">Oklahoma</option><option value="OR">Oregon</option><option value="PA">Pennsylvania</option><option value="RI">Rhode Island</option><option value="SC">South Carolina</option><option value="SD">South Dakota</option><option value="TN">Tennessee</option><option value="TX">Texas</option><option value="UT">Utah</option><option value="VT">Vermont</option><option value="VA">Virginia</option><option value="WA">Washington</option><option value="WV">West Virginia</option><option value="WI">Wisconsin</option><option value="WY">Wyoming</option></select>
+                </tr>
+                
+                <tr>
+                    <td><label for="zip">Event Zip</label></td>
+                    <td><input type="text" id="zip" name="zip" placeholder="Enter the zip of the event location" required></td>
+                </tr>
+                <tr>
+                    <td><label for="possible_date">Event Date</label></td>
+                    <td><input type="date" id="possible_date" name="possible_date" required></td>
+                </tr>
+                <tr>
+                    <td><label for="start_time">Start Time</label></td>
+                    <td><input type="time" id="start_time" name="start_time" required></td>
+                </tr>
+                <tr>
+                    <td><label for="duration">Event Duration</label></td>
+                    <td><input type="text" id="duration" name="duration" placeholder="Enter the preferred event duration" required></td>
+                </tr>
+                <tr>
+                    <td><label for="anticipated_participants">Total Participants</label></td>
+                    <td><input type="number" id="anticipated_participants" name="anticipated_participants" placeholder="Enter the number of total anticipated participants" required></td>
+                </tr>
+                <tr>
+                    <td><label for="under_ten">Participants Under 10</label></td>
+                    <td><input type="number" id="under_ten" name="under_ten" placeholder="Enter the number of anticipated participants under age 10" required></td>
+                </tr>
+                <tr>
+                    <td><label for="event_type">Activity Type</label></td>
+                    <td style="text-align: left;">
+                        <input type="radio" name="event_type" value="Non-Sewing">Non-Sewing<br>
+                        <input type="radio" name="event_type" value="Sewing">Sewing<br>
+                        <input type="radio" name="event_type" value="Both">Both
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="machines">Sewing Machines</label></td>
+                    <td><input type="number" id="machines" name="machines" placeholder="How many sewing machines can your group bring?"></td>
+                </tr>
+                <tr>
+                    <td><label for="sewers">Sewing Participants</label></td>
+                    <td><input type="number" id="sewers" name="sewers" placeholder="How many people in your group can sew?"></td>
+                </tr>
+                <tr>
+                    <td><label for="description">Event Description</label></td>
+                    <td><input type="text" id="description" name="description" placeholder="Describe the occasion for the event (e.g. church activity, family gathering, etc.)"></td>
+                </tr>
+                <tr>
+                    <td><label for="story">Would you like to hear Jen's story?</label></td>
+                    <td style="text-align: left;">
+                        <input type="radio" id="story" name="story" value="yes">Yes<br>
+                        <input type="radio" id="story" name="story" value="no">No
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: center;">
+                        <button type="submit">Submit</button>
+                    </td>
+                </tr>
+            </table>
+        </form>        
+        <footer>
+            <div class="footer-left">
+                <a href="/login">Admin Tools</a>
+                <a href="/about">About</a>
+                <a href="/volunteer">Volunteer</a>
+            </div>
+            <div class="footer-right">
+                <p>© 2024 Turtle Shelter Project. All rights reserved.</p>
+            </div>
+        </footer>
+</body>
+</html>

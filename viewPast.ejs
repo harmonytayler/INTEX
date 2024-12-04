@@ -1,0 +1,135 @@
+<!-- View all the details of a single past event when you click on it -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Display Past Event</title>
+        <link rel="stylesheet" href="/css/style.css">
+    </head>
+<body>
+    <nav>
+        <div class="org-name">Turtle Shelter Project</div>
+        <div class="nav-links">
+            <a href="/landing2"><button class="link">Admin Tools</button></a>
+            <a href="/"><button class="link">Home Page</button></a>
+        </div>
+    </nav>
+    <table class="view">
+        <caption>Past Event Details</caption>
+        <tr>
+            <td><label>Event ID</label></td>
+            <td><p><%= pastEvents.event_id %></p></td>
+        </tr>
+        <tr>
+            <td><label>Description</label></td>
+            <td><p><%= pastEvents.description %></p></td>
+        </tr>
+        <tr>
+            <td><label>Anticipated Paricipants</label></td>
+            <td><p><%= pastEvents.anticipated_participants %></p></td>
+        </tr>
+        <tr>
+            <td><label>Participants Under Ten</label></td>
+            <td><p><%= pastEvents.under_ten %></p></td>
+        </tr>
+        <tr>
+            <td><label>Preferred Date</label></td>
+            <td><p><%= new Date(pastEvents.possible_date).toLocaleDateString('en-US') %></p></td>
+        </tr>
+        <tr>
+            <td><label>Type</label></td>
+            <td><p><%= pastEvents.type %></p></td>
+        </tr>
+        <tr>
+            <td><label>Street Address</label></td>
+            <td><p><%= pastEvents.street_address %></p></td>
+        </tr>
+        <tr>
+            <td><label>Start Time</label></td>
+            <td><p><%= pastEvents.start_time %></p></td>
+        </tr>
+        <tr>
+            <td><label>Duration</label></td>
+            <td><p><%= pastEvents.duration %></p></td>
+        </tr>
+        <tr>
+            <td><label>Contact Name</label></td>
+            <td><p><%= pastEvents.contact_name %></p></td>
+        </tr>
+        <tr>
+            <td><label>Contact Phone</label></td>
+            <td><p><%= pastEvents.contact_phone %></p></td>
+        </tr>
+        <tr>
+            <td><label>Contact Email</label></td>
+            <td><p><%= pastEvents.contact_email %></p></td>
+        </tr>
+        <tr>
+            <td><label>Machines</label></td>
+            <td><p><%= pastEvents.machines %></p></td>
+        </tr>
+        <tr>
+            <td><label>Sewers</label></td>
+            <td><p><%= pastEvents.sewers %></p></td>
+        </tr>
+        <tr>
+            <td><label>Story</label></td>
+            <td><p><%= pastEvents.story %></p></td>
+        </tr>
+        <tr>
+            <td><label>Members Needed</label></td>
+            <td><p><%= pastEvents.members_needed %></p></td>
+        </tr>
+        <tr>
+            <td><label>Status</label></td>
+            <td><p><%= pastEvents.status %></p></td>
+        </tr>
+        <tr>
+            <td><label>Notes</label></td>
+            <td><p><%= pastEvents.notes %></p></td>
+        </tr>
+        <tr>
+            <td><label>Actual Date</label></td>
+            <td><p><%= new Date(pastEvents.actual_date).toLocaleDateString('en-US') %></p></td>
+        </tr>
+        <tr>
+            <td><label>Actual Paricipation</label></td>
+            <td><p><%= pastEvents.actual_participants %></p></td>
+        </tr>
+        <tr>
+            <td><label>Pockets Completed</label></td>
+            <td><p><%= pastEvents.pockets %></p></td>
+        </tr>
+        <tr>
+            <td><label>Collars Completed</label></td>
+            <td><p><%= pastEvents.collars %></p></td>
+        </tr>
+        <tr>
+            <td><label>Envelopes Completed</label></td>
+            <td><p><%= pastEvents.envelopes %></p></td>
+        </tr>
+        <tr>
+            <td><label>Vests Completed</label></td>
+            <td><p><%= pastEvents.vests %></p></td>
+        </tr>
+    </table>
+    <form action="/pastEvents" method="GET">
+        <button type="submit">Back</button>
+    </form>
+    
+    <main></main>
+    <footer>
+        <div class="footer-left">
+            <a href="/login">Admin Tools</a>
+            <a href="/about">About</a>
+            <a href="/volunteer">Volunteer</a>
+        </div>
+        <div class="footer-right">
+            <p>© 2024 Turtle Shelter Project. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

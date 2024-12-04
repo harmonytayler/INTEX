@@ -1,0 +1,50 @@
+<!-- Second landing page, once someone has logged in. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Landing Page</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <main>
+    <nav>
+        <div class="org-name">Turtle Shelter Project</div>
+        <div class="nav-links">
+            <a href="/landing2"><button class="link">Admin Tools</button></a>
+            <a href="/"><button class="link">Home Page</button></a>
+        </div>
+    </nav>
+        <section>
+            <!-- Button Forms -->
+            <form action="/users" method="GET">
+                <button type="submit">Team Members</button>
+            </form>
+            <form action="/showVolunteers" method="GET">
+                <button type="submit">Volunteer Requests</button>
+            </form>
+            <form action="/eventRequests" method="GET">
+                <button type="submit">Event Requests</button>
+            </form>
+            <form action="/scheduledEvents" method="GET">
+                <button type="submit">Scheduled Events</button>
+            </form>
+            <form action="/pastEvents" method="GET">
+                <button type="submit">Past Events</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-left">
+            <a href="/login">Admin Tools</a>
+            <a href="/about">About</a>
+            <a href="/volunteer">Volunteer</a>
+        </div>
+        <div class="footer-right">
+            <p>© 2024 Turtle Shelter Project. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
