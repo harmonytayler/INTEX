@@ -2,21 +2,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Event Requests</title>
-  <link rel="stylesheet" href="/css/style.css">
+    <title>Event Requests</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <h1 style="text-align: center;">Event Requests</h1>
+    <nav>
+        <div class="org-name">Turtle Shelter Project</div>
+        <div class="nav-links">
+            <a href="/landing2"><button class="link">Admin Home</button></a>
+            <a href="/users"><button class="link">Team Members</button></a>
+            <a href="/showVolunteers"><button class="link">Volunteer Requests</button></a>
+            <a href="/eventRequests"><button class="link">Event Requests</button></a>
+            <a href="/scheduledEvents"><button class="link">Scheduled Events</button></a>
+            <a href="/pastEvents"><button class="link">Past Events</button></a>
+        </div>
+    </nav>
     <table>
+        <caption>Event Requests</caption>
         <thead>
             <tr>
-                <!-- Headers for table to display event info -->
                 <th>Event ID</th>
                 <th>Date</th>
                 <th>Description</th>
                 <th>Contact Name</th>
                 <th>Address</th>
-                <th>Actions</th>
+                <th>Edit</th>
+                <th>View</th>
             </tr>
         </thead>
         <tbody>
@@ -32,13 +43,14 @@
                         <td><%= row.contact_name %></td>
                         <td><%= row.address %></td>
                         <td>
-                        <!-- Each record has an edit and view button -->
-                        <form action="/editRequest/<%= row.event_id %>" method="GET" style="display:inline;">
-                            <button type="submit">Edit</button>
-                        </form>
-                        <form action="/viewRequest/<%= row.event_id %>" method="GET" style="display:inline;">
-                            <button type="submit">View</button>
-                        </form>
+                            <form class="view-button-form" action="/editRequest/<%= row.event_id %>" method="GET" style="display:inline;">
+                                <button class="table-button" type="submit">Edit</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form class="view-button-form" action="/viewRequest/<%= row.event_id %>" method="GET" style="display:inline;">
+                                <button class="table-button" type="submit">View</button>
+                            </form>
                         </td>
                     </tr>
                 <% }) %>
@@ -50,13 +62,20 @@
         </tbody>
     </table>
 
-    <!-- At the bottom of the page display a button labled Add (which allows you to add a requested event) 
-    and a button labeled Home which takes you back to the main landing page -->
-    <form action="/addRequest" method="GET" style="display: flex; justify-content: center; margin: 20px 0;">
+    <form action="/addRequest" method="GET">
         <button type="submit">Add Requested Event</button>
     </form>
-    <form action="/landing2" method="GET" style="display: flex; justify-content: center; margin: 20px 0;">
-        <button type="submit">Admin Portal</button>
-    </form>
+
+    <main></main>
+    <footer>
+        <div class="footer-left">
+            <a href="/login">Admin Portal</a>
+            <a href="/about">About</a>
+            <a href="/volunteer">Volunteer</a>
+        </div>
+        <div class="footer-right">
+            <p>© 2024 Turtle Shelter Project. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>
