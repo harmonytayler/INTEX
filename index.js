@@ -91,7 +91,7 @@ const knex = require("knex")({
             take_charge: req.body.take_charge ? "Y" : "N",
             status: "Pending",
         }).then (() => {
-            res.redirect("/volunteer");
+            res.redirect("/landing1");
         }).catch(error => {
             console.error('Error querying database:', error);
             res.status(500).send('Internal Server Error');
@@ -125,7 +125,7 @@ const knex = require("knex")({
             story: req.body.story ? "Yes" : "No",
             status: "Pending"
         }).then (() => {
-            res.redirect("/request");
+            res.redirect("/landing1");
         }).catch(error => {
             console.error('Error querying database:', error);
             res.status(500).send('Internal Server Error');
