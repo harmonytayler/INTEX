@@ -440,7 +440,7 @@ app.get('/landing2', isAdmin, (req, res) => {
         )
          //Shows all data from the events table in order by date
         .where('status','Pending')
-        .orderBy('possible_date', 'desc')
+        .orderBy('possible_date', 'asc')
         .then(eventRequests => {
             // Render the eventRequests and pass the data
             res.render('eventRequests', { eventRequests });
