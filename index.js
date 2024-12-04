@@ -167,7 +167,7 @@ app.get('/landing2', isAdmin, (req, res) => {
 
     //Route from landing page 2 to display users
     app.get("/users", isAdmin, (req, res) => {
-        knex.select().from("team_members").then(members => {
+        knex.select().from("team_members").where('status', 'Active').then(members => {
             res.render("users", {members});
         });
     });
