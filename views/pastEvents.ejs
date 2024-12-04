@@ -61,12 +61,15 @@
                 <td colspan="7">No data available</td>
                 </tr>
             <% } %>
+            <tr>
+                <td colspan="11" style="text-align: center; width: 100%;">
+                    <form class="view-button-form" action="/addPast" method="GET">
+                        <button class="table-button" type="submit">Add Past Event</button>
+                    </form>
+                </td>
+            </tr>
         </tbody>
     </table>
-
-    <form action="/addPast" method="GET">
-        <button type="submit">Add Past Event</button>
-    </form>
 
     <main></main>
     <footer>
