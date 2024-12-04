@@ -1,1 +1,79 @@
 <!-- Form to edit volunteers -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Volunteer</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1 style="text-align: center;">Edit Volunteer</h1>
+    
+    <form action="/editVolunteer/<%= showVolunteer.volunteer_id %>" method="POST">
+
+        <input type="hidden" id="volunteer_id" name="volunteer_id" value="<%= showVolunteer.volunteer_id %>">
+
+        <label for="first_name">First Name</label>
+        <input type="text" id="first_name" name="first_name" required value="<%= showVolunteer.first_name %>">
+        <br><br>
+
+        <label for="last_name">Last Name</label>
+        <input type="text" id="last_name" name="last_name" required value="<%= showVolunteer.last_name %>">
+        <br><br>
+
+        <label for="phone">Phone Number</label>
+        <input type="text" id="phone" name="phone" required value="<%= showVolunteer.phone %>">
+        <br><br>
+
+        <label for="email">Email</label>
+        <input type="text" id="email" name="email" required value="<%= showVolunteer.email %>">
+        <br><br>
+
+        <label for="referral_source">Referral Source</label>
+        <input type="text" id="referral_source" name="referral_source" required value="<%= showVolunteer.referral_source %>">
+        <br><br>
+
+        <label>Sewing Level</label>
+        <label>
+            <input type="radio" name="sewing_level" value="Beginner" <%= showVolunteer.sewing_level == "Beginner" ? "checked" : "" %>> Beginner
+        </label>
+        <label>
+            <input type="radio" name="sewing_level" value="Intermediate" <%= showVolunteer.sewing_level == "Intermediate" ? "checked" : "" %>> Intermediate
+        </label>
+        <label>
+            <input type="radio" name="sewing_level" value="Experienced" <%= showVolunteer.sewing_level == "Experienced" ? "checked" : "" %>> Experienced
+        </label>
+        <br><br>
+
+        <label for="monthly_hours">Monthly Hours</label>
+        <input type="float" id="monthly_hours" name="monthly_hours" required value="<%= showVolunteer.monthly_hours %>">
+        <br><br>
+
+        <label for="city">City</label>
+        <input type="text" id="city" name="city" required value="<%= showVolunteer.city %>">
+        <br><br>
+
+        <label for="travel">Travel</label>
+        <input type="text" id="travel" name="travel" required value="<%= showVolunteer.travel %>">
+        <br><br>
+
+        <label for="take_charge">Leader? (Y/N):</label>
+        <input type="checkbox" id="take_charge" name="take_charge" <%= showVolunteer.take_charge == "Y" ? "checked" : "" %>
+        <br><br>
+
+        <label>Status</label>
+        <label>
+            <input type="radio" name="status" value="Active" <%= showVolunteer.status == "Active" ? "checked" : "" %>> Active
+        </label>
+        <label>
+            <input type="radio" name="status" value="Pending" <%= showVolunteer.status == "Pending" ? "checked" : "" %>> Pending
+        </label>
+        <label>
+            <input type="radio" name="status" value="Denied" <%= showVolunteer.status == "Denied" ? "checked" : "" %>> Denied
+        </label>
+        <br><br>
+        <button type="submit">Submit Edits</button>
+    </form>
+</body>
+</html>
