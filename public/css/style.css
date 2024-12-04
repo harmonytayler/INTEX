@@ -98,6 +98,30 @@ section {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
+.tableauPlaceholder {
+    width: 100%; /* Adjusts width dynamically based on the parent container */
+    height: 100%; /* Set an appropriate default height */
+    margin: 0px auto; 
+    margin-top:10px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    background-color: #f9f9f9; 
+    overflow: hidden; 
+}
+
+@media (max-width: 768px) {
+    .tableauPlaceholder {
+        height: 400px; /* Adjust height for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .tableauPlaceholder {
+        height: 300px; /* Further adjust height for mobile devices */
+    }
+}
+
+
 /* Buttons */
 button {
     background-color: #F4E1A1;
