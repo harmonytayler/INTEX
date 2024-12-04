@@ -23,7 +23,10 @@
                 <th>Date</th>
                 <th>Description</th>
                 <th>Contact Name</th>
-                <th>Address</th>
+                <th>Street Address</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Zip</th>
                 <th>Edit</th>
                 <th>View</th>
             </tr>
@@ -39,7 +42,10 @@
                         <td><%= new Date(row.actual_date).toLocaleDateString('en-US') %></td>
                         <td><%= row.description %></td>
                         <td><%= row.contact_name %></td>
-                        <td><%= row.address %></td>
+                        <td><%= row.street_address %></td>
+                        <td><%= row.city %></td>
+                        <td><%= row.state %></td>
+                        <td><%= row.zip %></td>
                         <td>
                             <form class="view-button-form" action="/editPast/<%= row.event_id %>" method="GET" style="display:inline;">
                                 <button class="table-button" type="submit">Edit</button>
