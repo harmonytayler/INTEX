@@ -1,1 +1,60 @@
 <!-- Display volunteers -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Volunteer Requests</title>
+</head>
+<body>
+    <h1 style="text-align: center;">Volunteer Requests</h1>
+    <table>
+        <thead>
+            <tr>
+                <!-- Headers for table to display planet info -->
+                <th>Volunteer ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody style="font-family: Arial; font-size: 9pt;">
+            <% for (let iCount = 0; iCount < members.length; iCount++) { %>
+                <tr>
+                    <td><%= members[iCount].volunteer_id %></td>
+                    <td><%= members[iCount].first_name %></td>
+                    <td><%= members[iCount].last_name %></td>
+                    <td><%= members[iCount].phone %></td>
+                    <td><%= members[iCount].email %></td>
+                    <td style="text-align: center;">
+                        <form action="/editVolunteer/<%= members[iCount].volunteer_id %>" method="GET">
+                            <button type="submit">Edit</button>
+                        </form>
+                    </td>
+                    <td style="text-align: center;">
+                        <form action="/viewVolunteer/<%= members[iCount].volunteer_id %>" method="GET">
+                            <button type="submit">View</button>
+                        </form>
+                    </td>
+                    <td style="text-align: center;">
+                        <form action="/deleteVolunteer/<%= members[iCount].volunteer_id %>" method="POST">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+
+    <!-- At the bottom of the page display a button labled Add Volunteer (which allows you to add a volunteer record) 
+    and a button labeled Home which takes you back to the main landing page -->
+    <form action="/addVolunteer" method="GET" style="display: flex; justify-content: center; margin: 20px 0;">
+        <button type="submit">Add Volunteer Request</button>
+    </form>
+    <form action="/landing2" method="GET" style="display: flex; justify-content: center; margin: 20px 0;">
+        <button type="submit">Home</button>
+    </form>
+</body>
+</html>
