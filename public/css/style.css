@@ -79,6 +79,14 @@ nav a {
     transition: color 0.3s ease;
 }
 
+nav button {
+    font-size: clamp(0.8rem, 1.5vw, 1.2em);
+    padding: 0.5em 1em;
+    border-radius: 0.5em;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
 /* Sections */
 section {
     padding: 40px 20px;
@@ -124,7 +132,9 @@ form {
 .view-button-form {
     margin:0;
     padding:0;
-    width:auto;
+    width:100%;
+    max-width:none;
+    display: inline-block;
 }
 
 /* Labels aligned to the left */
