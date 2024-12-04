@@ -366,10 +366,38 @@ app.get('/landing2', isAdmin, (req, res) => {
             res.status(500).send('Internal Server Error');
             });
     });
-    // Route to delete volunteers
+
+    // Route to delete stuff
     app.post("/deleteVolunteer/:volunteer_id", (req, res) => {
         knex("team_members").where("volunteer_id", req.params.volunteer_id).del().then(() => {
             res.redirect("/showVolunteers");
+        }).catch(err => {
+            console.log(err);
+            res.status(500).json({err});
+        });
+    });
+
+    app.post("/deleteRequest/:event_id", (req, res) => {
+        knex("events").where("event_id", req.params.event_id).del().then(() => {
+            res.redirect("/eventRequests");
+        }).catch(err => {
+            console.log(err);
+            res.status(500).json({err});
+        });
+    });
+
+    app.post("/deleteScheduled/:volunteer_id", (req, res) => {
+        knex("team_members").where("volunteer_id", req.params.volunteer_id).del().then(() => {
+            res.redirect("/scheduledEvents");
+        }).catch(err => {
+            console.log(err);
+            res.status(500).json({err});
+        });
+    });
+
+    app.post("/deletePast/:event_id", (req, res) => {
+        knex("events").where("event_id", req.params.event_id).del().then(() => {
+            res.redirect("/pastEvents");
         }).catch(err => {
             console.log(err);
             res.status(500).json({err});
