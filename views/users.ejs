@@ -12,39 +12,23 @@
         <thead>
             <tr>
                 <!-- Headers for table to display planet info -->
-                <th>Volunteer ID</th>
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Phone</th>
                 <th>Email</th>
-                <th>Referral Source</th>
-                <th>Sewing Level</th>
-                <th>Monthly Hours</th>
                 <th>City</th>
-                <th>Username</th>
-                <th>Password</th>
                 <th>Travel</th>
-                <th>Take Charge</th>
-                <th>Status</th>
             </tr>
         </thead>
         <tbody style="font-family: Arial; font-size: 9pt;">
             <% for (let iCount = 0; iCount < members.length; iCount++) { %>
                 <tr>
-                    <td><%= members[iCount].volunteer_id %></td>
                     <td><%= members[iCount].first_name %></td>
                     <td><%= members[iCount].last_name %></td>
                     <td><%= members[iCount].phone %></td>
                     <td><%= members[iCount].email %></td>
-                    <td><%= members[iCount].referral_source %></td>
-                    <td><%= members[iCount].sewing_level %></td>
-                    <td><%= members[iCount].monthly_hours %></td>
                     <td><%= members[iCount].city %></td>
-                    <td><%= members[iCount].username %></td>
-                    <td><%= members[iCount].password %></td>
                     <td><%= members[iCount].travel %></td>
-                    <td><%= members[iCount].take_charge %></td>
-                    <td><%= members[iCount].status %></td>
                     <td style="text-align: center;">
                         <form action="/editUser/<%= members[iCount].volunteer_id %>" method="GET">
                             <button type="submit">Edit</button>
