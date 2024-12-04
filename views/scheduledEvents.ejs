@@ -62,13 +62,15 @@
                 <td colspan="7">No data available</td>
                 </tr>
             <% } %>
+            <tr>
+                <td colspan="11" style="text-align: center; width: 100%;">
+                    <form class="view-button-form" action="/addScheduled" method="GET">
+                        <button class="table-button" type="submit">Add Scheduled Event</button>
+                    </form>
+                </td>
+            </tr>
         </tbody>
     </table>
-
-        <form action="/addScheduled" method="GET">
-            <button type="submit">Add Scheduled Event</button>
-        </form>
-    </form>
 
     <main></main>
     <footer>
