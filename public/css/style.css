@@ -118,6 +118,12 @@ form {
     margin: 20px auto; 
 }
 
+.view-button-form {
+    margin:0;
+    padding:0;
+    width:auto;
+}
+
 /* Labels aligned to the left */
 label {
     width: 30%; 
@@ -192,6 +198,23 @@ button[type="submit"] {
     width: 100%;
 }
 
+.table-button[type="submit"] {
+    background-color: #F4E1A1;
+    color: black;
+    padding: 3px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: block;
+    width: 100%;
+}
+
+.table-button[type="submit"]:hover {
+    transform:none;
+}
+
 button[type="submit"]:hover {
     background-color: #EACB75;
     transform: translateY(-3px);
@@ -256,7 +279,10 @@ button[type="submit"]:active {
 
 /* Footer */
 footer {
-    background-color: #74b49b;
+    background-color: #5e8c74;
+    position: absolute;
+    bottom:0;
+    width:100%;
     color: #ffffff;
     padding: 15px 20px;
     display: flex;
@@ -305,7 +331,7 @@ table {
 th, td {
     padding: 5px;
     text-align: center;
-    font-size: 1em;
+    font-size: 9pt;
     border-bottom: 1px solid #ddd;
     border-right: 1px solid #ddd;
 }
@@ -313,9 +339,8 @@ th, td {
 th {
     background-color: #74b49b; 
     color: #fff;
-    font-family: 'Georgia', serif;
-    font-weight: bold;
     text-transform: uppercase;
+    
 }
 
 td {
@@ -362,8 +387,8 @@ table td, table th {
 }
 
 table td:hover {
-    background-color: #8ec0a8;
-    color: #fff; 
+    background-color: transparent;
+    color: inherit; 
 }
 
 table.form td:hover {
