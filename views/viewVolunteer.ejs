@@ -11,55 +11,81 @@
         <link rel="stylesheet" href="/css/style.css">
     </head>
     <body>
-        <!-- Title -->
-        <h1><b>Volunteer Information:</b></h1>
-        <br><br>
-        <!-- It's not an array, so you can just display from the one object -->
-        <label><b>Volunteer ID</b></label>
-        <p><%= showVolunteers.volunteer_id %></p>
-        <br>
-        <label><b>First Name</b></label>
-        <p><%= showVolunteers.first_name %></p>
-        <br>
-        <label><b>Last Name</b></label>
-        <p><%= showVolunteers.last_name %></p>
-        <br>
-        <label><b>Phone</b></label>
-        <p><%= showVolunteers.phone %></p>
-        <br>
-        <label><b>Email</b></label>
-        <p><%= showVolunteers.email %></p>
-        <br>
-        <label><b>Referral Source</b></label>
-        <p><%= showVolunteers.referral_source %></p>
-        <br>
-        <label><b>Sewing Level</b></label>
-        <p><%= showVolunteers.sewing_level %></p>
-        <br>
-        <label><b>Monthly Hours</b></label>
-        <p><%= showVolunteers.monthly_hours %></p>
-        <br>
-        <label><b>City</b></label>
-        <p><%= showVolunteers.city %></p>
-        <br>
-        <label><b>Username</b></label>
-        <p><%= showVolunteers.username %></p>
-        <br>
-        <label><b>Password</b></label>
-        <p><%= showVolunteers.password %></p>
-        <br>
-        <label><b>How far will they Travel?</b></label>
-        <p><%= showVolunteers.travel %></p>
-        <br>
-        <label><b>Will They take charge?</b></label>
-        <p><%= showVolunteers.take_charge %></p>
-        <br>
-        <label><b>Status</b></label>
-        <p><%= showVolunteers.status %></p>
-        
-        <!-- Button to return to home page -->
+        <nav>
+            <div class="org-name">Turtle Shelter Project</div>
+            <div class="nav-links">
+                <a href="/landing2"><button class="link">Admin Home</button></a>
+                <a href="/users"><button class="link">Team Members</button></a>
+                <a href="/showVolunteers"><button class="link">Volunteer Requests</button></a>
+                <a href="/eventRequests"><button class="link">Event Requests</button></a>
+                <a href="/scheduledEvents"><button class="link">Scheduled Events</button></a>
+                <a href="/pastEvents"><button class="link">Past Events</button></a>
+            </div>
+        </nav>
+        <table class="view">
+            <caption>Volunteer Details</caption>
+            <tr>
+                <td><label>Volunteer ID</label></td>
+                <td><p><%= showVolunteers.volunteer_id %></p></td>
+            </tr>
+            <tr>
+                <td><label>First Name</label></td>
+                <td><p><%= showVolunteers.first_name %></p></td>
+            </tr>
+            <tr>
+                <td><label>Last Name</label></td>
+                <td><p><%= showVolunteers.last_name %></p></td>
+            </tr>
+            <tr>
+                <td><label>Phone Number</label></td>
+                <td><p><%= showVolunteers.phone %></p></td>
+            </tr>
+            <tr>
+                <td><label>Email</label></td>
+                <td><p><%= showVolunteers.email %></p></td>
+            </tr>
+            <tr>
+                <td><label>Referral Source</label></td>
+                <td><p><%= showVolunteers.referral_source %></p></td>
+            </tr>
+            <tr>
+                <td><label>Sewing Level</label></td>
+                <td><p><%= showVolunteers.sewing_level %></p></td>
+            </tr>
+            <tr>
+                <td><label>Monthly Hours</label></td>
+                <td><p><%= showVolunteers.monthly_hours %></p></td>
+            </tr>
+            <tr>
+                <td><label>City</label></td>
+                <td><p><%= showVolunteers.city %></p></td>
+            </tr>
+            <tr>
+                <td><label>Travel</label></td>
+                <td><p><%= showVolunteers.travel %></p></td>
+            </tr>
+            <tr>
+                <td><label>Leader</label></td>
+                <td><p><%= showVolunteers.take_charge == "Y" ? "Yes" : "No" %></p></td>
+            </tr>
+            <tr>
+                <td><label>Status</label></td>
+                <td><p><%= showVolunteers.status %></p></td>
+            </tr>
+        </table>
         <form action="/showVolunteers" method="GET">
             <button type="submit">Return</button>
         </form>
+        <main></main>
+    <footer>
+        <div class="footer-left">
+            <a href="/login">Admin Portal</a>
+            <a href="/about">About</a>
+            <a href="/volunteer">Volunteer</a>
+        </div>
+        <div class="footer-right">
+            <p>© 2024 Turtle Shelter Project. All rights reserved.</p>
+        </div>
+    </footer>
     </body>
 </html>

@@ -18,7 +18,7 @@
             <a href="/pastEvents"><button class="link">Past Events</button></a>
         </div>
     </nav>
-    <table>
+    <table class="summary">
         <caption>Team Members</caption>
         <thead>
             <th>ID</th>
@@ -26,15 +26,9 @@
             <th>Last Name</th>
             <th>Phone</th>
             <th>Email</th>
-            <th>Referral Source</th>
-            <th>Sewing Level</th>
             <th>Monthly Hours</th>
             <th>City</th>
-            <th>Username</th>
-            <th>Password</th>
             <th>Travel</th>
-            <th>Take Charge</th>
-            <th>Status</th>
             <th>Edit</th>
             <th>View</th>
             <th>Delete</th>
@@ -47,15 +41,9 @@
                     <td><%= members[iCount].last_name %></td>
                     <td><%= members[iCount].phone %></td>
                     <td><%= members[iCount].email %></td>
-                    <td><%= members[iCount].referral_source %></td>
-                    <td><%= members[iCount].sewing_level %></td>
                     <td><%= members[iCount].monthly_hours %></td>
                     <td><%= members[iCount].city %></td>
-                    <td><%= members[iCount].username %></td>
-                    <td><%= members[iCount].password %></td>
                     <td><%= members[iCount].travel %></td>
-                    <td><%= members[iCount].take_charge %></td>
-                    <td><%= members[iCount].status %></td>
                     <td>
                         <form class="view-button-form" action="/editUser/<%= members[iCount].volunteer_id %>" method="GET">
                             <button class="table-button" type="submit">Edit</button>
@@ -77,11 +65,11 @@
     </table>
 
     <form action="/addUser" method="GET">
-        <button type="submit">Add User</button>
+        <button type="submit">Add Team Member</button>
     </form>
 
     <main></main>
-    <footer>
+    <footer> 
         <div class="footer-left">
             <a href="/login">Admin Portal</a>
             <a href="/about">About</a>

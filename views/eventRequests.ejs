@@ -17,12 +17,12 @@
             <a href="/pastEvents"><button class="link">Past Events</button></a>
         </div>
     </nav>
-    <table>
-        <caption>Event Requests</caption>
+    <table class="summary">
+        <caption>Event Requests Summary</caption>
         <thead>
             <tr>
                 <th>Event ID</th>
-                <th>Date</th>
+                <th>Requested Date</th>
                 <th>Description</th>
                 <th>Contact Name</th>
                 <th>Address</th>
@@ -31,14 +31,12 @@
             </tr>
         </thead>
         <tbody>
-            <!-- Loop through everything in the eventRequests array -->
             <% if (eventRequests.length > 0) { %>
                 <% eventRequests.forEach(row => { %>
                     <tr>
-                        <!-- Add data to the table -->
                         <input type="hidden" value="row.event_id">
                         <td><%= row.event_id %></td>
-                        <td><%= row.actual_date %></td>
+                        <td><%= new Date(row.possible_date).toLocaleDateString('en-US') %></td>
                         <td><%= row.description %></td>
                         <td><%= row.contact_name %></td>
                         <td><%= row.address %></td>

@@ -7,128 +7,122 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <h1 style="text-align: center;">Edit Requested Event</h1>
-    
-    <!-- Route to post changes -->
+    <nav>
+        <div class="org-name">Turtle Shelter Project</div>
+        <div class="nav-links">
+            <a href="/landing2"><button class="link">Admin Home</button></a>
+            <a href="/users"><button class="link">Team Members</button></a>
+            <a href="/showVolunteers"><button class="link">Volunteer Requests</button></a>
+            <a href="/eventRequests"><button class="link">Event Requests</button></a>
+            <a href="/scheduledEvents"><button class="link">Scheduled Events</button></a>
+            <a href="/pastEvents"><button class="link">Past Events</button></a>
+        </div>
+    </nav>
     <form action="/editRequest/<%= eventRequests.event_id %>" method="POST">
-
-        <!-- Description: Character Varying -->
-        <label for="description">Description</label>
-        <input type="text" id="description" name="description" value="<%= eventRequests.description %>" required>
-        <br><br>
-
-        <!-- Anticipated_Participants: Integer -->
-        <label for="anticipated_participants">Anticipated Participants</label>
-        <input type="number" id="anticipated_participants" name="anticipated_participants" value="<%= eventRequests.anticipated_participants %>">
-        <br><br>
-
-        <!-- Under_Ten: Integer -->
-        <label for="under_ten">Under Ten</label>
-        <input type="number" id="under_ten" name="under_ten" value="<%= eventRequests.under_ten %>">
-        <br><br>
-
-        <!-- Possible_Date: Datetime -->
-        <label for="possible_date">Possible Date</label>
-        <input type="date" id="possible_date" name="possible_date" value="<%= eventRequests.possible_date.toISOString().split('T')[0] %>">
-        <br><br>
-
-        <!-- Type: Character Varying/ Radio -->
-        <label>Event Type</label>
-        <label>
-            <input type="radio" name="type" value="Sewing" <%= eventRequests.type === 'Sewing' ? 'checked' : '' %>> Sewing
-        </label>
-        <label>
-            <input type="radio" name="type" value="Non-sewing"<%= eventRequests.type === 'Non-sewing' ? 'checked' : '' %>> Non-sewing
-        </label>
-        <label>
-            <input type="radio" name="type" value="Both" <%= eventRequests.type === 'Non-sewing' ? 'checked' : '' %>> Both
-        </label>
-        <br><br>
-
-        <!-- Address: Character Varying -->
-        <label for="address">Address</label>
-        <input type="text" id="address" name="address" value="<%= eventRequests.address %>">
-        <br><br>
-
-        <!-- Start_Time: Time -->
-        <label for="start_time">Start Time</label>
-        <input type="time" id="start_time" name="start_time" value="<%= eventRequests.start_time %>">
-        <br><br>
-
-        <!-- Duration: Character Varying -->
-        <label for="duration">Duration</label>
-        <input type="text" id="duration" name="duration" value="<%= eventRequests.duration %>">
-        <br><br>
-
-        <!-- Contact_Name: Character Varying -->
-        <label for="contact_name">Contact Name</label>
-        <input type="text" id="contact_name" name="contact_name" value="<%= eventRequests.contact_name %>">
-        <br><br>
-
-        <!-- Contact_Phone: Character Varying -->
-        <label for="contact_phone">Contact Phone</label>
-        <input type="text" id="contact_phone" name="contact_phone" value="<%= eventRequests.contact_phone %>">
-        <br><br>
-
-        <!-- Contact_Email: Character Varying -->
-        <label for="contact_email">Contact Email</label>
-        <input type="text" id="contact_email" name="contact_email" value="<%= eventRequests.contact_email %>">
-        <br><br>
-
-        <!-- Machines: Integer -->
-        <label for="machines">Machines</label>
-        <input type="number" id="machines" name="machines" value="<%= eventRequests.machines %>">
-        <br><br>
-
-        <!-- Sewers: Integer -->
-        <label for="sewers">Sewers</label>
-        <input type="number" id="sewers" name="sewers" value="<%= eventRequests.sewers %>">
-        <br><br>
-
-        <!-- Story: Character Varying/ Radio -->
-        <label>Did Jen share her story?</label>
-        <label>
-            <input type="radio" name="story" value="Yes, long" <%= eventRequests.story === 'Yes, long' ? 'checked' : '' %>> Yes, Long
-        </label>
-        <label>
-            <input type="radio" name="story" value="Yes, short" <%= eventRequests.story === 'Yes, short' ? 'checked' : '' %>> Yes, Short
-        </label>
-        <label>
-            <input type="radio" name="story" value="No" <%= eventRequests.story === 'No' ? 'checked' : '' %>> No
-        </label>
-        <br><br>
-
-        <!-- Members_Needed: Integer -->
-        <label for="members_needed">Members Needed</label>
-        <input type="number" id="members_needed" name="members_needed" value="<%= eventRequests.members_needed %>">
-        <br><br>
-
-        <!-- Status Character Varying / Radio-->
-        <label>Status</label>
-        <label>
-            <input type="radio" name="status" value="Pending" <%= eventRequests.status === 'Pending' ? 'checked' : '' %>> Pending
-        </label>
-        <label>
-            <input type="radio" name="status" value="Approved" <%= eventRequests.status === 'Approved' ? 'checked' : '' %>> Approved
-        </label>
-        <label>
-            <input type="radio" name="status" value="Denied" <%= eventRequests.status === 'No' ? 'Denied' : '' %>> Denied
-        </label>
-        <label>
-            <input type="radio" name="status" value="Completed" <%= eventRequests.status === 'No' ? 'Completed' : '' %>> Completed
-        </label>
-        <br><br>
-
-        <!-- Notes: Character Varying -->
-        <label for="notes">Notes</label>
-        <input type="text" id="notes" name="notes" value="<%= eventRequests.notes %>">
-        <br><br>
-
-        <!-- Submit Button -->
-        <button type="submit">Edit</button>
+        <table>
+            <caption>Edit Event Request</caption>
+            <tr>
+                <td><label for="description">Description</label></td>
+                <td><input type="text" id="description" name="description" value="<%= eventRequests.description %>" required></td>
+            </tr>
+            <tr>
+                <td><label for="anticipated_participants">Anticipated Participants</label></td>
+                <td><input type="number" id="anticipated_participants" name="anticipated_participants" value="<%= eventRequests.anticipated_participants %>"></td>
+            </tr>
+            <tr>
+                <td><label for="under_ten">Under Ten</label></td>
+                <td><input type="number" id="under_ten" name="under_ten" value="<%= eventRequests.under_ten %>"></td>
+            </tr>
+            <tr>
+                <td><label for="possible_date">Requested Date</label></td>
+                <td><input type="date" id="possible_date" name="possible_date" value="<%= eventRequests.possible_date.toISOString().split('T')[0] %>"></td>
+            </tr>
+            <tr>
+                <td><label for="actual_date">Scheduled Date</label></td>
+                <td><input type="date" id="actual_date" name="actual_date" value="<%= new Date().toISOString().split('T')[0] %>"></td>
+            </tr>
+            <tr>
+                <td><label>Event Type</label></td>
+                <td style="text-align: left;">
+                    <input type="radio" name="type" value="Sewing" <%= eventRequests.type === 'Sewing' ? 'checked' : '' %>> Sewing<br>
+                    <input type="radio" name="type" value="Non-sewing"<%= eventRequests.type === 'Non-sewing' ? 'checked' : '' %>> Non-sewing<br>
+                    <input type="radio" name="type" value="Both" <%= eventRequests.type === 'Non-sewing' ? 'checked' : '' %>> Both
+                </td>
+            </tr>
+            <tr>
+                <td><label for="address">Address</label></td>
+                <td><input type="text" id="address" name="address" value="<%= eventRequests.address %>"></td>
+            </tr>
+            <tr>
+                <td><label for="start_time">Start Time</label></td>
+                <td><input type="time" id="start_time" name="start_time" value="<%= eventRequests.start_time %>"></td>
+            </tr><tr>
+                <td><label for="duration">Duration</label></td>
+                <td><input type="text" id="duration" name="duration" value="<%= eventRequests.duration %>"></td>
+            </tr>
+            <tr>
+                <td><label for="contact_name">Contact Name</label></td>
+                <td><input type="text" id="contact_name" name="contact_name" value="<%= eventRequests.contact_name %>"></td>
+            </tr>
+            <tr>
+                <td><label for="contact_phone">Contact Phone</label></td>
+                <td><input type="text" id="contact_phone" name="contact_phone" value="<%= eventRequests.contact_phone %>"></td>
+            </tr>
+            <tr>
+                <td><label for="contact_email">Contact Email</label></td>
+                <td><input type="text" id="contact_email" name="contact_email" value="<%= eventRequests.contact_email %>"></td>
+            </tr>
+            <tr>
+                <td><label for="machines">Machines</label></td>
+                <td><input type="number" id="machines" name="machines" value="<%= eventRequests.machines %>"></td>
+            </tr>
+            <tr>
+                <td><label for="sewers">Sewers</label></td>
+                <td><input type="number" id="sewers" name="sewers" value="<%= eventRequests.sewers %>"></td>
+            </tr>
+            <tr>
+                <td><label>Did Jen share her story?</label></td>
+                <td style="text-align: left;">
+                    <input type="radio" name="story" value="Yes, long" <%= eventRequests.story === 'Yes, long' ? 'checked' : '' %>> Yes, Long<br>
+                    <input type="radio" name="story" value="Yes, short" <%= eventRequests.story === 'Yes, short' ? 'checked' : '' %>> Yes, Short<br>
+                    <input type="radio" name="story" value="No" <%= eventRequests.story === 'No' ? 'checked' : '' %>> No
+                </td>
+            </tr>
+            <tr>
+                <td><label for="members_needed">Members Needed</label></td>
+                <td><input type="number" id="members_needed" name="members_needed" value="<%= eventRequests.members_needed %>"></td>
+            </tr>
+            <tr>
+                <td><label>Status</label></td>
+                <td style="text-align: left;">
+                    <input type="radio" name="status" value="Pending" <%= eventRequests.status === 'Pending' ? 'checked' : '' %>> Pending<br>
+                    <input type="radio" name="status" value="Approved" <%= eventRequests.status === 'Approved' ? 'checked' : '' %>> Approved<br>
+                    <input type="radio" name="status" value="Denied" <%= eventRequests.status === 'No' ? 'Denied' : '' %>> Denied<br>
+                    <input type="radio" name="status" value="Completed" <%= eventRequests.status === 'No' ? 'Completed' : '' %>> Completed
+                </td>
+            </tr>
+            <tr>
+                <td><label for="notes">Notes</label></td>
+                <td><input type="text" id="notes" name="notes" value="<%= eventRequests.notes %>"></td>
+            </tr>
+        </table>
+        <button type="submit">Submit</button>
     </form>
-    <form action="/eventRequests" method="GET" style="display: flex; justify-content: center; margin: 20px 0;">
+
+    <form action="/eventRequests" method="GET">
         <button type="submit">Back</button>
     </form>
+
+    <main></main>
+    <footer>
+        <div class="footer-left">
+            <a href="/login">Admin Portal</a>
+            <a href="/about">About</a>
+            <a href="/volunteer">Volunteer</a>
+        </div>
+        <div class="footer-right">
+            <p>© 2024 Turtle Shelter Project. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>

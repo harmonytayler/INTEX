@@ -9,87 +9,131 @@
         <title>Display Past Event</title>
         <link rel="stylesheet" href="/css/style.css">
     </head>
-    <body>
-        <!-- Title -->
-        <h1><b>Event Details:</b></h1>
-        <br><br>
-        <!-- It's not an array, so you can just display from the one object -->
-        <label><b>Event ID</b></label>
-        <p><%= pastEvents.event_id %></p>
-        <br>
-        <label><b>Description</b></label>
-        <p><%= pastEvents.description %></p>
-        <br>
-        <label><b>Anticipated Paricipant</b></label>
-        <p><%= pastEvents.anticipated_participants %></p>
-        <br>
-        <label><b>Under Ten</b></label>
-        <p><%= pastEvents.under_ten %></p>
-        <br>
-        <label><b>Possible Date</b></label>
-        <p><%= pastEvents.possible_date %></p>
-        <br>
-        <label><b>Type</b></label>
-        <p><%= pastEvents.type %></p>
-        <br>
-        <label><b>Address</b></label>
-        <p><%= pastEvents.address %></p>
-        <br>
-        <label><b>Start Time</b></label>
-        <p><%= pastEvents.start_time %></p>
-        <br>
-        <label><b>Duration</b></label>
-        <p><%= pastEvents.duration %></p>
-        <br>
-        <label><b>Contact Name</b></label>
-        <p><%= pastEvents.contact_name %></p>
-        <br>
-        <label><b>Contact Phone</b></label>
-        <p><%= pastEvents.contact_phone %></p>
-        <br>
-        <label><b>Contact Email</b></label>
-        <p><%= pastEvents.contact_email %></p>
-        <br>
-        <label><b>Machines</b></label>
-        <p><%= pastEvents.machines %></p>
-        <br>
-        <label><b>Sewers</b></label>
-        <p><%= pastEvents.sewers %></p>
-        <br>
-        <label><b>Story</b></label>
-        <p><%= pastEvents.story %></p>
-        <br>
-        <label><b>Actual Date</b></label>
-        <p><%= pastEvents.actual_date %></p>
-        <br>
-        <label><b>Actual Paricipation</b></label>
-        <p><%= pastEvents.actual_participants %></p>
-        <br>
-        <label><b>Pockets</b></label>
-        <p><%= pastEvents.pockets %></p>
-        <br>
-        <label><b>Collars</b></label>
-        <p><%= pastEvents.collars %></p>
-        <br>
-        <label><b>Envelopes</b></label>
-        <p><%= pastEvents.envelopes %></p>
-        <br>
-        <label><b>Vests</b></label>
-        <p><%= pastEvents.vests %></p>
-        <br>
-        <label><b>Members Needed</b></label>
-        <p><%= pastEvents.members_needed %></p>
-        <br>
-        <label><b>Status</b></label>
-        <p><%= pastEvents.status %></p>
-        <br>
-        <label><b>Notes</b></label>
-        <p><%= pastEvents.notes %></p>
-        <br>
-        
-        <!-- Button to return to home page -->
-        <form action="/pastEvents" method="GET">
-            <button type="submit">Return</button>
-        </form>
-    </body>
+<body>
+    <nav>
+        <div class="org-name">Turtle Shelter Project</div>
+        <div class="nav-links">
+            <a href="/landing2"><button class="link">Admin Home</button></a>
+            <a href="/users"><button class="link">Team Members</button></a>
+            <a href="/showVolunteers"><button class="link">Volunteer Requests</button></a>
+            <a href="/eventRequests"><button class="link">Event Requests</button></a>
+            <a href="/scheduledEvents"><button class="link">Scheduled Events</button></a>
+            <a href="/pastEvents"><button class="link">Past Events</button></a>
+        </div>
+    </nav>
+    <table class="view">
+        <caption>Past Event Details</caption>
+        <tr>
+            <td><label>Event ID</label></td>
+            <td><p><%= pastEvents.event_id %></p></td>
+        </tr>
+        <tr>
+            <td><label>Description</label></td>
+            <td><p><%= pastEvents.description %></p></td>
+        </tr>
+        <tr>
+            <td><label>Anticipated Paricipants</label></td>
+            <td><p><%= pastEvents.anticipated_participants %></p></td>
+        </tr>
+        <tr>
+            <td><label>Participants Under Ten</label></td>
+            <td><p><%= pastEvents.under_ten %></p></td>
+        </tr>
+        <tr>
+            <td><label>Preferred Date</label></td>
+            <td><p><%= new Date(pastEvents.possible_date).toLocaleDateString('en-US') %></p></td>
+        </tr>
+        <tr>
+            <td><label>Type</label></td>
+            <td><p><%= pastEvents.type %></p></td>
+        </tr>
+        <tr>
+            <td><label>Address</label></td>
+            <td><p><%= pastEvents.address %></p></td>
+        </tr>
+        <tr>
+            <td><label>Start Time</label></td>
+            <td><p><%= pastEvents.start_time %></p></td>
+        </tr>
+        <tr>
+            <td><label>Duration</label></td>
+            <td><p><%= pastEvents.duration %></p></td>
+        </tr>
+        <tr>
+            <td><label>Contact Name</label></td>
+            <td><p><%= pastEvents.contact_name %></p></td>
+        </tr>
+        <tr>
+            <td><label>Contact Phone</label></td>
+            <td><p><%= pastEvents.contact_phone %></p></td>
+        </tr>
+        <tr>
+            <td><label>Contact Email</label></td>
+            <td><p><%= pastEvents.contact_email %></p></td>
+        </tr>
+        <tr>
+            <td><label>Machines</label></td>
+            <td><p><%= pastEvents.machines %></p></td>
+        </tr>
+        <tr>
+            <td><label>Sewers</label></td>
+            <td><p><%= pastEvents.sewers %></p></td>
+        </tr>
+        <tr>
+            <td><label>Story</label></td>
+            <td><p><%= pastEvents.story %></p></td>
+        </tr>
+        <tr>
+            <td><label>Members Needed</label></td>
+            <td><p><%= pastEvents.members_needed %></p></td>
+        </tr>
+        <tr>
+            <td><label>Status</label></td>
+            <td><p><%= pastEvents.status %></p></td>
+        </tr>
+        <tr>
+            <td><label>Notes</label></td>
+            <td><p><%= pastEvents.notes %></p></td>
+        </tr>
+        <tr>
+            <td><label>Actual Date</label></td>
+            <td><p><%= new Date(pastEvents.actual_date).toLocaleDateString('en-US') %></p></td>
+        </tr>
+        <tr>
+            <td><label>Actual Paricipation</label></td>
+            <td><p><%= pastEvents.actual_participants %></p></td>
+        </tr>
+        <tr>
+            <td><label>Pockets Completed</label></td>
+            <td><p><%= pastEvents.pockets %></p></td>
+        </tr>
+        <tr>
+            <td><label>Collars Completed</label></td>
+            <td><p><%= pastEvents.collars %></p></td>
+        </tr>
+        <tr>
+            <td><label>Envelopes Completed</label></td>
+            <td><p><%= pastEvents.envelopes %></p></td>
+        </tr>
+        <tr>
+            <td><label>Vests Completed</label></td>
+            <td><p><%= pastEvents.vests %></p></td>
+        </tr>
+    </table>
+    <form action="/pastEvents" method="GET">
+        <button type="submit">Return</button>
+    </form>
+    
+    <main></main>
+    <footer>
+        <div class="footer-left">
+            <a href="/login">Admin Portal</a>
+            <a href="/about">About</a>
+            <a href="/volunteer">Volunteer</a>
+        </div>
+        <div class="footer-right">
+            <p>© 2024 Turtle Shelter Project. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
 </html>

@@ -7,75 +7,94 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <h1 style="text-align: center;">Edit User</h1>
-    
+    <nav>
+        <div class="org-name">Turtle Shelter Project</div>
+        <div class="nav-links">
+            <a href="/landing2"><button class="link">Admin Home</button></a>
+            <a href="/users"><button class="link">Team Members</button></a>
+            <a href="/showVolunteers"><button class="link">Volunteer Requests</button></a>
+            <a href="/eventRequests"><button class="link">Event Requests</button></a>
+            <a href="/scheduledEvents"><button class="link">Scheduled Events</button></a>
+            <a href="/pastEvents"><button class="link">Past Events</button></a>
+        </div>
+    </nav>
     <form action="/editUser/<%= members.volunteer_id %>" method="POST">
-
-        <input type="hidden" id="volunteer_id" name="volunteer_id" value="<%= members[0].volunteer_id %>">
-
-        <label for="first_name">First Name</label>
-        <input type="text" id="first_name" name="first_name" required value="<%= members[0].first_name %>">
-        <br><br>
-
-        <label for="last_name">Last Name</label>
-        <input type="text" id="last_name" name="last_name" required value="<%= members[0].last_name %>">
-        <br><br>
-
-        <label for="phone">Phone Number</label>
-        <input type="text" id="phone" name="phone" required value="<%= members[0].phone %>">
-        <br><br>
-
-        <label for="email">Email</label>
-        <input type="text" id="email" name="email" required value="<%= members[0].email %>">
-        <br><br>
-
-        <label for="referral_source">Referral Source</label>
-        <input type="text" id="referral_source" name="referral_source" required value="<%= members[0].referral_source %>">
-        <br><br>
-
-        <label>Sewing Level</label>
-        <label>
-            <input type="radio" name="sewer" value="Beginner" <%= members[0].sewing_level == "Beginner" ? "checked" : "" %>> Beginner
-        </label>
-        <label>
-            <input type="radio" name="sewer" value="Intermediate" <%= members[0].sewing_level == "Intermediate" ? "checked" : "" %>> Intermediate
-        </label>
-        <label>
-            <input type="radio" name="sewer" value="Experienced" <%= members[0].sewing_level == "Experienced" ? "checked" : "" %>> Experienced
-        </label>
-        <br><br>
-
-        <label for="monthly_hours">Monthly Hours</label>
-        <input type="float" id="monthly_hours" name="monthly_hours" required value="<%= members[0].monthly_hours %>">
-        <br><br>
-
-        <label for="city">City</label>
-        <input type="text" id="city" name="city" required value="<%= members[0].city %>">
-        <br><br>
-
-        <label for="travel">Travel</label>
-        <input type="text" id="travel" name="travel" required value="<%= members[0].travel %>">
-        <br><br>
-
-        <label for="take_charge">Leader? (Y/N):</label>
-        <input type="checkbox" id="take_charge" name="take_charge" <%= members[0].take_charge == "Y" ? "checked" : "" %>
-        <br><br>
-
-        <label>Status</label>
-        <label>
-            <input type="radio" name="status" value="Active" <%= members[0].status == "Active" ? "checked" : "" %>> Active
-        </label>
-        <label>
-            <input type="radio" name="status" value="Pending" <%= members[0].status == "Pending" ? "checked" : "" %>> Pending
-        </label>
-        <label>
-            <input type="radio" name="status" value="Denied" <%= members[0].status == "Denied" ? "checked" : "" %>> Denied
-        </label>
-        <br><br>
-        <button type="submit">Submit Edits</button>
+        <table>
+            <caption>Edit Team Member</caption>
+            <input type="hidden" id="volunteer_id" name="volunteer_id" value="<%= members[0].volunteer_id %>">
+            <tr>
+                <td><label for="first_name">First Name</label></td>
+                <td><input type="text" id="first_name" name="first_name" required value="<%= members[0].first_name %>"></td>
+            </tr>
+            <tr>
+                <td><label for="last_name">Last Name</label></td>
+                <td><input type="text" id="last_name" name="last_name" required value="<%= members[0].last_name %>"></td>
+            </tr>
+            <tr>
+                <td><label for="phone">Phone Number</label></td>
+                <td><input type="text" id="phone" name="phone" required value="<%= members[0].phone %>"></td>
+            </tr>
+            <tr>
+                <td><label for="email">Email</label></td>
+                <td><input type="text" id="email" name="email" required value="<%= members[0].email %>"></td>
+            </tr>
+            <tr>
+                <td><label for="referral_source">Referral Source</label></td>
+                <td><input type="text" id="referral_source" name="referral_source" required value="<%= members[0].referral_source %>"></td>
+            </tr>
+            <tr>
+                <td><label>Sewing Level</label></td>
+                <td style="text-align: left;">
+                    <input type="radio" name="sewer" value="Beginner" <%= members[0].sewing_level == "Beginner" ? "checked" : "" %>> Beginner<br>
+                    <input type="radio" name="sewer" value="Intermediate" <%= members[0].sewing_level == "Intermediate" ? "checked" : "" %>> Intermediate<br>
+                    <input type="radio" name="sewer" value="Experienced" <%= members[0].sewing_level == "Experienced" ? "checked" : "" %>> Experienced
+                </td>
+            </tr>
+            <tr>
+                <td><label for="monthly_hours">Monthly Hours</label></td>
+                <td><input type="float" id="monthly_hours" name="monthly_hours" required value="<%= members[0].monthly_hours %>"></td>
+            </tr>
+            <tr>
+                <td><label for="city">City</label></td>
+                <td><input type="text" id="city" name="city" required value="<%= members[0].city %>"></td>
+            </tr>
+            <tr>
+                <td><label for="travel">Travel</label></td>
+                <td><input type="text" id="travel" name="travel" required value="<%= members[0].travel %>"></td>
+            </tr>
+            <tr>
+                <td><label for="take_charge">Leader</label></td>
+                <td style="text-align: left;">
+                    <input type="radio" id="take_charge" name="take_charge" value="Y" <%= members[0].take_charge == true ? "checked" : "" %>>Yes<br>
+                    <input type="radio" id="take_charge" name="take_charge" value="N" <%= members[0].take_charge == false ? "checked" : "" %>>No
+                </td>
+            </tr>
+            <tr>
+                <td><label>Status</label></td>
+                <td style="text-align: left;">
+                    <input type="radio" name="status" value="Active" <%= members[0].status == "Active" ? "checked" : "" %>> Active<br>
+                    <input type="radio" name="status" value="Pending" <%= members[0].status == "Pending" ? "checked" : "" %>> Pending<br>
+                    <input type="radio" name="status" value="Denied" <%= members[0].status == "Denied" ? "checked" : "" %>> Denied
+                </td>
+            </tr>
+        </table>
+        <button type="submit">Submit</button>
     </form>
-    <form action="/users" method="GET" style="display: flex; justify-content: center; margin: 20px 0;">
-        <button type="submit">Cancel</button>
+
+    <form action="/users" method="GET">
+        <button type="submit">Back to Team Members</button>
     </form>
+
+    <main></main>
+    <footer>
+        <div class="footer-left">
+            <a href="/login">Admin Portal</a>
+            <a href="/about">About</a>
+            <a href="/volunteer">Volunteer</a>
+        </div>
+        <div class="footer-right">
+            <p>© 2024 Turtle Shelter Project. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>

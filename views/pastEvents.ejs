@@ -18,7 +18,7 @@
             <a href="/pastEvents"><button class="link">Past Events</button></a>
         </div>
     </nav>
-    <table>
+    <table class="summary">
         <caption>Past Events</caption>
         <thead>
             <tr>
@@ -40,7 +40,7 @@
                         <!-- Add data to the table -->
                         <input type="hidden" value="row.event_id">
                         <td><%= row.event_id %></td>
-                        <td><%= row.actual_date %></td>
+                        <td><%= new Date(row.actual_date).toLocaleDateString('en-US') %></td>
                         <td><%= row.description %></td>
                         <td><%= row.contact_name %></td>
                         <td><%= row.address %></td>
