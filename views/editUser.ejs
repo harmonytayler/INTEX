@@ -73,8 +73,12 @@
                     <input type="radio" name="status" value="Denied" <%= members[0].status == "Denied" ? "checked" : "" %>> Denied
                 </td>
             </tr>
+            <tr>
+                <td colspan="11" style="text-align: center; width: 100%;">
+                    <button class="table-button" type="submit">Edit Team Member</button>
+                </td>
+            </tr>
         </table>
-        <button type="submit">Submit</button>
     </form>
 
     <form action="/users" method="GET">

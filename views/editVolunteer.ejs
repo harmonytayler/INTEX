@@ -17,7 +17,7 @@
     </nav>
     <form action="/editVolunteer/<%= showVolunteer.volunteer_id %>" method="POST">
         <table>
-            <caption>Edit Team Member</caption>
+            <caption>Edit Volunteer</caption>
             <input type="hidden" id="volunteer_id" name="volunteer_id" value="<%= showVolunteer.volunteer_id %>">
             <tr>
                 <td><label for="first_name">First Name</label></td>
@@ -74,8 +74,12 @@
                     <input type="radio" name="status" value="Denied" <%= showVolunteer.status == "Denied" ? "checked" : "" %>> Denied
                 </td>
             </tr>
+            <tr>
+                <td colspan="11" style="text-align: center; width: 100%;">
+                    <button class="table-button" type="submit">Edit Volunteer</button>
+                </td>
+            </tr>
         </table>
-        <button type="submit">Submit</button>
     </form>
     <form action="/showVolunteers" method="GET">
         <button type="submit">Back to Volunteers</button>
