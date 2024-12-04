@@ -677,11 +677,11 @@ app.get('/landing2', isAdmin, (req, res) => {
                 members_needed: members_needed,
                 status: status,
                 notes: notes
-          })
-          .then(() => {
+            })
+            .then(() => {
             res.redirect('/scheduledEvents'); // Redirect to the list of events after saving
-          })
-          .catch(error => {
+            })
+            .catch(error => {
             console.error('Error updating event:', error);
             res.status(500).send('Internal Server Error');
         });
@@ -694,12 +694,11 @@ app.get('/landing2', isAdmin, (req, res) => {
 
     // Route to submit added scheduled events
     app.post("/addScheduled", (req, res) => {
-        // Extract form values from req.body
-        const description = req.body.description || ''; // Default to empty string if not provided
-        const anticipated_participants = parseInt(req.body.anticipated_participants, 10) || 0; // Default to empty string if not provided
+        const description = req.body.description || ''; 
+        const anticipated_participants = parseInt(req.body.anticipated_participants, 10) || 0; 
         const under_ten = parseInt(req.body.under_ten, 10) || 0; // Convert to integer
-        const possible_date = req.body.possible_date || new Date().toISOString().split('T')[0];
-        const type = req.body.type || 'Sewing'; // Default to 'U' for Unknown
+        const actual_date = req.body.actual_date || new Date().toISOString().split('T')[0];
+        const type = req.body.type || 'Sewing'; 
         const address = req.body.address || '';
         const start_time = req.body.start_time ;
         const duration = req.body.duration || '';
@@ -716,10 +715,10 @@ app.get('/landing2', isAdmin, (req, res) => {
         // Insert the new event into the database
         knex('events')
             .insert({
-                description: description, // Ensure description is uppercase
+                description: description, 
                 anticipated_participants: anticipated_participants,
                 under_ten: under_ten,
-                possible_date: possible_date,
+                actual_date: actual_date,
                 type: type,
                 address: address,
                 start_time: start_time, 
