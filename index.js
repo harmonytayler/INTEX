@@ -242,8 +242,13 @@ app.get('/landing2', isAdmin, (req, res) => {
     });
 
     // Route to view user
-    app.get("/viewUser", isAdmin, (req, res) => {
-        res.render("viewUser");
+    app.get("/viewUser/:volunteer_id", isAdmin, (req, res) => {
+        knex.select().from("team_members").where("volunteer_id", req.params.volunteer_id).then(members => {
+            res.render("viewUser", {members})
+    }).catch(error => {
+            console.error('Error querying database:', error);
+            res.status(500).send('Internal Server Error');
+        });
     });
 
     // Route from view user to display user
