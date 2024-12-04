@@ -3,6 +3,10 @@ html, body {
     margin: 0;
 }
 
+main {
+    flex:1;
+}
+
 body {
     font-family: 'Open Sans', sans-serif;
     margin: 0;
@@ -278,11 +282,14 @@ button[type="submit"]:active {
 }
 
 /* Footer */
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Full viewport height */
+}
+
 footer {
     background-color: #5e8c74;
-    position: absolute;
-    bottom:0;
-    width:100%;
     color: #ffffff;
     padding: 15px 20px;
     display: flex;
