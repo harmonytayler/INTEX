@@ -22,5 +22,8 @@
         <p><strong>Leader:</strong> <%= members[0].take_charge == "Y" ? "Yes" : "No" %></p>
         <p><strong>Status:</strong> <%= members[0].status %></p>
     </div>
+    <form action="/users" method="GET" style="display: flex; justify-content: center; margin: 20px 0;">
+        <button type="submit">Back</button>
+    </form>
 </body>
 </html>
