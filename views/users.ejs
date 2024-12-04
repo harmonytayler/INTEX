@@ -7,41 +7,68 @@
     <title>Team Members</title>
 </head>
 <body>
-    <h1 style="text-align: center;">Team Members</h1>
+    <nav>
+        <div class="org-name">Turtle Shelter Project</div>
+        <div class="nav-links">
+            <a href="/landing2"><button class="link">Admin Home</button></a>
+            <a href="/users"><button class="link">Team Members</button></a>
+            <a href="/showVolunteers"><button class="link">Volunteer Requests</button></a>
+            <a href="/eventRequests"><button class="link">Event Requests</button></a>
+            <a href="/scheduledEvents"><button class="link">Scheduled Events</button></a>
+            <a href="/pastEvents"><button class="link">Past Events</button></a>
+        </div>
+    </nav>
     <table>
+        <caption>Team Members</caption>
         <thead>
-            <tr>
-                <!-- Headers for table to display planet info -->
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Phone</th>
-                <th>Email</th>
-                <th>City</th>
-                <th>Travel</th>
-            </tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Referral Source</th>
+            <th>Sewing Level</th>
+            <th>Monthly Hours</th>
+            <th>City</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Travel</th>
+            <th>Take Charge</th>
+            <th>Status</th>
+            <th>Edit</th>
+            <th>View</th>
+            <th>Delete</th>
         </thead>
         <tbody style="font-family: Arial; font-size: 9pt;">
             <% for (let iCount = 0; iCount < members.length; iCount++) { %>
                 <tr>
+                    <td><%= members[iCount].volunteer_id %></td>
                     <td><%= members[iCount].first_name %></td>
                     <td><%= members[iCount].last_name %></td>
                     <td><%= members[iCount].phone %></td>
                     <td><%= members[iCount].email %></td>
+                    <td><%= members[iCount].referral_source %></td>
+                    <td><%= members[iCount].sewing_level %></td>
+                    <td><%= members[iCount].monthly_hours %></td>
                     <td><%= members[iCount].city %></td>
+                    <td><%= members[iCount].username %></td>
+                    <td><%= members[iCount].password %></td>
                     <td><%= members[iCount].travel %></td>
-                    <td style="text-align: center;">
-                        <form action="/editUser/<%= members[iCount].volunteer_id %>" method="GET">
-                            <button type="submit">Edit</button>
+                    <td><%= members[iCount].take_charge %></td>
+                    <td><%= members[iCount].status %></td>
+                    <td>
+                        <form class="view-button-form" action="/editUser/<%= members[iCount].volunteer_id %>" method="GET">
+                            <button class="table-button" type="submit">Edit</button>
                         </form>
                     </td>
-                    <td style="text-align: center;">
-                        <form action="/viewUser/<%= members[iCount].volunteer_id %>" method="GET">
-                            <button type="submit">View</button>
+                    <td>
+                        <form class="view-button-form" action="/viewUser/<%= members[iCount].volunteer_id %>" method="GET">
+                            <button class="table-button" type="submit">View</button>
                         </form>
                     </td>
-                    <td style="text-align: center;">
-                        <form action="/deleteUser/<%= members[iCount].volunteer_id %>" method="POST">
-                            <button type="submit">Delete</button>
+                    <td>
+                        <form class="view-button-form" action="/deleteUser/<%= members[iCount].volunteer_id %>" method="POST">
+                            <button class="table-button" type="submit">Delete</button>
                         </form>
                     </td>
                 </tr>
@@ -51,11 +78,19 @@
 
     <!-- At the bottom of the page display a button labled Add User (which allows you to add a user record) 
     and a button labeled Home which takes you back to the main landing page -->
-    <form action="/addUser" method="GET" style="display: flex; justify-content: center; margin: 20px 0;">
+    <form action="/addUser" method="GET">
         <button type="submit">Add User</button>
     </form>
-    <form action="/landing2" method="GET" style="display: flex; justify-content: center; margin: 20px 0;">
-        <button type="submit">Home</button>
-    </form>
+    
+    <footer>
+        <div class="footer-left">
+            <a href="/login">Admin Portal</a>
+            <a href="/about">About</a>
+            <a href="/volunteer">Volunteer</a>
+        </div>
+        <div class="footer-right">
+            <p>© 2024 Turtle Shelter Project. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>
