@@ -386,8 +386,8 @@ app.get('/landing2', isAdmin, (req, res) => {
         });
     });
 
-    app.post("/deleteScheduled/:volunteer_id", (req, res) => {
-        knex("team_members").where("volunteer_id", req.params.volunteer_id).del().then(() => {
+    app.post("/deleteScheduled/:event_id", (req, res) => {
+        knex("events").where("event_id", req.params.event_id).del().then(() => {
             res.redirect("/scheduledEvents");
         }).catch(err => {
             console.log(err);
