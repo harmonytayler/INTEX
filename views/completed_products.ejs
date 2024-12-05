@@ -18,11 +18,24 @@
         </div>
     </nav>
     <table class="view">
-        <h1>Summary of Completed Products</h1>
-        <p>Pockets Total: <%= totalpockets %></p>
-        <p>Collars Total: <%= totalcollars %></p>
-        <p>Envelopes Total: <%= totalenvelopes %></p>
-        <p>Vests Total: <%= totalvests %></p>
+        <caption>Total Completed Products</caption>
+        <tr>
+            <td><label>Pockets Total</label></td>
+            <td><p><%= totalpockets %></p></td>
+        </tr>
+        <tr>
+            <td><label>Collars Total</label></td>
+            <td><p><%= totalcollars %></p></td>
+        </tr>
+        <tr>
+            <td><label>Envelopes Total</label></td>
+            <td><p><%= totalenvelopes %></p></td>
+        </tr>
+        <tr>
+            <td><label>Vests Total</label></td>
+            <td><p><%= totalvests %></p></td>
+        </tr>
+    </table>
         <main></main>
     <footer>
         <div class="footer-left">
