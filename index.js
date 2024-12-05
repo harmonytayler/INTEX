@@ -1049,4 +1049,44 @@ app.get('/landing2', isAdmin, (req, res) => {
 
     // Route from view past events to display past events
 
+app.get('/completed_products', isAdmin, (req, res) => {
+        knex.select(
+            knex.raw(`
+                SUM(COALESCE(CAST(pockets AS INT), 0)) AS totalPockets,
+                SUM(COALESCE(CAST(collars AS INT), 0)) AS totalCollars,
+                SUM(COALESCE(CAST(envelopes AS INT), 0)) AS totalEnvelopes,
+                SUM(COALESCE(CAST(vests AS INT), 0)) AS totalVests
+            `)
+        ).from("events")
+        .then(result => {
+            console.log('Query Result:', result);  // Log the entire result object
+        
+            // Check if result is an array and has data
+            if (Array.isArray(result) && result.length > 0) {
+                const { totalpockets, totalcollars, totalenvelopes, totalvests } = result[0];  // result itself might be the array
+                console.log(totalpockets, totalcollars, totalenvelopes, totalvests);
+        
+                // Pass data to EJS template
+                res.render('completed_products', {
+                    totalpockets,
+                    totalcollars,
+                    totalenvelopes,
+                    totalvests
+                });
+            } else {
+                // Handle case where no rows are returned
+                res.render('completed_products', {
+                    totalpockets: 0,
+                    totalcollars: 0,
+                    totalenvelopes: 0,
+                    totalvests: 0
+                });
+            }
+        })
+        .catch(err => {
+            console.error('Error with query:', err);
+            res.status(500).send('Error retrieving data');
+        });    
+    });
+
 app.listen(port, () => console.log("Listening"));
