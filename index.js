@@ -1059,12 +1059,9 @@ app.get('/completed_products', isAdmin, (req, res) => {
             `)
         ).from("events")
         .then(result => {
-            console.log('Query Result:', result);  // Log the entire result object
-        
             // Check if result is an array and has data
             if (Array.isArray(result) && result.length > 0) {
                 const { totalpockets, totalcollars, totalenvelopes, totalvests } = result[0];  // result itself might be the array
-                console.log(totalpockets, totalcollars, totalenvelopes, totalvests);
         
                 // Pass data to EJS template
                 res.render('completed_products', {
