@@ -42,7 +42,7 @@
                 <td style="text-align: left;">
                     <input type="radio" name="type" value="Sewing" <%= eventRequests.type === 'Sewing' ? 'checked' : '' %>> Sewing<br>
                     <input type="radio" name="type" value="Non-sewing"<%= eventRequests.type === 'Non-sewing' ? 'checked' : '' %>> Non-sewing<br>
-                    <input type="radio" name="type" value="Both" <%= eventRequests.type === 'Non-sewing' ? 'checked' : '' %>> Both
+                    <input type="radio" name="type" value="Both" <%= eventRequests.type === 'Both' ? 'checked' : '' %>> Both
                 </td>
             </tr>
             <tr>
@@ -105,8 +105,8 @@
                 <td style="text-align: left;">
                     <input type="radio" name="status" value="Pending" <%= eventRequests.status === 'Pending' ? 'checked' : '' %>> Pending<br>
                     <input type="radio" name="status" value="Approved" <%= eventRequests.status === 'Approved' ? 'checked' : '' %>> Approved<br>
-                    <input type="radio" name="status" value="Denied" <%= eventRequests.status === 'No' ? 'Denied' : '' %>> Denied<br>
-                    <input type="radio" name="status" value="Completed" <%= eventRequests.status === 'No' ? 'Completed' : '' %>> Completed
+                    <input type="radio" name="status" value="Denied" <%= eventRequests.status === 'Denied' ? 'checked' : '' %>> Denied<br>
+                    <input type="radio" name="status" value="Completed" <%= eventRequests.status === 'Completed' ? 'checked' : '' %>> Completed
                 </td>
             </tr>
             <tr>
