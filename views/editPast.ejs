@@ -44,11 +44,11 @@
             <tr>
                 <td><label>Event Type</label></td>
                 <td style="text-align: left;">
-                    <input type="radio" name="type" value="Sewing" <%= pastEvents.type == 'Sewing' ? 'checked' : '' %>> Sewing<br>
-                    <input type="radio" name="type" value="Non-sewing"<%= pastEvents.type == 'Non-sewing' ? 'checked' : '' %>> Non-sewing<br>
+                    <input type="radio" name="type" value="Sewing" <%= pastEvents.type == 'Sewing' ? 'checked' : (pastEvents.type === undefined ? 'checked' : '') %>> Sewing<br>
+                    <input type="radio" name="type" value="Non-sewing" <%= pastEvents.type == 'Non-sewing' ? 'checked' : '' %>> Non-sewing<br>
                     <input type="radio" name="type" value="Both" <%= pastEvents.type == 'Both' ? 'checked' : '' %>> Both
                 </td>
-            </tr>
+            </tr>            
             <tr>
                 <td><label for="street_address">Street Address</label></td>
                 <td><input type="text" id="street_address" name="street_address" required value="<%= pastEvents.street_address %>"></td>
@@ -150,11 +150,11 @@
             <tr>
                 <td><label>Did Jen share her story?</label></td>
                 <td style="text-align: left;">
-                    <input type="radio" name="story" value="Yes, long" <%= pastEvents.story == 'Yes, long' ? 'checked' : '' %>> Yes, Long<br>
+                    <input type="radio" name="story" value="Yes, long" <%= pastEvents.story == 'Yes, long' ? 'checked' : (pastEvents.story === undefined ? 'checked' : '') %>> Yes, Long<br>
                     <input type="radio" name="story" value="Yes, short" <%= pastEvents.story == 'Yes, short' ? 'checked' : '' %>> Yes, Short<br>
                     <input type="radio" name="story" value="No" <%= pastEvents.story == 'No' ? 'checked' : '' %>> No
                 </td>
-            </tr>
+            </tr>            
             <tr>
                 <td><label for="pockets">Pockets Completed</label></td>
                 <td><input type="number" id="pockets" name="pockets" required value="<%= pastEvents.pockets %>"></td>
@@ -178,12 +178,12 @@
             <tr>
                 <td><label>Status</label></td>
                 <td style="text-align: left;">
-                    <input type="radio" name="status" value="Pending" <%= pastEvents.status == 'Pending' ? 'checked' : '' %>> Pending<br>
+                    <input type="radio" name="status" value="Pending" <%= pastEvents.status == 'Pending' ? 'checked' : (pastEvents.status === undefined ? 'checked' : '') %>> Pending<br>
                     <input type="radio" name="status" value="Approved" <%= pastEvents.status == 'Approved' ? 'checked' : '' %>> Approved<br>
                     <input type="radio" name="status" value="Denied" <%= pastEvents.status == 'Denied' ? 'checked' : '' %>> Denied<br>
                     <input type="radio" name="status" value="Completed" <%= pastEvents.status == 'Completed' ? 'checked' : '' %>> Completed
                 </td>
-            </tr>
+            </tr>            
             <tr>
                 <td><label for="notes">Notes</label></td>
                 <td><input type="text" id="notes" name="notes" required value="<%= pastEvents.notes %>"></td>

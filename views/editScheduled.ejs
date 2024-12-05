@@ -36,11 +36,11 @@
             <tr>
                 <td><label>Event Type</label></td>
                 <td style="text-align: left;">
-                    <input type="radio" name="type" value="Sewing" <%= scheduledEvents.type === 'Sewing' ? 'checked' : '' %>> Sewing<br>
-                    <input type="radio" name="type" value="Non-sewing"<%= scheduledEvents.type === 'Non-sewing' ? 'checked' : '' %>> Non-sewing<br>
-                    <input type="radio" name="type" value="Both" <%= scheduledEvents.type === 'Both' ? 'checked' : '' %>> Both
+                    <input type="radio" name="type" value="Sewing" <%= scheduledEvents.type == 'Sewing' ? 'checked' : (scheduledEvents.type === undefined ? 'checked' : '') %>> Sewing<br>
+                    <input type="radio" name="type" value="Non-sewing" <%= scheduledEvents.type == 'Non-sewing' ? 'checked' : '' %>> Non-sewing<br>
+                    <input type="radio" name="type" value="Both" <%= scheduledEvents.type == 'Both' ? 'checked' : '' %>> Both
                 </td>
-            </tr>
+            </tr> 
             <tr>
                 <td><label for="street_address">Street Address</label></td>
                 <td><input type="text" id="street_address" name="street_address" required value="<%= scheduledEvents.street_address %>"></td>
@@ -140,13 +140,13 @@
                 <td><input type="number" id="sewers" name="sewers" required value="<%= scheduledEvents.sewers %>"></td>
             </tr>
             <tr>
-                <td><label>Should Jen share her story?</label></td>
+                <td><label>Did Jen share her story?</label></td>
                 <td style="text-align: left;">
-                    <input type="radio" name="story" value="Yes, long" <%= scheduledEvents.story === 'Yes, long' ? 'checked' : '' %>> Yes, Long<br>
-                    <input type="radio" name="story" value="Yes, short" <%= scheduledEvents.story === 'Yes, short' ? 'checked' : '' %>> Yes, Short<br>
-                    <input type="radio" name="story" value="No" <%= scheduledEvents.story === 'No' ? 'checked' : '' %>> No
+                    <input type="radio" name="story" value="Yes, long" <%= scheduledEvents.story == 'Yes, long' ? 'checked' : (scheduledEvents.story === undefined ? 'checked' : '') %>> Yes, Long<br>
+                    <input type="radio" name="story" value="Yes, short" <%= scheduledEvents.story == 'Yes, short' ? 'checked' : '' %>> Yes, Short<br>
+                    <input type="radio" name="story" value="No" <%= scheduledEvents.story == 'No' ? 'checked' : '' %>> No
                 </td>
-            </tr>
+            </tr> 
             <tr>
                 <td><label for="members_needed">Members Needed</label></td>
                 <td><input type="number" id="members_needed" name="members_needed" required value="<%= scheduledEvents.members_needed %>"></td>
@@ -154,10 +154,10 @@
             <tr>
                 <td><label>Status</label></td>
                 <td style="text-align: left;">
-                    <input type="radio" name="status" value="Pending" <%= scheduledEvents.status === 'Pending' ? 'checked' : '' %>> Pending<br>
-                    <input type="radio" name="status" value="Approved" <%= scheduledEvents.status === 'Approved' ? 'checked' : '' %>> Approved<br>
-                    <input type="radio" name="status" value="Denied" <%= scheduledEvents.status === 'Denied' ? 'checked' : '' %>> Denied<br>
-                    <input type="radio" name="status" value="Completed" <%= scheduledEvents.status === 'Completed' ? 'checked' : '' %>> Completed
+                    <input type="radio" name="status" value="Pending" <%= scheduledEvents.status == 'Pending' ? 'checked' : (scheduledEvents.status === undefined ? 'checked' : '') %>> Pending<br>
+                    <input type="radio" name="status" value="Approved" <%= scheduledEvents.status == 'Approved' ? 'checked' : '' %>> Approved<br>
+                    <input type="radio" name="status" value="Denied" <%= scheduledEvents.status == 'Denied' ? 'checked' : '' %>> Denied<br>
+                    <input type="radio" name="status" value="Completed" <%= scheduledEvents.status == 'Completed' ? 'checked' : '' %>> Completed
                 </td>
             </tr>
             <tr>

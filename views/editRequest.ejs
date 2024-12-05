@@ -40,11 +40,11 @@
             <tr>
                 <td><label>Event Type</label></td>
                 <td style="text-align: left;">
-                    <input type="radio" name="type" value="Sewing" <%= eventRequests.type === 'Sewing' ? 'checked' : '' %>> Sewing<br>
-                    <input type="radio" name="type" value="Non-sewing"<%= eventRequests.type === 'Non-sewing' ? 'checked' : '' %>> Non-sewing<br>
-                    <input type="radio" name="type" value="Both" <%= eventRequests.type === 'Both' ? 'checked' : '' %>> Both
+                    <input type="radio" name="type" value="Sewing" <%= eventRequests.type == 'Sewing' ? 'checked' : (eventRequests.type === undefined ? 'checked' : '') %>> Sewing<br>
+                    <input type="radio" name="type" value="Non-sewing" <%= eventRequests.type == 'Non-sewing' ? 'checked' : '' %>> Non-sewing<br>
+                    <input type="radio" name="type" value="Both" <%= eventRequests.type == 'Both' ? 'checked' : '' %>> Both
                 </td>
-            </tr>
+            </tr> 
             <tr>
                 <td><label for="street_address">Street Address</label></td>
                 <td><input type="text" id="street_address" name="street_address" required value="<%= eventRequests.street_address %>"></td>
@@ -146,11 +146,11 @@
             <tr>
                 <td><label>Should Jen share her story?</label></td>
                 <td style="text-align: left;">
-                    <input type="radio" name="story" value="Yes, long" <%= eventRequests.story === 'Yes, long' ? 'checked' : '' %>> Yes, Long<br>
-                    <input type="radio" name="story" value="Yes, short" <%= eventRequests.story === 'Yes, short' ? 'checked' : '' %>> Yes, Short<br>
-                    <input type="radio" name="story" value="No" <%= eventRequests.story === 'No' ? 'checked' : '' %>> No
+                    <input type="radio" name="story" value="Yes, long" <%= eventRequests.story == 'Yes, long' ? 'checked' : (eventRequests.story === undefined ? 'checked' : '') %>> Yes, Long<br>
+                    <input type="radio" name="story" value="Yes, short" <%= eventRequests.story == 'Yes, short' ? 'checked' : '' %>> Yes, Short<br>
+                    <input type="radio" name="story" value="No" <%= eventRequests.story == 'No' ? 'checked' : '' %>> No
                 </td>
-            </tr>
+            </tr> 
             <tr>
                 <td><label for="members_needed">Members Needed</label></td>
                 <td><input type="number" id="members_needed" name="members_needed" required value="<%= eventRequests.members_needed %>"></td>
@@ -158,10 +158,10 @@
             <tr>
                 <td><label>Status</label></td>
                 <td style="text-align: left;">
-                    <input type="radio" name="status" value="Pending" <%= eventRequests.status === 'Pending' ? 'checked' : '' %>> Pending<br>
-                    <input type="radio" name="status" value="Approved" <%= eventRequests.status === 'Approved' ? 'checked' : '' %>> Approved<br>
-                    <input type="radio" name="status" value="Denied" <%= eventRequests.status === 'Denied' ? 'checked' : '' %>> Denied<br>
-                    <input type="radio" name="status" value="Completed" <%= eventRequests.status === 'Completed' ? 'checked' : '' %>> Completed
+                    <input type="radio" name="status" value="Pending" <%= eventRequests.status == 'Pending' ? 'checked' : (eventRequests.status === undefined ? 'checked' : '') %>> Pending<br>
+                    <input type="radio" name="status" value="Approved" <%= eventRequests.status == 'Approved' ? 'checked' : '' %>> Approved<br>
+                    <input type="radio" name="status" value="Denied" <%= eventRequests.status == 'Denied' ? 'checked' : '' %>> Denied<br>
+                    <input type="radio" name="status" value="Completed" <%= eventRequests.status == 'Completed' ? 'checked' : '' %>> Completed
                 </td>
             </tr>
             <tr>
