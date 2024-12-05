@@ -569,6 +569,11 @@ table.form td:last-child {
     cursor: pointer;
     outline: none;
     transition: background-color 0.3s ease;
+    margin-bottom: 5px; /* added something here */
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .collapsible-header:hover {
@@ -579,11 +584,16 @@ table.form td:last-child {
     display: none; 
     padding: 15px;
     background-color: #fff;
+    max-height: 0; /* started adding here */
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease;
 }
 
 
 .collapsible-content.show {
     display: block;
+    max-height: 500px; /*added here */
+    padding: 20px;
 }
 
 .collapsible-header.active {
@@ -618,6 +628,27 @@ table.form td:last-child {
     content: "";
     display: table;
     clear: both;
+}
+
+/* Default arrow icon */
+.collapsible-header::after {
+    content: '';  
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 8px solid black;
+    transition: transform 0.3s ease;
+    margin-left: auto;
+}
+
+.collapsible-header.active::after {
+    transform: rotate(180deg); /* Rotate the arrow when active */
+}
+
+/* Rotate arrow when section is expanded */
+.collapsible-header .rotate {
+    transform: rotate(180deg);  /* Rotate 180 degrees */
 }
 
 .founder-image {
