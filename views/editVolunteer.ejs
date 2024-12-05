@@ -37,8 +37,17 @@
             </tr>
             <tr>
                 <td><label for="referral_source">Referral Source</label></td>
-                <td><input type="text" id="referral_source" name="referral_source" required value="<%= showVolunteer.referral_source %>"></td>
-            </tr>
+                <td>
+                    <select id="referral_source" name="referral_source" required>
+                        <option value="" disabled>Select an option from the dropdown</option>
+                        <option value="Word of mouth" <%= showVolunteer.referral_source === 'Word of mouth' ? 'selected' : '' %>>Word of mouth</option>
+                        <option value="Podcast" <%= showVolunteer.referral_source === 'Podcast' ? 'selected' : '' %>>Podcast</option>
+                        <option value="Online" <%= showVolunteer.referral_source === 'Online' ? 'selected' : '' %>>Online</option>
+                        <option value="Service activity" <%= showVolunteer.referral_source === 'Service activity' ? 'selected' : '' %>>Service activity</option>
+                        <option value="Other" <%= showVolunteer.referral_source === 'Other' ? 'selected' : '' %>>Other</option>
+                    </select>
+                </td>
+            </tr>            
             <tr>
                 <td><label>Sewing Level</label></td>
                 <td style="text-align: left;">
