@@ -122,15 +122,15 @@ const knex = require("knex")({
             contact_email: req.body.contact_email,
             machines: parseInt(req.body.machines),
             sewers: parseInt(req.body.sewers),
-            story: req.body.story ? "Yes" : "No",
+            story: req.body.story,  // Store the exact value chosen (Yes, Long, Yes, Short, or No)
             status: "Pending"
-        }).then (() => {
+        }).then(() => {
             res.redirect("/");
         }).catch(error => {
             console.error('Error querying database:', error);
             res.status(500).send('Internal Server Error');
         });
-    });
+    });    
 
 // Login
 
