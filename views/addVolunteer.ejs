@@ -35,8 +35,17 @@
                 <td><input type="text" id="email" name="email" required></td>
             </tr>
             <tr>
-                <td><label for="referral_source">Referral Source</label></td>
-                <td><input type="text" id="referral_source" name="referral_source" required></td>
+                <td><label for="referral_source">How did you hear about us?</label></td>
+                <td>    
+                    <select id="referral_source" name="referral_source">
+                        <option value="" disabled selected>Select an option from the dropdown</option>
+                        <option value="Word of mouth">Word of mouth</option>
+                        <option value="Podcast">Podcast</option>
+                        <option value="Online">Online</option>
+                        <option value="Service activity">Service activity</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </td>
             </tr>
             <tr>
                 <td><label>Sewing Level</label></td>
